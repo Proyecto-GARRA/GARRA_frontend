@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
-import { ButtonModule } from 'primeng/button';
+import { LayoutModule } from './layout/layout.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    ButtonModule
+    BrowserModule,
+    CommonModule,
+    LayoutModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
