@@ -6,18 +6,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LayoutModule } from './layout/layout.module';
-import { ClientModule } from './pages/client/client.module';
+import { ClientModule } from './pages/clients/client.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     CommonModule,
     LayoutModule,
-    ClientModule,
     BrowserAnimationsModule
   ],
   providers: [],

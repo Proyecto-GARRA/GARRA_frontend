@@ -13,13 +13,11 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { MenuComponent } from './menu/menu.component';
 import { LayoutComponent } from './layout.component';
 import { FooterComponent } from './footer/footer.component';
-import { SplitMenuComponent } from './split-menu/split-menu.component';
 
 const components = [
     MenuComponent,
     FooterComponent,
     LayoutComponent,
-    SplitMenuComponent
 ]
 
 @NgModule({

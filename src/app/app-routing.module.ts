@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientComponent } from './pages/client/client.component';
+import { ClientComponent } from './pages/clients/client.component';
 import { EmployeesModule } from './pages/employees/employees.module';
+import { QuotesModule } from './pages/quotes/quotes.module';
+import { ReportsModule } from './pages/reports/reports.module';
 
 const routes: Routes = [
   {
@@ -9,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'lista-clientes',
-    loadChildren: () => import('./pages/client/client.module')
+    loadChildren: () => import('./pages/clients/client.module')
     .then( m => m.ClientModule )
   },
   {
@@ -17,16 +19,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/employees/employees.module')
     .then( m => m.EmployeesModule )
   },
-  // {
-  //   path:'lista-citas',
-  //   loadChildren: () => import('')
-  //   .then( m => m.CitaModule)
-  // },
-  // {
-  //   path:'lista-reportes',
-  //   loadChildren:() => import('')
-  //   .then(  m => m.ReporteModule)
-  // }
+  {
+    path:'lista-citas',
+    loadChildren: () => import('./pages/quotes/quotes.module')
+    .then( m => m.QuotesModule)
+  },
+  {
+    path:'lista-reportes',
+    loadChildren:() => import('./pages/reports/reports.module')
+    .then(  m => m.ReportsModule)
+  },
   {
     path: '**', redirectTo: '/lista-clientes'
   }
