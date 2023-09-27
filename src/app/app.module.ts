@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { LayoutModule } from './layout/layout.module';
 import { ClientModule } from './pages/clients/client.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ClientModule } from './pages/clients/client.module';
     AppRoutingModule,
     BrowserModule,
     CommonModule,
+    HttpClientModule,
     LayoutModule,
     BrowserAnimationsModule
   ],
