@@ -1,0 +1,41 @@
+<div class="flex justify-content-center">
+
+  <p-card class="card_list" [style]="{ width: '100%'}">
+
+    <div class="flex justify-content-end">
+      <div class="card flex dynamic-table__button-add">
+        <!-- <p-button label="Añadir" icon="pi pi-user-plus" pTooltip="Añadir" tooltipPosition="top" routerLink="formualrio-cliente"></p-button> -->
+        <!-- <form-client></form-client> -->
+      </div>
+      <div class="dynamic-table__label-search" pTooltip="Buscar" tooltipPosition="top">
+        <form>
+          <p-password formControlName="value" [feedback]="false"></p-password>
+        </form>
+      </div>
+      </div>
+
+    <p-table [value]="clientes" clientesKey="code" [tableStyle]="{'min-width': '70rem'}">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Id</th>
+          <th>Nombre(s)</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th><i class="pi pi-spin pi-cog" style="font-size: 2rem"></i>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-clientes>
+        <tr>
+          <td>{{ clientes.id }}</td>
+          <td>{{ clientes.nombreDelCliente || clientes.nombreDelEmpleado }}</td>
+          <td>{{ clientes.apellido_P }}</td>
+          <td>{{ clientes.apellido_M }}</td>
+          <td>
+            <options-menu></options-menu>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+</div>
