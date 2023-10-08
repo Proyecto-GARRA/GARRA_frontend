@@ -1,13 +1,11 @@
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
-import { LayoutModule } from './layout/layout.module';
-import { ClientModule } from './pages/clients/client.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -15,11 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     AppRoutingModule,
+    BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
     HttpClientModule,
-    LayoutModule,
-    BrowserAnimationsModule
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
