@@ -13,6 +13,7 @@ export class ClientTableComponent {
   position: string = 'center';
   visible: boolean = false;
 
+  public errores: string[] =[];
   clientes: Cliente[] = [];
   opciones: MenuItem[] = [];
 
