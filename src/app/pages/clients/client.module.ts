@@ -1,23 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DropdownModule } from 'primeng/dropdown';
 import { ClientRoutingModule } from './client-routing.module';
 import { ClientComponent } from './client.component';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { ClientFormComponent } from './client-form/client-form.component';
+import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { DialogModule } from 'primeng/dialog';
+import { CardModule } from 'primeng/card';
+import { MessagesModule } from 'primeng/messages';
 
 const components = [
-  ClientComponent
+  ClientComponent,
+  ClientFormComponent
 ];
 
 @NgModule({
   declarations: [ components ],
   exports: [ components ],
   imports: [
-    CommonModule,
+    ButtonModule,
+    CardModule,
     ClientRoutingModule,
-    ComponentsModule
+    CommonModule,
+    ComponentsModule,
+    FormsModule,
+    MessagesModule
   ]
 })
 export class ClientModule { }
