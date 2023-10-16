@@ -15,6 +15,7 @@ export class ClientFormComponent {
   public titulo: string = "Crear cliente";
   public errores: string[] = [];
   public formError = false;
+  date: Date[] | undefined;
 
   //Inyecciones
   constructor(private clienteService: ClientsService,
@@ -22,11 +23,11 @@ export class ClientFormComponent {
 
 
   create(): void {
-    this.formError = false; // Restablece el estado de error
+    this.formError = false;
 
   if (!this.cliente.nombreDelCliente || !this.cliente.apellido_P || !this.cliente.apellido_M || !this.cliente.fecha_naci || !this.cliente.domicilio || !this.cliente.correo || !this.cliente.telefono) {
     this.formError = true;
-    return; // No continúes si hay campos vacíos
+    return;
   }
 
     this.clienteService.create(this.cliente).subscribe(

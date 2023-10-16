@@ -42,13 +42,26 @@
               </div>
 
               <div class="col-6 field">
-                <label for="firstname1">Fecha de nacimiento</label>
+                <label class="col-3">Fecha de nacimiento </label>
+                <p-calendar
+                          class="col-3"
+                          [(ngModel)]="cliente.fecha_naci"
+                          [touchUI]="true"
+                          [readonlyInput]="true"
+                          size="30"
+                          name="fecha_naci"
+                          [showIcon]="true"
+                          >
+
+                        </p-calendar>
+                        <small id="fecha_naci-help" class="p-error" *ngIf="formError && !cliente.fecha_naci">La fecha de nacimiento es obligatoria.</small>
+                <!-- <label for="firstname1">Fecha de nacimiento</label>
                 <input type="date"
                         size="30"
                         [(ngModel)]="cliente.fecha_naci"
                         name="fecha_naci"
                         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        <small id="fecha_naci-help" class="p-error" *ngIf="formError && !cliente.fecha_naci">La fecha de nacimiento es obligatoria.</small>
+                        <small id="fecha_naci-help" class="p-error" *ngIf="formError && !cliente.fecha_naci">La fecha de nacimiento es obligatoria.</small> -->
               </div>
 
               <div class="col-6 field">

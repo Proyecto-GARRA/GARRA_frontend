@@ -31,7 +31,11 @@ export class ClientsService {
           );
         }),
         catchError((error: any) => {
-          throw error;
+          throw Swal.fire(
+            'Error!',
+            `Correo ya existente.`,
+            'error'
+          );
         })
       );
     }

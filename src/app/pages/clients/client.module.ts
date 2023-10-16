@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { MessagesModule } from 'primeng/messages';
+import { CalendarModule } from 'primeng/calendar';
 
 const components = [
   ClientComponent,
@@ -24,7 +25,7 @@ const components = [
     CommonModule,
     ComponentsModule,
     FormsModule,
-    MessagesModule
+    CalendarModule
   ]
 })
 export class ClientModule { }
