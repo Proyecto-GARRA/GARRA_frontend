@@ -1,1 +1,11 @@
+.options-menu{
+  &__size-card{
+    width: 300px;
+    position: fixed;
+    transform: translate(-42%, -50%);
+  }
 
+  &__button-design{
+    padding: 15px;
+  }
+}

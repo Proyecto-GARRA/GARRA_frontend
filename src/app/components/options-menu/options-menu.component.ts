@@ -6,11 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./options-menu.component.scss']
 })
 export class OptionsMenuComponent {
+  public showSubMenu: boolean = false;
 
-  position: string = 'center';
-  visible: boolean = false;
-  
-  showDialog() {  this.visible = true;  }
+  toggleSubMenu() {
+    this.showSubMenu = !this.showSubMenu;
+  }
 
+  closeMenu() {
+    this.showSubMenu = false;
+    console.log('closeMenu called');
 
+  }
 }
