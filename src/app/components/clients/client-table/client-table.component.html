@@ -27,6 +27,7 @@
             [value]="clientes"
             clientesKey="code"
             [tableStyle]="{ 'min-width': '70rem' }"
+            [(contextMenuSelection)]="cliente"
             [contextMenu]="cm">
             <ng-template pTemplate="header">
                 <tr>
@@ -49,8 +50,8 @@
                     <td>{{ clientes.apellido_M }}</td>
                     <td>
                         <p-button
-                            label=":"
-                            (onClick)="showContext(cm, $event)"></p-button>
+                            icon="pi pi-ellipsis-v"
+                            (onClick)="showContext(cm, clientes, $event)" />
                     </td>
                 </tr>
             </ng-template>

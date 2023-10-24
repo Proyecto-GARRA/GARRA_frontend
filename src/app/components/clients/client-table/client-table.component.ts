@@ -14,6 +14,7 @@ export class ClientTableComponent {
     visible: boolean = false;
 
     public errores: string[] = [];
+
     clientes: Cliente[] = [
         {
             id: 1,
@@ -25,7 +26,18 @@ export class ClientTableComponent {
             correo: 'string',
             telefono: 'string',
         },
+        {
+            id: 2,
+            nombreDelCliente: '',
+            apellido_P: 'string',
+            apellido_M: 'string',
+            fecha_naci: 'string',
+            domicilio: 'string',
+            correo: 'string',
+            telefono: 'string',
+        },
     ];
+    cliente!: Cliente;
     opciones: MenuItem[] = [];
 
     constructor(private clientsService: ClientsService) {}
@@ -35,17 +47,17 @@ export class ClientTableComponent {
             {
                 label: 'Detalles',
                 icon: 'pi pi-user',
-                routerLink: '/',
+                command: () => console.log(this.cliente),
             },
             {
                 label: 'Editar',
                 icon: 'pi pi-user-edit',
-                routerLink: '/',
+                command: () => console.log('Editar'),
             },
             {
                 label: 'Eliminar',
                 icon: 'pi pi-user-minus',
-                routerLink: '/',
+                command: () => console.log('Eliminar'),
             },
         ];
 
@@ -54,8 +66,9 @@ export class ClientTableComponent {
         });
     }
 
-    showContext(cm: ContextMenu, event: MouseEvent) {
+    showContext(cm: ContextMenu, cliente: Cliente, event: MouseEvent) {
         cm.show(event);
+        this.cliente = cliente;
         event.stopPropagation();
     }
 }
