@@ -1,4 +1,4 @@
-export class TipoActividad{
-  id!:number;
-  tipoActividad!: string;
+export class TipoActividad {
+    id!: number;
+    tipoActividad!: string;
 }

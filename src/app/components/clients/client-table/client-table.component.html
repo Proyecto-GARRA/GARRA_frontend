@@ -1,57 +1,61 @@
 <div class="flex justify-content-center">
-  <p-card
-    class="table__list"
-    header="Lista clientes"
-    [style]="{ width: '100%' }"
-  >
-    <div class="flex justify-content-end">
-      <div class="card flex table__button-header">
-        <p-button
-          routerLink="formulario-cliente"
-          class="mr-2"
-          icon="pi pi-user-plus"
-          label="Agregar"
-        ></p-button>
-      </div>
-      <div
-        class="dynamic-table__label-search"
-        pTooltip="Buscar"
-        tooltipPosition="top"
-      >
-        <form>
-          <p-password formControlName="value" [feedback]="false"></p-password>
-        </form>
-      </div>
-    </div>
+    <p-card
+        class="table__list"
+        header="Lista clientes"
+        [style]="{ width: '100%' }">
+        <div class="flex justify-content-end">
+            <div class="card flex table__button-header">
+                <p-button
+                    routerLink="formulario-cliente"
+                    class="mr-2"
+                    icon="pi pi-user-plus"
+                    label="Agregar"></p-button>
+            </div>
+            <div
+                class="dynamic-table__label-search"
+                pTooltip="Buscar"
+                tooltipPosition="top">
+                <form>
+                    <p-password
+                        formControlName="value"
+                        [feedback]="false"></p-password>
+                </form>
+            </div>
+        </div>
 
-    <p-table
-      [value]="clientes"
-      clientesKey="code"
-      [tableStyle]="{ 'min-width': '70rem' }"
-      [contextMenu]="cm"
-    >
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Id</th>
-          <th>Nombre(s)</th>
-          <th>Apellido Paterno</th>
-          <th>Apellido Materno</th>
-          <th><i class="pi pi-spin pi-cog" style="font-size: 2rem"></i></th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-clientes>
-        <tr [pContextMenuRow]="clientes">
-          <td>{{ clientes.id }}</td>
-          <td>{{ clientes.nombreDelCliente }}</td>
-          <td>{{ clientes.apellido_P }}</td>
-          <td>{{ clientes.apellido_M }}</td>
-          <td>
-            <p-button label=":" (onClick)="showContext(cm, $event)"></p-button>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </p-card>
+        <p-table
+            [value]="clientes"
+            clientesKey="code"
+            [tableStyle]="{ 'min-width': '70rem' }"
+            [contextMenu]="cm">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre(s)</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>
+                        <i
+                            class="pi pi-spin pi-cog"
+                            style="font-size: 2rem"></i>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-clientes>
+                <tr [pContextMenuRow]="clientes">
+                    <td>{{ clientes.id }}</td>
+                    <td>{{ clientes.nombreDelCliente }}</td>
+                    <td>{{ clientes.apellido_P }}</td>
+                    <td>{{ clientes.apellido_M }}</td>
+                    <td>
+                        <p-button
+                            label=":"
+                            (onClick)="showContext(cm, $event)"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-card>
 
-  <p-contextMenu #cm [model]="opciones"></p-contextMenu>
+    <p-contextMenu #cm [model]="opciones"></p-contextMenu>
 </div>

@@ -4,12 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ReportsRoutingModule } from './reports-routing.module';
 import { ReportComponent } from './report.component';
 
-
 @NgModule({
-  declarations: [ReportComponent],
-  imports: [
-    CommonModule,
-    ReportsRoutingModule
-  ]
+    declarations: [ReportComponent],
+    imports: [CommonModule, ReportsRoutingModule],
 })
-export class ReportsModule { }
+export class ReportsModule {}
