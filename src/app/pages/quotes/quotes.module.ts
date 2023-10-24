@@ -6,14 +6,8 @@ import { TableModule } from 'primeng/table';
 import { QuotesRoutingModule } from './quotes-routing.module';
 import { QuotesComponent } from './quotes.component';
 
-
 @NgModule({
-  declarations: [QuotesComponent],
-  imports: [
-    CommonModule,
-    QuotesRoutingModule,
-    TableModule,
-
-  ]
+    declarations: [QuotesComponent],
+    imports: [CommonModule, QuotesRoutingModule, TableModule],
 })
-export class QuotesModule { }
+export class QuotesModule {}

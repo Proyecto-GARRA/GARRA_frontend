@@ -10,22 +10,19 @@ import { CardModule } from 'primeng/card';
 import { MessagesModule } from 'primeng/messages';
 import { CalendarModule } from 'primeng/calendar';
 
-const components = [
-  ClientComponent,
-  ClientFormComponent
-];
+const components = [ClientComponent, ClientFormComponent];
 
 @NgModule({
-  declarations: [ components ],
-  exports: [ components ],
-  imports: [
-    ButtonModule,
-    CardModule,
-    ClientRoutingModule,
-    CommonModule,
-    ComponentsModule,
-    FormsModule,
-    CalendarModule
-  ]
+    declarations: [components],
+    exports: [components],
+    imports: [
+        ButtonModule,
+        CardModule,
+        ClientRoutingModule,
+        CommonModule,
+        ComponentsModule,
+        FormsModule,
+        CalendarModule,
+    ],
 })
-export class ClientModule { }
+export class ClientModule {}

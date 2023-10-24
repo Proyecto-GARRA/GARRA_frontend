@@ -1,4 +1,4 @@
-export class TipoEmpl{
-  id!: number;
-  tipoEmpleado!: string;
+export class TipoEmpl {
+    id!: number;
+    tipoEmpleado!: string;
 }

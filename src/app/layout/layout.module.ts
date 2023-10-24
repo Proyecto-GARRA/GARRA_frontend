@@ -14,24 +14,20 @@ import { MenuComponent } from './menu/menu.component';
 import { LayoutComponent } from './layout.component';
 import { FooterComponent } from './footer/footer.component';
 
-const components = [
-    MenuComponent,
-    FooterComponent,
-    LayoutComponent,
-]
+const components = [MenuComponent, FooterComponent, LayoutComponent];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MenubarModule,
-    SidebarModule,
-    ButtonModule,
-    SpeedDialModule,
-    ToastModule,
-    ToolbarModule,
-    SplitButtonModule
-  ],
-  declarations: [components],
-  exports:[components]
+    imports: [
+        CommonModule,
+        MenubarModule,
+        SidebarModule,
+        ButtonModule,
+        SpeedDialModule,
+        ToastModule,
+        ToolbarModule,
+        SplitButtonModule,
+    ],
+    declarations: [components],
+    exports: [components],
 })
-export class LayoutModule { }
+export class LayoutModule {}

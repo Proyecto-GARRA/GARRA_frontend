@@ -3,9 +3,9 @@ import { Subscription } from 'rxjs';
 import { SubmenuService } from 'src/app/services/submenu.service';
 
 @Component({
-  selector: 'options-menu',
-  templateUrl: './options-menu.component.html',
-  styleUrls: ['./options-menu.component.scss']
+    selector: 'options-menu',
+    templateUrl: './options-menu.component.html',
+    styleUrls: ['./options-menu.component.scss'],
 })
 export class OptionsMenuComponent {
   public showSubMenu: boolean = false;

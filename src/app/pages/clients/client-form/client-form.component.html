@@ -1,45 +1,61 @@
 <div class="flex justify-content-center">
-  <p-card class="table__list" [style]="{ width: '100%'}">
+    <p-card class="table__list" [style]="{ width: '100%' }">
+        <div class="card flex justify-content-center app-design__content">
+            <ng-template pTemplate="header">
+                <span class="text-xl font-bold">Formulario de clientes</span>
+            </ng-template>
+            <div
+                pFocusTrap
+                class="card flex align-items-center justify-content-center flex-wrap gap-3">
+                <form #clienteForm ngForm class="flex grid">
+                    <div class="col-12 field">
+                        <label for="nombreDelCliente">Nombre(s)</label>
+                        <input
+                            type="text"
+                            size="30"
+                            [(ngModel)]="cliente.nombreDelCliente"
+                            name="nombreDelCliente"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                            required />
+                        <small
+                            id="nombre-help"
+                            class="p-error"
+                            *ngIf="formError && !cliente.nombreDelCliente"
+                            >El nombre es obligatorio.</small
+                        >
+                    </div>
 
-    <div class="card flex justify-content-center app-design__content">
-          <ng-template pTemplate="header">
-              <span class="text-xl font-bold">Formulario de clientes</span>
-          </ng-template>
-          <div pFocusTrap class="card flex align-items-center justify-content-center flex-wrap gap-3">
+                    <div class="col-6 field">
+                        <label for="apellido_P">Apellido paterno</label>
+                        <input
+                            type="text"
+                            size="30"
+                            [(ngModel)]="cliente.apellido_P"
+                            name="apellido_P"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                        <small
+                            id="apellido_P-help"
+                            class="p-error"
+                            *ngIf="formError && !cliente.apellido_P"
+                            >El apellido paterno es obligatorio.</small
+                        >
+                    </div>
 
-
-            <form #clienteForm ngForm class="flex grid ">
-
-                <div class="col-12 field">
-                  <label for="nombreDelCliente">Nombre(s)</label>
-                  <input type="text"
-                        size="30"
-                        [(ngModel)]="cliente.nombreDelCliente"
-                        name="nombreDelCliente"
-                        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                        required>
-                        <small id="nombre-help" class="p-error" *ngIf="formError && !cliente.nombreDelCliente">El nombre es obligatorio.</small>
-                </div>
-
-              <div class="col-6 field">
-                <label for="apellido_P">Apellido paterno</label>
-                <input type="text"
-                        size="30"
-                        [(ngModel)]="cliente.apellido_P"
-                        name="apellido_P"
-                        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        <small id="apellido_P-help" class="p-error" *ngIf="formError && !cliente.apellido_P">El apellido paterno es obligatorio.</small>
-              </div>
-
-              <div class="col-6 field">
-                <label for="firstname1">Apellido Materno</label>
-                <input type="text"
-                        size="30"
-                        [(ngModel)]="cliente.apellido_M"
-                        name="apellido_M"
-                        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        <small id="apellido_M-help" class="p-error" *ngIf="formError && !cliente.apellido_M">El apellido materno es obligatorio.</small>
-              </div>
+                    <div class="col-6 field">
+                        <label for="firstname1">Apellido Materno</label>
+                        <input
+                            type="text"
+                            size="30"
+                            [(ngModel)]="cliente.apellido_M"
+                            name="apellido_M"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                        <small
+                            id="apellido_M-help"
+                            class="p-error"
+                            *ngIf="formError && !cliente.apellido_M"
+                            >El apellido materno es obligatorio.</small
+                        >
+                    </div>
 
               <div class="col-12 field">
                 <label class="col-2">Fecha de nacimiento </label>
@@ -56,25 +72,37 @@
                         <small class="col-1" id="fecha_naci-help" class="p-error" *ngIf="formError && !cliente.fecha_naci">La fecha de nacimiento es obligatoria.</small>
               </div>
 
-              <div class="col-6 field">
-                <label for="firstname1">Domicilio</label>
-                <input type="text"
-                        size="30"
-                        [(ngModel)]="cliente.domicilio"
-                        name="domicilio"
-                        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        <small id="domicilio-help" class="p-error" *ngIf="formError && !cliente.domicilio">El domicilio es obligatorio.</small>
-              </div>
+                    <div class="col-6 field">
+                        <label for="firstname1">Domicilio</label>
+                        <input
+                            type="text"
+                            size="30"
+                            [(ngModel)]="cliente.domicilio"
+                            name="domicilio"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                        <small
+                            id="domicilio-help"
+                            class="p-error"
+                            *ngIf="formError && !cliente.domicilio"
+                            >El domicilio es obligatorio.</small
+                        >
+                    </div>
 
-              <div class="col-6 field">
-                <label for="firstname1">Correo</label>
-                <input type="text"
-                        size="30"
-                        [(ngModel)]="cliente.correo"
-                        name="correo"
-                        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        <small id="correo-help" class="p-error" *ngIf="formError && !cliente.correo">El correo es obligatorio.</small>
-              </div>
+                    <div class="col-6 field">
+                        <label for="firstname1">Correo</label>
+                        <input
+                            type="text"
+                            size="30"
+                            [(ngModel)]="cliente.correo"
+                            name="correo"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                        <small
+                            id="correo-help"
+                            class="p-error"
+                            *ngIf="formError && !cliente.correo"
+                            >El correo es obligatorio.</small
+                        >
+                    </div>
 
               <div class="col-6 field">
                 <label for="firstname1">Numero telefono</label>
@@ -99,9 +127,6 @@
                           (click)="create()"></p-button>
               </div>
             </div>
-
         </div>
-    </div>
-
-  </p-card>
+    </p-card>
 </div>

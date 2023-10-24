@@ -2,36 +2,35 @@ import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+    selector: 'app-menu',
+    templateUrl: './menu.component.html',
+    styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
+    items: MenuItem[] = [];
 
-  items: MenuItem[] =[];
-
-  ngOnInit() {
-    this.items = [
-      {
-          label: 'Cliente',
-          routerLink:'lista-clientes',
-          icon: 'pi pi-user'
-      },
-      {
-        label: 'Empleado',
-        routerLink:'lista-empleados',
-        icon: 'pi pi-briefcase'
-      },
-      {
-        label: 'Citas',
-        routerLink:'lista-citas',
-        icon: 'pi pi-calendar'
-      },
-      {
-        label: 'Reporte',
-        routerLink:'lista-reportes',
-        icon: 'pi pi-folder'
-      },
-    ];
-  }
+    ngOnInit() {
+        this.items = [
+            {
+                label: 'Cliente',
+                routerLink: 'lista-clientes',
+                icon: 'pi pi-user',
+            },
+            {
+                label: 'Empleado',
+                routerLink: 'lista-empleados',
+                icon: 'pi pi-briefcase',
+            },
+            {
+                label: 'Citas',
+                routerLink: 'lista-citas',
+                icon: 'pi pi-calendar',
+            },
+            {
+                label: 'Reporte',
+                routerLink: 'lista-reportes',
+                icon: 'pi pi-folder',
+            },
+        ];
+    }
 }
