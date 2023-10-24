@@ -41,8 +41,8 @@
                         <small id="apellido_M-help" class="p-error" *ngIf="formError && !cliente.apellido_M">El apellido materno es obligatorio.</small>
               </div>
 
-              <div class="col-6 field">
-                <label class="col-3">Fecha de nacimiento </label>
+              <div class="col-12 field">
+                <label class="col-2">Fecha de nacimiento </label>
                 <p-calendar
                           class="col-3"
                           [(ngModel)]="cliente.fecha_naci"
@@ -52,16 +52,8 @@
                           name="fecha_naci"
                           [showIcon]="true"
                           >
-
                         </p-calendar>
-                        <small id="fecha_naci-help" class="p-error" *ngIf="formError && !cliente.fecha_naci">La fecha de nacimiento es obligatoria.</small>
-                <!-- <label for="firstname1">Fecha de nacimiento</label>
-                <input type="date"
-                        size="30"
-                        [(ngModel)]="cliente.fecha_naci"
-                        name="fecha_naci"
-                        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        <small id="fecha_naci-help" class="p-error" *ngIf="formError && !cliente.fecha_naci">La fecha de nacimiento es obligatoria.</small> -->
+                        <small class="col-1" id="fecha_naci-help" class="p-error" *ngIf="formError && !cliente.fecha_naci">La fecha de nacimiento es obligatoria.</small>
               </div>
 
               <div class="col-6 field">
@@ -99,9 +91,12 @@
               <div class="flex justify-content-end">
                 <p-button routerLink="/lista-clientes"
                           class="client-form__button-footer"
-                          icon="pi pi-check"
+                          icon="pi pi-times"
                           label="Cancelar"></p-button>
-                <p-button icon="pi pi-check" label="Añadir" (click)="create()"></p-button>
+
+                <p-button icon="pi pi-check"
+                          label="Añadir"
+                          (click)="create()"></p-button>
               </div>
             </div>
 

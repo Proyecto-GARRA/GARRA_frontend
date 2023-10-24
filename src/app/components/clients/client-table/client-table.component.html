@@ -6,9 +6,10 @@
         <p-button routerLink="formulario-cliente" class="mr-2" icon="pi pi-user-plus" label="Agregar"></p-button>
       </div>
       <div class="dynamic-table__label-search" pTooltip="Buscar" tooltipPosition="top">
-        <form>
-          <p-password formControlName="value" [feedback]="false"></p-password>
-        </form>
+
+        <span class="p-fluid">
+          <p-autoComplete  field="name" [multiple]="true"></p-autoComplete>
+        </span>
       </div>
       </div>
 

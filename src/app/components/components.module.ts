@@ -12,6 +12,8 @@ import { ClientDetailComponent } from './clients/client-detail/client-detail.com
 import { EmployeesDetailComponent } from './employees/employees-detail/employees-detail.component';
 import { EmployeesFormComponent } from './employees/employees-form/employees-form.component';
 import { ClientTableComponent } from './clients/client-table/client-table.component';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { FieldsetModule } from 'primeng/fieldset';
 
 const components = [
   ClientDetailComponent,
@@ -33,7 +35,8 @@ const components = [
     SplitButtonModule,
     PasswordModule,
     CalendarModule,
-
+    AutoCompleteModule,
+    FieldsetModule
   ]
 })
 export class ComponentsModule { }

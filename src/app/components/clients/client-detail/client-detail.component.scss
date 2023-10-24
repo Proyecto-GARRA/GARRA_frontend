@@ -1,0 +1,19 @@
+.modal-detail{
+  &__size-fildset{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 750px;
+    height: 100%;
+    transform: translate(-72%, -50%);
+    z-index: 9999;
+  }
+
+  &__model-trasparente{
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  }
+
+  &__button-design{
+    padding: 15px;
+  }
+}
