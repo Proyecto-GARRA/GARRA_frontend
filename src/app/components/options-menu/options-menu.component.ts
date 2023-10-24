@@ -8,25 +8,26 @@ import { SubmenuService } from 'src/app/services/submenu.service';
     styleUrls: ['./options-menu.component.scss'],
 })
 export class OptionsMenuComponent {
-  public showSubMenu: boolean = false;
-  private closeAllSubmenusSubscription: Subscription;
+    public showSubMenu: boolean = false;
+    private closeAllSubmenusSubscription: Subscription;
 
-  constructor(private menuService: SubmenuService) {
-    this.closeAllSubmenusSubscription = this.menuService.closeAllSubmenus.subscribe(() => {
-      this.showSubMenu = false;
-    });
-  }
+    constructor(private menuService: SubmenuService) {
+        this.closeAllSubmenusSubscription =
+            this.menuService.closeAllSubmenus.subscribe(() => {
+                this.showSubMenu = false;
+            });
+    }
 
-  toggleSubMenu() {
-    this.menuService.closeAllSubmenus.next();
-    this.showSubMenu = !this.showSubMenu;
-  }
+    toggleSubMenu() {
+        this.menuService.closeAllSubmenus.next();
+        this.showSubMenu = !this.showSubMenu;
+    }
 
-  ngOnDestroy() {
-    this.closeAllSubmenusSubscription.unsubscribe();
-  }
+    ngOnDestroy() {
+        this.closeAllSubmenusSubscription.unsubscribe();
+    }
 
-  closeMenu() {
-    this.showSubMenu = false;
-  }
+    closeMenu() {
+        this.showSubMenu = false;
+    }
 }

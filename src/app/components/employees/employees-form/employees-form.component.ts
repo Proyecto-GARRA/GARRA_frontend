@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-employees-form',
-  templateUrl: './employees-form.component.html',
-  styleUrls: ['./employees-form.component.scss']
+    selector: 'app-employees-form',
+    templateUrl: './employees-form.component.html',
+    styleUrls: ['./employees-form.component.scss'],
 })
-export class EmployeesFormComponent {
-
-}
+export class EmployeesFormComponent {}

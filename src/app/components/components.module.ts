@@ -34,9 +34,9 @@ const components = [
         SplitButtonModule,
         PasswordModule,
         CalendarModule,
-      AutoCompleteModule,
-      FieldsetModule,
-      ContextMenuModule,
+        AutoCompleteModule,
+        FieldsetModule,
+        ContextMenuModule,
     ],
 })
 export class ComponentsModule {}
