@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClientsService } from 'src/app/services/clients.service';
+import { ClientDetailService } from './client-detail.service';
 
 @Component({
     selector: 'client-detail',
@@ -10,23 +11,15 @@ import { ClientsService } from 'src/app/services/clients.service';
 export class ClientDetailComponent {
     public modelDetail: boolean = false;
     public clientes: Cliente[] = [];
-    public selectedCliente: Cliente | null = null;
+    @Input() cliente!: Cliente;
 
-    constructor(private clientsService: ClientsService) {}
 
-    ngOnInit() {
-        this.clientsService.getClientes().subscribe(clientes => {
-            this.clientes = clientes;
-        });
-    }
 
-    openDetail() {
-        // this.selectedCliente = cliente;
-        this.modelDetail = !this.modelDetail;
-    }
+    constructor(private clientsService: ClientsService,
+                public clientDetailService: ClientDetailService ) {}
 
-    closeMenu() {
-        this.selectedCliente = null;
-        this.modelDetail = false;
+
+    cerrarModal(){
+      this.clientDetailService.cerrarModalCliente();
     }
 }

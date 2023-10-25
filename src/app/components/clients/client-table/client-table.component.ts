@@ -1,3 +1,4 @@
+import { ClientDetailService } from './../client-detail/client-detail.service';
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ContextMenu } from 'primeng/contextmenu';
@@ -15,39 +16,23 @@ export class ClientTableComponent {
 
     public errores: string[] = [];
 
-    clientes: Cliente[] = [
-        {
-            id: 1,
-            nombreDelCliente: '',
-            apellido_P: 'string',
-            apellido_M: 'string',
-            fecha_naci: 'string',
-            domicilio: 'string',
-            correo: 'string',
-            telefono: 'string',
-        },
-        {
-            id: 2,
-            nombreDelCliente: '',
-            apellido_P: 'string',
-            apellido_M: 'string',
-            fecha_naci: 'string',
-            domicilio: 'string',
-            correo: 'string',
-            telefono: 'string',
-        },
-    ];
+    clientes: Cliente[] = [];
     cliente!: Cliente;
     opciones: MenuItem[] = [];
+    clienteSeleccionado!: Cliente;
 
-    constructor(private clientsService: ClientsService) {}
+
+    constructor(private clientsService: ClientsService,
+                public clientDetailService: ClientDetailService) {}
 
     ngOnInit() {
         this.opciones = [
             {
                 label: 'Detalles',
                 icon: 'pi pi-user',
-                command: () => console.log(this.cliente),
+                command: () => {
+                  
+                }
             },
             {
                 label: 'Editar',
@@ -70,5 +55,10 @@ export class ClientTableComponent {
         cm.show(event);
         this.cliente = cliente;
         event.stopPropagation();
+    }
+
+    abrirModal(cliente: Cliente){
+      this.clienteSeleccionado = cliente;
+      this.clientDetailService.abrirModalCliente;
     }
 }

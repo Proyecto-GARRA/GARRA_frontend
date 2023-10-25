@@ -8,7 +8,6 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { PasswordModule } from 'primeng/password';
 import { CalendarModule } from 'primeng/calendar';
 import { ContextMenuModule } from 'primeng/contextmenu';
-import { OptionsMenuComponent } from './options-menu/options-menu.component';
 import { ClientDetailComponent } from './clients/client-detail/client-detail.component';
 import { ClientTableComponent } from './clients/client-table/client-table.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
@@ -18,8 +17,7 @@ const components = [
     ClientDetailComponent,
     ClientTableComponent,
     //EmployeesDetailComponent,
-    //EmployeesFormComponent,
-    OptionsMenuComponent,
+    //EmployeesFormComponent,,
 ];
 
 @NgModule({
