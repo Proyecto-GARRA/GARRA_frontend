@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardModule } from 'primeng/card';
+
+import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
-import { TableModule } from 'primeng/table';
-import { DialogModule } from 'primeng/dialog';
-import { SplitButtonModule } from 'primeng/splitbutton';
-import { PasswordModule } from 'primeng/password';
 import { CalendarModule } from 'primeng/calendar';
+import { CardModule } from 'primeng/card';
 import { ContextMenuModule } from 'primeng/contextmenu';
+import { DialogModule } from 'primeng/dialog';
+import { FieldsetModule } from 'primeng/fieldset';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { TableModule } from 'primeng/table';
+
 import { OptionsMenuComponent } from './options-menu/options-menu.component';
 import { ClientDetailComponent } from './clients/client-detail/client-detail.component';
 import { ClientTableComponent } from './clients/client-table/client-table.component';
-import { AutoCompleteModule } from 'primeng/autocomplete';
-import { FieldsetModule } from 'primeng/fieldset';
+import { TableComponent } from './table/table.component';
 
 const components = [
     ClientDetailComponent,
@@ -20,6 +24,7 @@ const components = [
     //EmployeesDetailComponent,
     //EmployeesFormComponent,
     OptionsMenuComponent,
+    TableComponent,
 ];
 
 @NgModule({
@@ -34,6 +39,7 @@ const components = [
         ContextMenuModule,
         DialogModule,
         FieldsetModule,
+        InputTextModule,
         PasswordModule,
         SplitButtonModule,
         TableModule,

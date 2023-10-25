@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { ContextMenu } from 'primeng/contextmenu';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClientsService } from 'src/app/services/clients.service';
 
@@ -14,6 +13,7 @@ export class ClientTableComponent {
     visible: boolean = false;
 
     public errores: string[] = [];
+    cols: any;
 
     clientes: Cliente[] = [
         {
@@ -43,32 +43,15 @@ export class ClientTableComponent {
     constructor(private clientsService: ClientsService) {}
 
     ngOnInit() {
-        this.opciones = [
-            {
-                label: 'Detalles',
-                icon: 'pi pi-user',
-                command: () => console.log(this.cliente),
-            },
-            {
-                label: 'Editar',
-                icon: 'pi pi-user-edit',
-                command: () => console.log('Editar'),
-            },
-            {
-                label: 'Eliminar',
-                icon: 'pi pi-user-minus',
-                command: () => console.log('Eliminar'),
-            },
+        this.cols = [
+            { field: 'id', header: 'ID' },
+            { field: 'nombreDelCliente', header: 'Name' },
+            { field: 'apellido_P', header: 'Apellido 1' },
+            { field: 'apellido_M', header: 'Apellido 2' },
         ];
 
         this.clientsService.getClientes().subscribe(clientes => {
             this.clientes = clientes;
         });
-    }
-
-    showContext(cm: ContextMenu, cliente: Cliente, event: MouseEvent) {
-        cm.show(event);
-        this.cliente = cliente;
-        event.stopPropagation();
     }
 }
