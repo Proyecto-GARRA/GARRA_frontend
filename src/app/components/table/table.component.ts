@@ -5,6 +5,7 @@ import { Table } from 'primeng/table';
 import { Column } from 'src/app/interfaces/col';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { Empleado } from 'src/app/interfaces/empleado';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-table',
@@ -22,6 +23,7 @@ export class TableComponent implements OnInit {
     @ViewChild('dt') dt: Table | undefined;
 
     opciones: MenuItem[] = [];
+    formularios: MenuItem[] = [];
     rowData: any = '';
 
     ngOnInit() {
@@ -55,6 +57,35 @@ export class TableComponent implements OnInit {
             },
         ];
 
+        this.formularios = [
+          {
+              label: 'Agregar cliente',
+              icon: 'pi pi-user-plus',
+              routerLink: 'formulario-cliente'
+          },
+          {
+              label: 'Agregar empleado',
+              icon: 'pi pi-user-plus',
+              command: () => {
+                console.log('Se agrego el empleado con exito!')
+              },
+          },
+          {
+              label: 'Agregar cita',
+              icon: 'pi pi-user-plus',
+              command: () => {
+                console.log('Se agrego la cita con exito!')
+              },
+          },
+          {
+            label: 'Agregar Reporte',
+            icon: 'pi pi-user-plus',
+            command: () => {
+              console.log('Se agrego el reporte con exito!')
+            },
+        },
+      ];
+
         this.filterCols == null ? (this.filterCols = ['name']) : null;
     }
 
@@ -63,6 +94,12 @@ export class TableComponent implements OnInit {
         this.rowData = rowData;
         event.stopPropagation();
     }
+
+    showForms(fm: ContextMenu, rowData: any, event: MouseEvent) {
+      fm.show(event);
+      this.rowData = rowData;
+      event.stopPropagation();
+  }
 
     applyFilterGlobal($event: any, stringVal: any) {
         this.dt!.filterGlobal(

@@ -4,7 +4,7 @@
             #dt
             [columns]="cols"
             [value]="data"
-            [tableStyle]="{ 'min-width': '50rem' }"
+            [tableStyle]="{ 'min-width': '70rem' }"
             [(contextMenuSelection)]="rowData"
             [contextMenu]="cm"
             [paginator]="true"
@@ -12,16 +12,25 @@
             [globalFilterFields]="['name']">
             <ng-template pTemplate="caption">
                 <div class="flex">
+
+                  <p-button
+                  icon="pi pi-user-plus"
+                  label="Agregar"
+                  (onClick)="showForms(fm, rowData, $event)" />
+
                     <span class="p-input-icon-left ml-auto">
                         <i class="pi pi-search"></i>
                         <input
                             pInputText
                             type="text"
-                            (input)="applyFilterGlobal($event, 'contains')"
+                            (input)="applyFilterGlobal($event, 'name')"
                             placeholder="Buscar" />
                     </span>
                 </div>
             </ng-template>
+
+            <p-columnFilter type="text" field="name"></p-columnFilter>
+
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns">
@@ -46,4 +55,5 @@
     </div>
 
     <p-contextMenu #cm [model]="opciones"></p-contextMenu>
+    <p-contextMenu #fm [model]="formularios"></p-contextMenu>
 </div>

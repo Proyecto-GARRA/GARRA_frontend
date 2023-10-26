@@ -15,28 +15,7 @@ export class ClientTableComponent {
     public errores: string[] = [];
     cols: any;
 
-    clientes: Cliente[] = [
-        {
-            id: 1,
-            nombreDelCliente: '',
-            apellido_P: 'string',
-            apellido_M: 'string',
-            fecha_naci: 'string',
-            domicilio: 'string',
-            correo: 'string',
-            telefono: 'string',
-        },
-        {
-            id: 2,
-            nombreDelCliente: '',
-            apellido_P: 'string',
-            apellido_M: 'string',
-            fecha_naci: 'string',
-            domicilio: 'string',
-            correo: 'string',
-            telefono: 'string',
-        },
-    ];
+    clientes: Cliente[] = [];
     cliente!: Cliente;
     opciones: MenuItem[] = [];
 
@@ -45,7 +24,7 @@ export class ClientTableComponent {
     ngOnInit() {
         this.cols = [
             { field: 'id', header: 'ID' },
-            { field: 'nombreDelCliente', header: 'Name' },
+            { field: 'nombreDelCliente', header: 'Nombre' },
             { field: 'apellido_P', header: 'Apellido 1' },
             { field: 'apellido_M', header: 'Apellido 2' },
         ];

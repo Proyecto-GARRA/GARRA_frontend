@@ -13,7 +13,6 @@ import { PasswordModule } from 'primeng/password';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { TableModule } from 'primeng/table';
 
-import { OptionsMenuComponent } from './options-menu/options-menu.component';
 import { ClientDetailComponent } from './clients/client-detail/client-detail.component';
 import { ClientTableComponent } from './clients/client-table/client-table.component';
 import { TableComponent } from './table/table.component';
@@ -23,7 +22,6 @@ const components = [
     ClientTableComponent,
     //EmployeesDetailComponent,
     //EmployeesFormComponent,
-    OptionsMenuComponent,
     TableComponent,
 ];
 
