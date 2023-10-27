@@ -12,9 +12,8 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 // Importaciones de componentes
 import { MenuComponent } from './menu/menu.component';
 import { LayoutComponent } from './layout.component';
-import { FooterComponent } from './footer/footer.component';
 
-const components = [MenuComponent, FooterComponent, LayoutComponent];
+const components = [MenuComponent, LayoutComponent];
 
 @NgModule({
     imports: [
