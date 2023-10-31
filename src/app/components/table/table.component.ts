@@ -26,6 +26,8 @@ export class TableComponent implements OnInit {
     formularios: MenuItem[] = [];
     rowData: any = '';
 
+    @Input() buttonConfig: any;
+
     ngOnInit() {
         this.opciones = [
             {
@@ -57,35 +59,6 @@ export class TableComponent implements OnInit {
             },
         ];
 
-        this.formularios = [
-          {
-              label: 'Agregar cliente',
-              icon: 'pi pi-user-plus',
-              routerLink: 'formulario-cliente'
-          },
-          {
-              label: 'Agregar empleado',
-              icon: 'pi pi-user-plus',
-              command: () => {
-                console.log('Se agrego el empleado con exito!')
-              },
-          },
-          {
-              label: 'Agregar cita',
-              icon: 'pi pi-user-plus',
-              command: () => {
-                console.log('Se agrego la cita con exito!')
-              },
-          },
-          {
-            label: 'Agregar Reporte',
-            icon: 'pi pi-user-plus',
-            command: () => {
-              console.log('Se agrego el reporte con exito!')
-            },
-        },
-      ];
-
         this.filterCols == null ? (this.filterCols = ['name']) : null;
     }
 
@@ -107,4 +80,6 @@ export class TableComponent implements OnInit {
             stringVal
         );
     }
+
+
 }

@@ -33,4 +33,10 @@ export class ClientTableComponent {
             this.clientes = clientes;
         });
     }
+
+    customButtonConfig = {
+      icon: 'pi pi-user-plus',
+      label: 'Agregar',
+      routerLink: 'formulario-cliente',
+    };
 }

@@ -13,10 +13,12 @@
             <ng-template pTemplate="caption">
                 <div class="flex">
 
-                  <p-button
-                  icon="pi pi-user-plus"
-                  label="Agregar"
-                  (onClick)="showForms(fm, rowData, $event)" />
+                  <button
+                      pButton
+                      [icon]="buttonConfig.icon"
+                      [label]="buttonConfig.label"
+                      [routerLink]="buttonConfig.routerLink">
+                  </button>
 
                     <span class="p-input-icon-left ml-auto">
                         <i class="pi pi-search"></i>
