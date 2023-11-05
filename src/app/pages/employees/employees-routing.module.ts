@@ -5,7 +5,7 @@ import { EmployeesFormComponent } from './employees-form/employees-form.componen
 
 const routes: Routes = [
     {
-        path: 'empleados',
+        path: '',
         component: EmployeesComponent,
     },
     {
