@@ -16,12 +16,12 @@ import { TableModule } from 'primeng/table';
 import { ClientDetailComponent } from './clients/client-detail/client-detail.component';
 import { ClientTableComponent } from './clients/client-table/client-table.component';
 import { TableComponent } from './table/table.component';
+import { EmployeesTableComponent } from './employees/employees-table/employees-table.component';
 
 const components = [
     ClientDetailComponent,
     ClientTableComponent,
-    //EmployeesDetailComponent,
-    //EmployeesFormComponent,
+    EmployeesTableComponent,
     TableComponent,
 ];
 
