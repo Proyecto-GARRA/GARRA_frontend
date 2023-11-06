@@ -7,8 +7,13 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { CardModule } from 'primeng/card';
+import { EmployeesFormComponent } from './employees-form/employees-form.component';
+import { DropdownModule } from 'primeng/dropdown';
 
-const components = [EmployeesComponent]
+const components = [
+  EmployeesComponent,
+  EmployeesFormComponent
+]
 
 @NgModule({
     declarations: [components],
@@ -19,6 +24,7 @@ const components = [EmployeesComponent]
       FormsModule,
       CalendarModule,
       CardModule,
+      DropdownModule,
       EmployeesRoutingModule
     ],
 })

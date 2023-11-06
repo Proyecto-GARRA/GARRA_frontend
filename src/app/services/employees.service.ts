@@ -4,6 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Empleado } from '../interfaces/empleado';
 import Swal from 'sweetalert2';
+import { TipoEmpl } from '../interfaces/tipoEmpl';
 
 @Injectable({
     providedIn: 'root',
@@ -21,6 +22,10 @@ export class EmployeesService {
         return this.http.get<Empleado[]>(this.urlEndPoint);
     }
 
+    getTipoDeEmpleado(): Observable<TipoEmpl[]>{
+        return this.http.get<TipoEmpl[]>(this.urlEndPoint+"/tipoEmpleados")
+    }
+
     create(empleado: Empleado): Observable<any> {
       return this.http
           .post<any>(this.urlEndPoint, empleado, { headers: this.HttpHeaders })
@@ -33,7 +38,7 @@ export class EmployeesService {
                   );
               }),
               catchError((error: any) => {
-                  throw Swal.fire('Error!', `Correo ya existente.`, 'error');
+                  throw Swal.fire('Error!', `Sucedio un error`, 'error');
               })
           );
   }

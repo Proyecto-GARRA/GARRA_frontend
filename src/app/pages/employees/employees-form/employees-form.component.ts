@@ -3,6 +3,8 @@ import { EmployeesService } from '../../../services/employees.service';
 import { Router } from '@angular/router';
 import { Empleado } from 'src/app/interfaces/empleado';
 import Swal from 'sweetalert2';
+import { TipoEmpl } from 'src/app/interfaces/tipoEmpl';
+import { SelectItem } from 'primeng/api';
 
 @Component({
     selector: 'app-employees-form',
@@ -11,6 +13,10 @@ import Swal from 'sweetalert2';
 })
 export class EmployeesFormComponent {
   public empleado: Empleado = new Empleado();
+  public tipoEmpleado: TipoEmpl[] = [];
+  public tipoEmpleados: SelectItem[] = [];
+
+
   public errores: string[] = [];
   public formError = false;
   date: Date[] | undefined;
@@ -18,7 +24,19 @@ export class EmployeesFormComponent {
   constructor(
     private employeesService:EmployeesService,
     private router:Router
-  ){}
+    ){}
+
+    ngOnInit() {
+
+      this.employeesService.getTipoDeEmpleado().subscribe(tipoEmpleados => {
+        this.tipoEmpleados = tipoEmpleados.map(tipoDeEmpleado => {
+          return {
+            label: `${tipoDeEmpleado.id} - ${tipoDeEmpleado.tipoEmpleado}`,
+            value: tipoDeEmpleado
+          };
+        });
+      });
+    }
 
   create():void{
     this.formError = false;
@@ -32,14 +50,15 @@ export class EmployeesFormComponent {
       !this.empleado.fecha_naci ||
       !this.empleado.telefono ||
       !this.empleado.tipoDeEmpleado
-    ){
+      ){
       this.formError = true;
       return
     }
+    console.log(this.empleado);
 
     this.employeesService.create(this.empleado).subscribe(
       jsonResponse =>{
-        this.router.navigate(['/empleados']);
+        this.router.navigate(['/lista-empleados']);
         Swal.fire(
           'Empleado agregado',
           `El empleado ${jsonResponse.empleado.nombreDelEmpleado} ${jsonResponse.empleado.apellido_P} ${jsonResponse.empleado.apellido_M}`,
@@ -52,7 +71,10 @@ export class EmployeesFormComponent {
         console.error(err.error.errors);
     }
     )
+  }
 
+  getTipoDeEmpleado(o1:TipoEmpl, o2:TipoEmpl):boolean {
+    return o1 &&  o2 ? o1.id === o2.id : o1 === o2;
   }
 
 }
