@@ -37,4 +37,39 @@ export class ClientsService {
                 })
             );
     }
+
+    update(cliente: Cliente): Observable<any>{
+      return this.http
+        .put<any>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers:this.HttpHeaders})
+        .pipe(
+          tap(() => {
+            Swal.fire(
+                'Success!',
+                'Cliente se actualizo exitosamente.',
+                'success'
+            );
+        }),
+        catchError((error: any) => {
+            throw Swal.fire('Error!', `Error.`, 'error');
+        })
+    );
+}
+
+    //DELETE PARA ELIMINAR
+    delete(id: number): Observable<any>{
+      return this.http
+        .delete<any>(`${this.urlEndPoint}/${id}`, {headers: this.HttpHeaders})
+        .pipe(
+          tap(() => {
+            Swal.fire(
+                'Success!',
+                'Cliente eliminado exitosamente.',
+                'success'
+            );
+        }),
+        catchError((error: any) => {
+            throw Swal.fire('Error!', `Error.`, 'error');
+        })
+    );
+}
 }

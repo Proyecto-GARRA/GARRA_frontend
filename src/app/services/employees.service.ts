@@ -38,8 +38,44 @@ export class EmployeesService {
                   );
               }),
               catchError((error: any) => {
-                  throw Swal.fire('Error!', `Sucedio un error`, 'error');
+                  throw Swal.fire('Error!', `Error`, 'error');
               })
           );
   }
+
+  update(empleado: Empleado): Observable<any>{
+    return this.http
+      .put<any>(`${this.urlEndPoint}/${empleado.id}`, empleado, {headers:this.HttpHeaders})
+      .pipe(
+        tap(() => {
+          Swal.fire(
+              'Success!',
+              'Empleado se actualizo exitosamente.',
+              'success'
+          );
+      }),
+      catchError((error: any) => {
+          throw Swal.fire('Error!', `Error.`, 'error');
+      })
+  );
+}
+
+  //DELETE PARA ELIMINAR
+  delete(id: number): Observable<any>{
+    return this.http
+      .delete<any>(`${this.urlEndPoint}/${id}`, {headers: this.HttpHeaders})
+      .pipe(
+        tap(() => {
+          Swal.fire(
+              'Success!',
+              'Empleado eliminado exitosamente.',
+              'success'
+          );
+      }),
+      catchError((error: any) => {
+          throw Swal.fire('Error!', `Error.`, 'error');
+      })
+  );
+}
+
 }
