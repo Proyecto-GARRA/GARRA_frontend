@@ -6,6 +6,7 @@ import { Column } from 'src/app/interfaces/col';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { Empleado } from 'src/app/interfaces/empleado';
 import { Router, RouterLink } from '@angular/router';
+import { Cita } from 'src/app/interfaces/cita';
 
 @Component({
     selector: 'app-table',
@@ -15,7 +16,7 @@ import { Router, RouterLink } from '@angular/router';
 export class TableComponent implements OnInit {
     @Input() cols!: Column[];
     @Input() filterCols!: string[];
-    @Input() data!: Cliente[] | Empleado[];
+    @Input() data!: Cliente[] | Empleado[] | Cita[];
     @Input() details!: Function;
     @Input() edit!: Function;
     @Input() delete!: Function;

@@ -17,11 +17,13 @@ import { ClientDetailComponent } from './clients/client-detail/client-detail.com
 import { ClientTableComponent } from './clients/client-table/client-table.component';
 import { TableComponent } from './table/table.component';
 import { EmployeesTableComponent } from './employees/employees-table/employees-table.component';
+import { QuotesTableComponent } from './quotes/quotes-table/quotes-table.component';
 
 const components = [
     ClientDetailComponent,
     ClientTableComponent,
     EmployeesTableComponent,
+    QuotesTableComponent,
     TableComponent,
 ];
 
