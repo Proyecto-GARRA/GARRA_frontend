@@ -93,7 +93,7 @@ filtrarTipoAct(event: AutoCompleteCompleteEvent) {
 
     this.quotesService.create(this.cita).subscribe({
       next: (jsonResponse) => {
-            this.router.navigate(['/cita']);
+            this.router.navigate(['/lista-citas']);
             Swal.fire(
                 'Cita agregada',
                 `La cita del cliente ha sido agregado con exito`,

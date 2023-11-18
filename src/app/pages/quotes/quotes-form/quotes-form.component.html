@@ -67,6 +67,25 @@
                     >El empleado es obligatorio.</small>
               </div>
 
+              <div class="col-12 field">
+                <label for="servicio" class="col-2">Tipo de servicio</label>
+                  <p-autoComplete
+                    [(ngModel)]="cita.tipoDeActividad"
+                    [dropdown]="true"
+                    [suggestions]="TipoActividadSelect"
+                    (completeMethod)="filtrarTipoAct($event)"
+                    field="tipoActividad"
+                    [ngModelOptions]="{standalone: true}"
+                    >
+                  </p-autoComplete>
+                  <small
+                    id="nombre-help"
+                    class="p-error ml-2"
+                    size="30"
+                    *ngIf="formError && !cita.tipoDeActividad"
+                    >El tipo de actividad es obligatorio.</small>
+              </div>
+              
             <div class="col-6 field">
               <label for="direccion">Hora de la cita</label>
                   <input
@@ -116,25 +135,6 @@
                       *ngIf="formError && !cita.direccion"
                       >El nombre es obligatorio.</small
                   >
-                </div>
-
-                <div class="col-12 field">
-                  <label for="servicio" class="col-2">Tipo de servicio</label>
-                    <p-autoComplete
-                      [(ngModel)]="cita.tipoDeActividad"
-                      [dropdown]="true"
-                      [suggestions]="TipoActividadSelect"
-                      (completeMethod)="filtrarTipoAct($event)"
-                      field="tipoActividad"
-                      [ngModelOptions]="{standalone: true}"
-                      >
-                    </p-autoComplete>
-                    <small
-                      id="nombre-help"
-                      class="p-error ml-2"
-                      size="30"
-                      *ngIf="formError && !cita.cliente"
-                      >El nombre del cliente es obligatorio.</small>
                 </div>
 
               </form>
