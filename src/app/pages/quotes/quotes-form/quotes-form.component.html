@@ -1,0 +1,120 @@
+<div class="flex justify-content-center">
+  <p-card class="table__list" [style]="{ width: '100%' }">
+      <div class="card flex justify-content-center app-design__content">
+          <ng-template pTemplate="header">
+              <span class="text-xl font-bold">Formulario de citas</span>
+          </ng-template>
+          <div
+              pFocusTrap
+              class="card flex align-items-center justify-content-center flex-wrap gap-3">
+              <form #citaForm ngForm class="flex grid">
+
+                <div class="col-12 field">
+                  <label class="col-2">Fecha de la cita</label>
+                  <p-calendar
+                      class="col-3"
+                      [(ngModel)]="cita.fecha_cita"
+                      [touchUI]="true"
+                      [readonlyInput]="true"
+                      size="30"
+                      name="fecha_cita"
+                      [showIcon]="true">
+                  </p-calendar>
+                  <small
+                      class="col-1"
+                      id="fecha_naci-help"
+                      class="p-error"
+                      *ngIf="formError && !cita.fecha_cita"
+                      >La fecha de la cita es obligatoria.</small
+                  >
+              </div>
+
+              <div class="col-12 field">
+                <label for="empleado" class="col-2">Empleado asignado</label>
+                  <p-autoComplete
+                    [(ngModel)]="cita.empleado"
+                    [dropdown]="true"
+                    [suggestions]="filteredEmpleadosTec"
+                    (completeMethod)="filtrarEmpleados($event)"
+                    field="nombreDelEmpleado"
+                    [ngModelOptions]="{standalone: true}"
+                    >
+                  </p-autoComplete>
+                  <small
+                    id="nombre-help"
+                    class="p-error ml-2"
+                    size="30"
+                    *ngIf="formError && !cita.empleado"
+                    >El empleado es obligatorio.</small>
+              </div>
+
+            <div class="col-6 field">
+              <label for="direccion">Hora de la cita</label>
+                  <input
+                      type="time"
+                      size="30"
+                      [(ngModel)]="cita.fecha_cita"
+                      name="fecha_cita"
+                      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                      required />
+                  <small
+                      id="nombre-help"
+                      class="p-error"
+                      *ngIf="formError && !cita.fecha_cita"
+                      >El horario de la cita es obligatorio.</small
+                  >
+                </div>
+
+                <div class="col-6 field">
+                  <label for="descripcion">Descripcion de la casa</label>
+                  <input
+                      type="text"
+                      size="200"
+                      [(ngModel)]="cita.descripcion"
+                      name="descripcion"
+                      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                      required />
+                  <small
+                      id="nombre-help"
+                      class="p-error"
+                      *ngIf="formError && !cita.direccion"
+                      >La descripción es obligatorio.</small
+                  >
+                </div>
+
+                <div class="col-6 field">
+                  <label for="direccion">Direccion</label>
+                  <input
+                      type="text"
+                      size="30"
+                      [(ngModel)]="cita.direccion"
+                      name="direccion"
+                      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                      required />
+                  <small
+                      id="nombre-help"
+                      class="p-error"
+                      *ngIf="formError && !cita.direccion"
+                      >El nombre es obligatorio.</small
+                  >
+                </div>
+
+              </form>
+              <div class="col-12">
+                  <div class="flex justify-content-end">
+                      <p-button
+                          routerLink="/lista-citas"
+                          class="client-form__button-footer"
+                          icon="pi pi-times"
+                          label="Cancelar"></p-button>
+
+                      <p-button
+                          icon="pi pi-check"
+                          label="Añadir"
+                          (click)="create()"></p-button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </p-card>
+</div>

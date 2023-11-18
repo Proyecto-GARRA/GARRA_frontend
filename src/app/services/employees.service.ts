@@ -22,6 +22,10 @@ export class EmployeesService {
         return this.http.get<Empleado[]>(this.urlEndPoint);
     }
 
+    getEmpleadosTecnicos():Observable<Empleado[]>{
+      return this.http.get<Empleado[]>(this.urlEndPoint+'/filtrar-tecnicos');
+    }
+
     getTipoDeEmpleado(): Observable<TipoEmpl[]>{
         return this.http.get<TipoEmpl[]>(this.urlEndPoint+"/tipoEmpleados")
     }

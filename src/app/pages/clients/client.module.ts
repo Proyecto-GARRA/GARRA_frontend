@@ -10,7 +10,10 @@ import { CardModule } from 'primeng/card';
 import { MessagesModule } from 'primeng/messages';
 import { CalendarModule } from 'primeng/calendar';
 
-const components = [ClientComponent, ClientFormComponent];
+const components = [
+  ClientComponent,
+  ClientFormComponent
+];
 
 @NgModule({
     declarations: [components],

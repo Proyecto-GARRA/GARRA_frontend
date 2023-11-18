@@ -30,7 +30,7 @@ export class QuotesTableComponent {
   customButtonConfig = {
     icon: 'pi pi-user-plus',
     label: 'Agregar',
-    routerLink: 'formulario-empleado',
+    routerLink: 'formulario-citas',
   };
 
 }

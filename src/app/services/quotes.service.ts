@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, tap } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { Cita } from '../interfaces/cita';
 import Swal from 'sweetalert2';
+import { Cliente } from '../interfaces/cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,16 @@ export class QuotesService {
 
   getCitas(): Observable<Cita[]>{
     return this.http.get<Cita[]>(this.urlEndPoint)
+  }
+
+  busquedaCliente(termino: string): Observable<Cliente[] | null>{
+    return this.http.get<Cliente[]>(`${this.urlEndPoint}/filtrar-clientes/${termino}`)
+          .pipe(
+            catchError(e => {
+              console.log(e)
+              return throwError(() => e)
+            })
+          );
   }
 
   create(cita: Cita): Observable<any>{
