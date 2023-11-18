@@ -7,6 +7,8 @@ import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Empleado } from 'src/app/interfaces/empleado';
 import { EmployeesService } from 'src/app/services/employees.service';
+import { Cliente } from 'src/app/interfaces/cliente';
+import { ClientsService } from '../../../services/clients.service';
 
 @Component({
   selector: 'quotes-form',
@@ -17,26 +19,28 @@ export class QuotesFormComponent {
   public cita: Cita = new Cita();
   public errores!: string[];
   public formError = false;
-  suggestions!: Empleado[];
   date!: Date[]
   public empleadosTec!: Empleado[];
   public filteredEmpleadosTec!: any[];
+  public clientesSelect!: Cliente[];
+  public filteredClientSelect!: any[];
 
 
     constructor(
     private quotesService: QuotesService,
     private employeesService: EmployeesService,
+    private clientsService: ClientsService,
     private router: Router
   ){ }
 
   ngOnInit() {
     this.employeesService.getEmpleadosTecnicos().subscribe(empleadosTec => this.empleadosTec = empleadosTec);
+    this.clientsService.getClientes().subscribe(clientesSelect => this.clientesSelect = clientesSelect);
   }
 
   filtrarEmpleados(event: AutoCompleteCompleteEvent) {
     let filtered: any[] = [];
     let query = event.query;
-
     for (let i = 0; i < (this.empleadosTec as any[]).length; i++) {
       let emple = (this.empleadosTec as any[])[i];
       if (emple && emple.nombreDelEmpleado && emple.nombreDelEmpleado.toLowerCase().indexOf(query.toLowerCase()) == 0) {
@@ -44,6 +48,18 @@ export class QuotesFormComponent {
       }
   }
     this.filteredEmpleadosTec = filtered;
+}
+
+filtrarClientes(event: AutoCompleteCompleteEvent) {
+  let filtered: any[] = [];
+  let query = event.query;
+  for (let i = 0; i < (this.clientesSelect as any[]).length; i++) {
+    let clie = (this.clientesSelect as any[])[i];
+    if (clie && clie.nombreDelCliente && clie.nombreDelCliente.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+        filtered.push(clie);
+    }
+}
+  this.filteredClientSelect = filtered;
 }
 
   create(): void {

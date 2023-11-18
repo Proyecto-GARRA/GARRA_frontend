@@ -30,6 +30,25 @@
               </div>
 
               <div class="col-12 field">
+                <label for="cliente" class="col-2">Cliente asignado</label>
+                  <p-autoComplete
+                    [(ngModel)]="cita.cliente"
+                    [dropdown]="true"
+                    [suggestions]="filteredClientSelect"
+                    (completeMethod)="filtrarClientes($event)"
+                    field="nombreDelCliente"
+                    [ngModelOptions]="{standalone: true}"
+                    >
+                  </p-autoComplete>
+                  <small
+                    id="nombre-help"
+                    class="p-error ml-2"
+                    size="30"
+                    *ngIf="formError && !cita.cliente"
+                    >El nombre del cliente es obligatorio.</small>
+              </div>
+
+              <div class="col-12 field">
                 <label for="empleado" class="col-2">Empleado asignado</label>
                   <p-autoComplete
                     [(ngModel)]="cita.empleado"
