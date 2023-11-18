@@ -4,11 +4,11 @@ import { QuotesService } from '../../../services/quotes.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Empleado } from 'src/app/interfaces/empleado';
 import { EmployeesService } from 'src/app/services/employees.service';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClientsService } from '../../../services/clients.service';
+import { TipoActividad } from 'src/app/interfaces/tipoActividad';
 
 @Component({
   selector: 'quotes-form',
@@ -24,7 +24,8 @@ export class QuotesFormComponent {
   public filteredEmpleadosTec!: any[];
   public clientesSelect!: Cliente[];
   public filteredClientSelect!: any[];
-
+  public tipoActividad!: TipoActividad[];
+  public TipoActividadSelect!: any[]
 
     constructor(
     private quotesService: QuotesService,
@@ -36,6 +37,7 @@ export class QuotesFormComponent {
   ngOnInit() {
     this.employeesService.getEmpleadosTecnicos().subscribe(empleadosTec => this.empleadosTec = empleadosTec);
     this.clientsService.getClientes().subscribe(clientesSelect => this.clientesSelect = clientesSelect);
+    this.quotesService.getTipoActividad().subscribe(tipoActividad => this.TipoActividadSelect = tipoActividad);
   }
 
   filtrarEmpleados(event: AutoCompleteCompleteEvent) {
@@ -62,6 +64,18 @@ filtrarClientes(event: AutoCompleteCompleteEvent) {
   this.filteredClientSelect = filtered;
 }
 
+filtrarTipoAct(event: AutoCompleteCompleteEvent) {
+  let filtered: any[] = [];
+  let query = event.query;
+  for (let i = 0; i < (this.TipoActividadSelect as any[]).length; i++) {
+    let tipoAct = (this.TipoActividadSelect as any[])[i];
+    if (tipoAct && tipoAct.tipoActividad && tipoAct.tipoActividad.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+        filtered.push(tipoAct);
+    }
+}
+  this.TipoActividadSelect = filtered;
+}
+
   create(): void {
     this.formError = false;
     if (
@@ -82,7 +96,7 @@ filtrarClientes(event: AutoCompleteCompleteEvent) {
             this.router.navigate(['/cita']);
             Swal.fire(
                 'Cita agregada',
-                `El cita`,
+                `La cita del cliente ha sido agregado con exito`,
                 'success'
             );
         },

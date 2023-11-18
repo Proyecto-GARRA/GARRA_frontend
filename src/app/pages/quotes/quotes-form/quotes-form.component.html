@@ -72,14 +72,14 @@
                   <input
                       type="time"
                       size="30"
-                      [(ngModel)]="cita.fecha_cita"
-                      name="fecha_cita"
+                      [(ngModel)]="cita.hora_cita"
+                      name="hora_cita"
                       class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
                       required />
                   <small
                       id="nombre-help"
                       class="p-error"
-                      *ngIf="formError && !cita.fecha_cita"
+                      *ngIf="formError && !cita.hora_cita"
                       >El horario de la cita es obligatorio.</small
                   >
                 </div>
@@ -116,6 +116,25 @@
                       *ngIf="formError && !cita.direccion"
                       >El nombre es obligatorio.</small
                   >
+                </div>
+
+                <div class="col-12 field">
+                  <label for="servicio" class="col-2">Tipo de servicio</label>
+                    <p-autoComplete
+                      [(ngModel)]="cita.tipoDeActividad"
+                      [dropdown]="true"
+                      [suggestions]="TipoActividadSelect"
+                      (completeMethod)="filtrarTipoAct($event)"
+                      field="tipoActividad"
+                      [ngModelOptions]="{standalone: true}"
+                      >
+                    </p-autoComplete>
+                    <small
+                      id="nombre-help"
+                      class="p-error ml-2"
+                      size="30"
+                      *ngIf="formError && !cita.cliente"
+                      >El nombre del cliente es obligatorio.</small>
                 </div>
 
               </form>

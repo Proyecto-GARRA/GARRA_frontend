@@ -20,6 +20,10 @@ export class QuotesService {
     return this.http.get<Cita[]>(this.urlEndPoint)
   }
 
+  getTipoActividad(): Observable<Cita[]>{
+    return this.http.get<Cita[]>(this.urlEndPoint+'/tipoActividades')
+  }
+
   busquedaCliente(termino: string): Observable<Cliente[] | null>{
     return this.http.get<Cliente[]>(`${this.urlEndPoint}/filtrar-clientes/${termino}`)
           .pipe(
