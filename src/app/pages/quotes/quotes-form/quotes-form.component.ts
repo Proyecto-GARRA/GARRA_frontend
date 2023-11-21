@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Cita } from 'src/app/interfaces/cita';
 import { QuotesService } from '../../../services/quotes.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { Empleado } from 'src/app/interfaces/empleado';
@@ -31,10 +31,12 @@ export class QuotesFormComponent {
     private quotesService: QuotesService,
     private employeesService: EmployeesService,
     private clientsService: ClientsService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ){ }
 
   ngOnInit() {
+    this.cargarCita();
     this.employeesService.getEmpleadosTecnicos().subscribe(empleadosTec => this.empleadosTec = empleadosTec);
     this.clientsService.getClientes().subscribe(clientesSelect => this.clientesSelect = clientesSelect);
     this.quotesService.getTipoActividad().subscribe(tipoActividad => this.TipoActividadSelect = tipoActividad);
@@ -107,6 +109,20 @@ filtrarTipoAct(event: AutoCompleteCompleteEvent) {
         }
       }
     );
+  }
+
+  cargarCita(): void{
+    this.activatedRoute.params.subscribe(
+      params =>{
+        let id = params ['id']
+        if(id){
+          this.quotesService.getId(id)
+              .subscribe((cita)=>{
+                this.cita = cita
+              });
+        }
+      }
+    )
   }
 
 }

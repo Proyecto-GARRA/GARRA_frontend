@@ -9,7 +9,7 @@
               class="card flex align-items-center justify-content-center flex-wrap gap-3">
               <form #citaForm ngForm class="flex grid">
 
-                <div class="col-12 field">
+                <!-- <div class="col-12 field">
                   <label class="col-2">Fecha de la cita</label>
                   <p-calendar
                       class="col-3"
@@ -27,7 +27,24 @@
                       *ngIf="formError && !cita.fecha_cita"
                       >La fecha de la cita es obligatoria.</small
                   >
-              </div>
+              </div> -->
+
+              <div class="col-6 field">
+                <label for="direccion">Fecha de la cita</label>
+                    <input
+                        type="date"
+                        size="30"
+                        [(ngModel)]="cita.fecha_cita"
+                        name="fecha_cita"
+                        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                        required />
+                    <small
+                        id="nombre-help"
+                        class="p-error"
+                        *ngIf="formError && !cita.fecha_cita"
+                        >La fecha de la cita es obligatorio.</small
+                    >
+                  </div>
 
               <div class="col-12 field">
                 <label for="cliente" class="col-2">Cliente asignado</label>
@@ -85,7 +102,7 @@
                     *ngIf="formError && !cita.tipoDeActividad"
                     >El tipo de actividad es obligatorio.</small>
               </div>
-              
+
             <div class="col-6 field">
               <label for="direccion">Hora de la cita</label>
                   <input

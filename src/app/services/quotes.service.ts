@@ -4,6 +4,7 @@ import { Observable, catchError, tap, throwError } from 'rxjs';
 import { Cita } from '../interfaces/cita';
 import Swal from 'sweetalert2';
 import { Cliente } from '../interfaces/cliente';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class QuotesService {
       'Content-Type': 'application/json',
   });
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private router: Router) { }
 
   getCitas(): Observable<Cita[]>{
     return this.http.get<Cita[]>(this.urlEndPoint)
@@ -49,6 +51,15 @@ export class QuotesService {
           throw Swal.fire('Error!', `Error`, 'error');
         })
       );
+  }
+
+  getId(id:Cita): Observable<Cita>{
+    return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/clientes']);
+        return throwError(()=>e)
+      })
+    );
   }
 
   update(cita: Cita): Observable<any>{
