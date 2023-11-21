@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Empleado } from '../interfaces/empleado';
 import Swal from 'sweetalert2';
 import { TipoEmpl } from '../interfaces/tipoEmpl';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
@@ -15,7 +16,8 @@ export class EmployeesService {
       'Content-Type': 'application/json',
   });
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient,
+                private router: Router) {}
 
     //OBTENER TODOS LOS EMPLEADOS
     getEmpleados(): Observable<Empleado[]> {
@@ -45,6 +47,15 @@ export class EmployeesService {
                   throw Swal.fire('Error!', `Error`, 'error');
               })
           );
+  }
+
+  getId(id:Empleado): Observable<Empleado>{
+    return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/empleados']);
+        return throwError(()=>e)
+      })
+    );
   }
 
   update(empleado: Empleado): Observable<any>{

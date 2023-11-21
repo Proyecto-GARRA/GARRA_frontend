@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EmployeesService } from '../../../services/employees.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Empleado } from 'src/app/interfaces/empleado';
 import Swal from 'sweetalert2';
 import { TipoEmpl } from 'src/app/interfaces/tipoEmpl';
@@ -23,10 +23,13 @@ export class EmployeesFormComponent {
 
   constructor(
     private employeesService:EmployeesService,
-    private router:Router
+    private router:Router,
+    private activatedRoute: ActivatedRoute
     ){}
 
     ngOnInit() {
+
+      this.cargarEmpleados();
 
       this.employeesService.getTipoDeEmpleado().subscribe(tipoEmpleados => {
         this.tipoEmpleados = tipoEmpleados.map(tipoDeEmpleado => {
@@ -70,6 +73,20 @@ export class EmployeesFormComponent {
         console.error('Error en el codigo backend ' + err.status);
         console.error(err.error.errors);
     }
+    )
+  }
+
+  cargarEmpleados(): void {
+    this.activatedRoute.params.subscribe(
+      params =>{
+        let id = params ['id']
+        if(id){
+          this.employeesService.getId(id)
+              .subscribe((empleado) =>{
+                this.empleado = empleado
+              });
+        }
+      }
     )
   }
 
