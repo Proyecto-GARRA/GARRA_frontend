@@ -12,6 +12,10 @@ const routes: Routes = [
         path: 'formulario-cliente',
         component: ClientFormComponent,
     },
+    {
+        path: 'formulario-cliente/:id',
+        component: ClientFormComponent,
+    }
 ];
 
 @NgModule({

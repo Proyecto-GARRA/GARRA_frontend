@@ -4,6 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
@@ -14,7 +15,8 @@ export class ClientsService {
         'Content-Type': 'application/json',
     });
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient,
+                private router: Router) {}
 
     //OBTENER TODOS LOS CLIENTES
     getClientes(): Observable<Cliente[]> {
@@ -36,6 +38,15 @@ export class ClientsService {
                     throw Swal.fire('Error!', `Correo ya existente.`, 'error');
                 })
             );
+    }
+
+    getId(id:Cliente): Observable<Cliente>{
+      return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
+        catchError(e => {
+          this.router.navigate(['/clientes']);
+          return throwError(()=>e)
+        })
+      );
     }
 
     update(cliente: Cliente): Observable<any>{

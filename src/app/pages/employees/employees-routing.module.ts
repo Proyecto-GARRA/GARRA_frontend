@@ -11,6 +11,10 @@ const routes: Routes = [
     {
       path:'formulario-empleado',
       component: EmployeesFormComponent
+    },
+    {
+      path:'formulario-empleado/:id',
+      component: EmployeesFormComponent
     }
 ];
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClientsService } from 'src/app/services/clients.service';
 import Swal from 'sweetalert2';
@@ -19,8 +19,13 @@ export class ClientFormComponent {
     //Inyecciones
     constructor(
         private clienteService: ClientsService,
-        private router: Router
+        private router: Router,
+        private activatedRoute: ActivatedRoute
     ) {}
+
+    ngOnInit() {
+      this.cargarCliente();
+    }
 
     create(): void {
         this.formError = false;
@@ -53,5 +58,19 @@ export class ClientFormComponent {
                 console.error(err.error.errors);
             }
         );
+    }
+
+    cargarCliente(): void{
+      this.activatedRoute.params.subscribe(
+        paramas =>{
+          let id = paramas ['id']
+          if(id){
+            this.clienteService.getId(id)
+                .subscribe((cliente) =>{
+                  this.cliente = cliente
+                });
+          }
+        }
+      )
     }
 }

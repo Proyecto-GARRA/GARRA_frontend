@@ -5,8 +5,9 @@ import { Table } from 'primeng/table';
 import { Column } from 'src/app/interfaces/col';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { Empleado } from 'src/app/interfaces/empleado';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Cita } from 'src/app/interfaces/cita';
+import { DetailComponent } from '../detail/detail.component';
 
 @Component({
     selector: 'app-table',
@@ -20,33 +21,46 @@ export class TableComponent implements OnInit {
     @Input() details!: Function;
     @Input() edit!: Function;
     @Input() delete!: Function;
-
     @ViewChild('dt') dt: Table | undefined;
-
     opciones: MenuItem[] = [];
     formularios: MenuItem[] = [];
     rowData: any = '';
-
+    display: boolean = false;
     @Input() buttonConfig: any;
 
+    constructor(private router: Router,
+                private route: ActivatedRoute){}
+
     ngOnInit() {
+    const url = this.router.url;
+    let formularioSeleccionado: string;
+    if (url === '/lista-clientes') {
+      formularioSeleccionado = '/formulario-cliente';
+    } else if (url === '/lista-empleados') {
+      formularioSeleccionado = '/formulario-empleado';
+    } else {
+      formularioSeleccionado = '/formulario-cita';
+    }
+
         this.opciones = [
             {
                 label: 'Detalles',
                 icon: 'pi pi-user',
                 command: () => {
-                    this.details == null
+                  this.details == null
                         ? console.log(this.rowData)
                         : this.details(this.rowData);
+                  this.mostrarDetalles();
                 },
             },
             {
                 label: 'Editar',
                 icon: 'pi pi-user-edit',
                 command: () => {
-                    this.edit == null
-                        ? console.log('Editar')
-                        : this.edit(this.rowData);
+                    const id = this.rowData.id;
+                    const url1 = this.router.url;
+                    console.log(formularioSeleccionado);
+                    this.router.navigate([`${url1}${formularioSeleccionado}/${id}`]);
                 },
             },
             {
@@ -69,12 +83,6 @@ export class TableComponent implements OnInit {
         event.stopPropagation();
     }
 
-    showForms(fm: ContextMenu, rowData: any, event: MouseEvent) {
-      fm.show(event);
-      this.rowData = rowData;
-      event.stopPropagation();
-  }
-
     applyFilterGlobal($event: any, stringVal: any) {
         this.dt!.filterGlobal(
             ($event.target as HTMLInputElement).value,
@@ -82,5 +90,11 @@ export class TableComponent implements OnInit {
         );
     }
 
+    mostrarDetalles() {
+      this.details == null
+                        ? console.log(this.rowData)
+                        : this.details(this.rowData);
+      this.display = true;
+    }
 
 }

@@ -9,9 +9,13 @@ const routes: Routes = [
         component: QuotesComponent,
     },
     {
-        path: 'formulario-citas',
+        path: 'formulario-cita',
         component: QuotesFormComponent
-    }
+    },
+    {
+      path: 'formulario-cita/:id',
+      component: QuotesFormComponent
+  }
 ];
 
 @NgModule({

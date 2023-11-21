@@ -8,7 +8,7 @@
             [(contextMenuSelection)]="rowData"
             [contextMenu]="cm"
             [paginator]="true"
-            [rows]="5"
+            [rows]="8"
             [globalFilterFields]="['name']">
             <ng-template pTemplate="caption">
                 <div class="flex">
@@ -47,15 +47,16 @@
                         {{ rowData[col.field] }}
                     </td>
                     <td>
-                        <p-button
-                            icon="pi pi-ellipsis-v"
-                            (onClick)="showContext(cm, rowData, $event)" />
+
                     </td>
                 </tr>
             </ng-template>
         </p-table>
+        <detail [display]="display" ></detail>
+
     </div>
 
     <p-contextMenu #cm [model]="opciones"></p-contextMenu>
     <p-contextMenu #fm [model]="formularios"></p-contextMenu>
 </div>
+
