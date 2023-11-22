@@ -5,6 +5,7 @@ import { Empleado } from 'src/app/interfaces/empleado';
 import Swal from 'sweetalert2';
 import { TipoEmpl } from 'src/app/interfaces/tipoEmpl';
 import { SelectItem } from 'primeng/api';
+import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 
 @Component({
     selector: 'app-employees-form',
@@ -13,9 +14,9 @@ import { SelectItem } from 'primeng/api';
 })
 export class EmployeesFormComponent {
   public empleado: Empleado = new Empleado();
-  public tipoEmpleado: TipoEmpl[] = [];
-  public tipoEmpleados: SelectItem[] = [];
 
+  public tipoEmpleadoSelect!: TipoEmpl[];
+  public filteredTipoEmpleadoSelect!: any[]
 
   public errores: string[] = [];
   public formError = false;
@@ -30,15 +31,8 @@ export class EmployeesFormComponent {
     ngOnInit() {
 
       this.cargarEmpleados();
+      this.employeesService.getTipoDeEmpleado().subscribe(tipoEmpleado => this.tipoEmpleadoSelect = tipoEmpleado);
 
-      this.employeesService.getTipoDeEmpleado().subscribe(tipoEmpleados => {
-        this.tipoEmpleados = tipoEmpleados.map(tipoDeEmpleado => {
-          return {
-            label: `${tipoDeEmpleado.id} - ${tipoDeEmpleado.tipoEmpleado}`,
-            value: tipoDeEmpleado
-          };
-        });
-      });
     }
 
   create():void{
@@ -90,9 +84,20 @@ export class EmployeesFormComponent {
     )
   }
 
-  getTipoDeEmpleado(o1:TipoEmpl, o2:TipoEmpl):boolean {
-    return o1 &&  o2 ? o1.id === o2.id : o1 === o2;
+
+  filtrarTipoEmpl(event: AutoCompleteCompleteEvent) {
+    let filtered: any[] = [];
+    let query = event.query;
+    for (let i = 0; i < (this.tipoEmpleadoSelect as any[]).length; i++) {
+      let tipoEmpl = (this.tipoEmpleadoSelect as any[])[i];
+      if (tipoEmpl && tipoEmpl.tipoEmpleado && tipoEmpl.tipoEmpleado.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+          filtered.push(tipoEmpl);
+      }
   }
+    this.filteredTipoEmpleadoSelect = filtered;
+  }
+
+
 
 }
 

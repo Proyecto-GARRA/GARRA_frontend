@@ -142,7 +142,26 @@
                       >
                   </div>
 
-                  <div class="col-6 align-content-center field">
+                  <div class="col-12 field">
+                    <label for="tipoEmpl" class="col-2">Tipo de empleado</label>
+                      <p-autoComplete
+                        [(ngModel)]="empleado.tipoDeEmpleado"
+                        [dropdown]="true"
+                        [suggestions]="filteredTipoEmpleadoSelect"
+                        (completeMethod)="filtrarTipoEmpl($event)"
+                        field="tipoEmpleado"
+                        [ngModelOptions]="{standalone: true}"
+                        >
+                      </p-autoComplete>
+                      <small
+                        id="nombre-help"
+                        class="p-error ml-2"
+                        size="30"
+                        *ngIf="formError && !empleado.tipoDeEmpleado"
+                        >El rol del empleado es obligatorio.</small>
+                  </div>
+
+                  <!-- <div class="col-6 align-content-center field">
                     <label class="col-4">Tipo de empleado</label>
                     <p-dropdown
                             [options]="tipoEmpleados"
@@ -151,7 +170,7 @@
                             optionLabel="label"
                             optionValue="value">
                     </p-dropdown>
-                </div>
+                </div> -->
               </form>
               <div class="col-12">
                   <div class="flex justify-content-end">

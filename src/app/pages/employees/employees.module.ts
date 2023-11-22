@@ -9,6 +9,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { CardModule } from 'primeng/card';
 import { EmployeesFormComponent } from './employees-form/employees-form.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 const components = [
   EmployeesComponent,
@@ -25,7 +26,8 @@ const components = [
       CalendarModule,
       CardModule,
       DropdownModule,
-      EmployeesRoutingModule
+      EmployeesRoutingModule,
+      AutoCompleteModule
     ],
 })
 export class EmployeesModule {}
