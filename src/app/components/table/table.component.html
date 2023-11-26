@@ -1,3 +1,4 @@
+<br>
 <div class="card flex justify-content-center">
     <div class="card">
         <p-table
@@ -19,6 +20,13 @@
                       [label]="buttonConfig.label"
                       [routerLink]="buttonConfig.routerLink">
                   </button>
+
+                  <p-button
+                      class="ml-1"
+                      icon="pi pi-replay"
+                      label="Cargar lista"
+                      (click)="cargarPagina()">
+                  </p-button>
 
                     <span class="p-input-icon-left ml-auto">
                         <i class="pi pi-search"></i>
