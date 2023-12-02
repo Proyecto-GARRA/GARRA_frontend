@@ -10,6 +10,7 @@ import { CardModule } from 'primeng/card';
 import { EmployeesFormComponent } from './employees-form/employees-form.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { TableModule } from 'primeng/table';
 
 const components = [
   EmployeesComponent,
@@ -21,13 +22,14 @@ const components = [
     exports:[components],
     imports:[
       CommonModule,
-      ComponentsModule,
+      // ComponentsModule,
       FormsModule,
       CalendarModule,
       CardModule,
       DropdownModule,
       EmployeesRoutingModule,
-      AutoCompleteModule
+      AutoCompleteModule,
+      TableModule
     ],
 })
 export class EmployeesModule {}

@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { MessagesModule } from 'primeng/messages';
 import { CalendarModule } from 'primeng/calendar';
+import { TableModule } from 'primeng/table';
 
 const components = [
   ClientComponent,
@@ -23,9 +24,10 @@ const components = [
         CardModule,
         ClientRoutingModule,
         CommonModule,
-        ComponentsModule,
+        // ComponentsModule,
         FormsModule,
         CalendarModule,
+        TableModule
     ],
 })
 export class ClientModule {}

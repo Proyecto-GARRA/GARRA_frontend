@@ -25,7 +25,7 @@ const components = [
     imports: [
       CommonModule,
       QuotesRoutingModule,
-      ComponentsModule,
+      // ComponentsModule,
       FormsModule,  //Importante
       ReactiveFormsModule,
       AutoCompleteModule,

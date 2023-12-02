@@ -1,1 +1,28 @@
-<employees-table></employees-table>
+<!-- <employees-table></employees-table> -->
+<br>
+<p-table [value]="empleados"
+          styleClass="p-datatable-striped"
+          [paginator]="true"
+          [rows]="8"
+          [tableStyle]="{ 'min-width': '40rem' }">
+  <ng-template pTemplate="caption"> Tabla de empleados </ng-template>
+  <ng-template pTemplate="header">
+      <tr>
+          <th>ID</th>
+          <th>NOMBRE DEL EMPLEADO</th>
+          <th>CORREO</th>
+          <th>TELEFONO</th>
+          <th>TIPO DE EMPLEADO</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-empleados>
+      <tr>
+          <td>{{ empleados.id }}</td>
+          <td>{{ empleados.nombreDelEmpleado }} {{ empleados.apellido_P }} {{ empleados.apellido_M }} </td>
+          <td>{{ empleados.correo }}</td>
+          <td>{{ empleados.telefono }}</td>
+          <td>{{ empleados.tipoDeEmpleado.tipoEmpleado}}</td>
+      </tr>
+  </ng-template>
+
+</p-table>
