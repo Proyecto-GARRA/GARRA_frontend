@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { EmployeesRoutingModule } from './employees-routing.module';
 import { EmployeesComponent } from './employees.component';
-import { ComponentsModule } from 'src/app/components/components.module';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { CardModule } from 'primeng/card';
@@ -11,6 +10,7 @@ import { EmployeesFormComponent } from './employees-form/employees-form.componen
 import { DropdownModule } from 'primeng/dropdown';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TableModule } from 'primeng/table';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 const components = [
   EmployeesComponent,
@@ -29,7 +29,8 @@ const components = [
       DropdownModule,
       EmployeesRoutingModule,
       AutoCompleteModule,
-      TableModule
+      TableModule,
+      BreadcrumbModule
     ],
 })
 export class EmployeesModule {}

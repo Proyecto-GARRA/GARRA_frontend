@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 import { Empleado } from 'src/app/interfaces/empleado';
 import { EmployeesService } from 'src/app/services/employees.service';
 
@@ -11,10 +12,15 @@ export class EmployeesComponent {
     public errores: string[] = [];
     cols: any;
     empleados!: Empleado[];
+    items: MenuItem[] | undefined;
+    home: MenuItem | undefined;
 
     constructor(private employeesService:EmployeesService){}
 
     ngOnInit() {
+      this.items = [ { label: 'Lista de empleados' } ];
+      this.home = { icon: 'pi pi-home', routerLink: 'lista-empleados' };
+
       this.employeesService.getEmpleados().subscribe(empleados => {
           this.empleados = empleados;
       });

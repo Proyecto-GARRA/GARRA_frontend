@@ -1,10 +1,11 @@
 <br>
+<div class="justify-content-end">
+  <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+</div>
+<br>
 <div class="flex justify-content-center">
   <p-card class="table__list" [style]="{ width: '100%' }">
       <div class="card flex justify-content-center app-design__content">
-          <ng-template pTemplate="header">
-              <span class="text-xl font-bold">Formulario de empleados</span>
-          </ng-template>
           <div
               pFocusTrap
               class="card flex align-items-center justify-content-center flex-wrap gap-3">
@@ -161,27 +162,26 @@
                         *ngIf="formError && !empleado.tipoDeEmpleado"
                         >El rol del empleado es obligatorio.</small>
                   </div>
-
-                  <!-- <div class="col-6 align-content-center field">
-                    <label class="col-4">Tipo de empleado</label>
-                    <p-dropdown
-                            [options]="tipoEmpleados"
-                            [(ngModel)]="empleado.tipoDeEmpleado"
-                            name="tipo_empleado"
-                            optionLabel="label"
-                            optionValue="value">
-                    </p-dropdown>
-                </div> -->
               </form>
               <div class="col-12">
                   <div class="flex justify-content-end">
-                      <p-button
+                    <p-button
+                          icon="pi pi-user-plus"
+                          label="Añadir empleado"
+                          [raised]="true"
+                          [outlined]="true"
+                          [rounded]="true"
                           routerLink="/lista-empleados"
                           class="client-form__button-footer"
                           icon="pi pi-times"
                           label="Cancelar"></p-button>
 
-                      <p-button
+                    <p-button
+                          icon="pi pi-user-plus"
+                          label="Añadir empleado"
+                          [raised]="true"
+                          [outlined]="true"
+                          [rounded]="true"
                           icon="pi pi-check"
                           label="Añadir"
                           (click)="create()"></p-button>

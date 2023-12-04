@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Empleado } from 'src/app/interfaces/empleado';
 import Swal from 'sweetalert2';
 import { TipoEmpl } from 'src/app/interfaces/tipoEmpl';
-import { SelectItem } from 'primeng/api';
+import { MenuItem, SelectItem } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 
 @Component({
@@ -17,10 +17,11 @@ export class EmployeesFormComponent {
 
   public tipoEmpleadoSelect!: TipoEmpl[];
   public filteredTipoEmpleadoSelect!: any[]
-
   public errores: string[] = [];
   public formError = false;
   date: Date[] | undefined;
+  items: MenuItem[] | undefined;
+  home: MenuItem | undefined;
 
   constructor(
     private employeesService:EmployeesService,
@@ -29,10 +30,10 @@ export class EmployeesFormComponent {
     ){}
 
     ngOnInit() {
-
+      this.items = [ { label: 'Lista de clientes' }, { label: 'Formulario de empleado'}];
+      this.home = { icon: 'pi pi-home', routerLink: 'lista-empleados' };
       this.cargarEmpleados();
       this.employeesService.getTipoDeEmpleado().subscribe(tipoEmpleado => this.tipoEmpleadoSelect = tipoEmpleado);
-
     }
 
   create():void{
