@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MenuItem } from 'primeng/api';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClientsService } from 'src/app/services/clients.service';
 import Swal from 'sweetalert2';
@@ -15,6 +16,8 @@ export class ClientFormComponent {
     public errores: string[] = [];
     public formError = false;
     date: Date[] | undefined;
+    items: MenuItem[] | undefined;
+    home: MenuItem | undefined;
 
     //Inyecciones
     constructor(
@@ -25,6 +28,8 @@ export class ClientFormComponent {
 
     ngOnInit() {
       this.cargarCliente();
+      this.items = [ { label: 'Lista de clientes'}, {label: 'Formulario de clientes' }];
+      this.home = { icon: 'pi pi-home', routerLink: '/' };
     }
 
     create(): void {

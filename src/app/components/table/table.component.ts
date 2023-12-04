@@ -7,7 +7,6 @@ import { Cliente } from 'src/app/interfaces/cliente';
 import { Empleado } from 'src/app/interfaces/empleado';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Cita } from 'src/app/interfaces/cita';
-import { DetailComponent } from '../detail/detail.component';
 import { ClientsService } from '../../services/clients.service';
 import { EmployeesService } from '../../services/employees.service';
 import { QuotesService } from '../../services/quotes.service';

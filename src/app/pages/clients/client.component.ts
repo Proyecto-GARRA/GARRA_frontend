@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClientsService } from 'src/app/services/clients.service';
 
@@ -9,12 +10,15 @@ import { ClientsService } from 'src/app/services/clients.service';
 })
 export class ClientComponent {
     public errores: string[] = [];
-    // clientes: Cliente[] = [];
     clientes!: Cliente[];
+    items: MenuItem[] | undefined;
+    home: MenuItem | undefined;
 
     constructor(private clientsService: ClientsService) {}
 
     ngOnInit() {
+      this.items = [ { label: 'Lista de clientes' }];
+      this.home = { icon: 'pi pi-home', routerLink: '/' };
 
         this.clientsService.getClientes().subscribe(clientes => {
             this.clientes = clientes;

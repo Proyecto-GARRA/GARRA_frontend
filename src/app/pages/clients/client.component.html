@@ -1,17 +1,44 @@
-<!-- <client-table></client-table> -->
 <br>
 <p-table [value]="clientes"
           styleClass="p-datatable-striped"
           [paginator]="true"
           [rows]="8"
           [tableStyle]="{ 'min-width': '40rem' }">
-  <ng-template pTemplate="caption"> Tabla de clientes </ng-template>
+
+  <ng-template
+      pTemplate="caption">
+      <div class="flex col-12">
+
+        <div class="col-5">
+          <button
+              pButton
+              icon="pi pi-user-plus"
+              label="Añadir cliente"
+              routerLink="formulario-cliente">
+          </button>
+        </div>
+
+        <div class="col-3">
+          <div class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" placeholder="Buscar por nombre" />
+          </div>
+        </div>
+
+        <div class="col-4 flex justify-content-end">
+          <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+        </div>
+
+        </div>
+  </ng-template>
+
   <ng-template pTemplate="header">
       <tr>
           <th>ID</th>
           <th>NOMBRE DEL CLIENTE</th>
           <th>NUMERO TEL</th>
           <th>CORREO</th>
+          <th>OPCIONES</th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-cliente>
@@ -20,6 +47,13 @@
           <td>{{ cliente.nombreDelCliente }} {{ cliente.apellido_P}} {{cliente.apellido_M}}</td>
           <td>{{ cliente.telefono }}</td>
           <td>{{ cliente.correo}}</td>
+          <td>
+            <p-button icon="pi pi-ellipsis-v"
+                      [text]="true"
+                      [raised]="true"
+                      severity="secondary">
+            </p-button>
+          </td>
       </tr>
   </ng-template>
 
