@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientComponent } from './pages/clients/client.component';
-import { EmployeesModule } from './pages/employees/employees.module';
-import { QuotesModule } from './pages/quotes/quotes.module';
-import { ReportsModule } from './pages/reports/reports.module';
 
 const routes: Routes = [
     {
@@ -19,9 +15,7 @@ const routes: Routes = [
     {
         path: 'lista-empleados',
         loadChildren: () =>
-            import('./pages/employees/employees.module').then(
-                m => m.EmployeesModule
-            ),
+            import('./pages/employees/employees.module').then(m => m.EmployeesModule),
     },
     {
         path: 'lista-citas',
@@ -29,9 +23,9 @@ const routes: Routes = [
             import('./pages/quotes/quotes.module').then(m => m.QuotesModule),
     },
     {
-        path: 'lista-reportes',
+        path: 'lista-historia',
         loadChildren: () =>
-            import('./pages/reports/reports.module').then(m => m.ReportsModule),
+            import('./pages/history-quotes/history-quotes.module').then(m => m.HistoryQuotesModule),
     },
     {
         path: '**',

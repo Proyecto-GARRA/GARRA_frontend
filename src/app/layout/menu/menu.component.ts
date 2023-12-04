@@ -27,8 +27,8 @@ export class MenuComponent {
                 icon: 'pi pi-calendar',
             },
             {
-                label: 'Reporte',
-                routerLink: 'lista-reportes',
+                label: 'Historal',
+                routerLink: 'lista-historia',
                 icon: 'pi pi-folder',
             },
         ];

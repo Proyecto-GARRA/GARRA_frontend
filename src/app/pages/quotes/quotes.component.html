@@ -1,18 +1,45 @@
-<!-- <quotes-table></quotes-table> -->
 <br>
 <p-table [value]="citas"
           styleClass="p-datatable-striped"
           [paginator]="true"
           [rows]="8"
           [tableStyle]="{ 'min-width': '40rem' }">
-  <ng-template pTemplate="caption"> Tabla de citas </ng-template>
+  <ng-template
+  pTemplate="caption">
+          <div class="flex col-12">
+
+            <div class="col-5">
+              <p-button
+                  icon="pi pi-user-plus"
+                  label="Añadir citas"
+                  [raised]="true"
+                  [outlined]="true"
+                  [rounded]="true"
+                  routerLink="formulario-cita">
+              </p-button>
+            </div>
+
+            <div class="col-3">
+              <div class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder="Buscar por nombre" />
+              </div>
+            </div>
+
+            <div class="col-4 flex justify-content-end">
+              <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+            </div>
+
+            </div>
+      </ng-template>
   <ng-template pTemplate="header">
       <tr>
           <th>ID</th>
           <th>FECHA</th>
           <th>DIRECCION</th>
           <th>DESCRIPCION</th>
-          <th>nom cliente</th>
+          <th>NOMBRE CLIENTE</th>
+          <th>OPCIONES</th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-cita>
@@ -22,6 +49,13 @@
           <td>{{ cita.direccion }}</td>
           <td>{{ cita.descripcion }}</td>
           <td>{{ cita.cliente.nombreDelCliente}}</td>
+          <td>
+            <p-button icon="pi pi-ellipsis-v"
+                      [text]="true"
+                      [raised]="true"
+                      severity="secondary">
+            </p-button>
+          </td>
       </tr>
   </ng-template>
 

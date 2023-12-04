@@ -9,6 +9,7 @@ import { EmployeesService } from 'src/app/services/employees.service';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClientsService } from '../../../services/clients.service';
 import { TipoActividad } from 'src/app/interfaces/tipoActividad';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'quotes-form',
@@ -26,6 +27,8 @@ export class QuotesFormComponent {
   public filteredClientSelect!: any[];
   public tipoActividad!: TipoActividad[];
   public TipoActividadSelect!: any[]
+  items: MenuItem[] | undefined;
+  home: MenuItem | undefined;
 
     constructor(
     private quotesService: QuotesService,
@@ -36,6 +39,8 @@ export class QuotesFormComponent {
   ){ }
 
   ngOnInit() {
+    this.items = [{ label: 'Lista de citas' }, { label: 'Formulario de cita' }];
+    this.home = { icon: 'pi pi-home', routerLink: 'formulario-cita' };
     this.cargarCita();
     this.employeesService.getEmpleadosTecnicos().subscribe(empleadosTec => this.empleadosTec = empleadosTec);
     this.clientsService.getClientes().subscribe(clientesSelect => this.clientesSelect = clientesSelect);

@@ -1,4 +1,8 @@
 <br>
+<div>
+  <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+</div>
+<br>
 <div class="flex justify-content-center">
   <p-card class="table__list" [style]="{ width: '100%' }">
       <div class="card flex justify-content-center app-design__content">
@@ -158,13 +162,22 @@
               </form>
               <div class="col-12">
                   <div class="flex justify-content-end">
-                      <p-button
+                    <p-button
+                          [text]="true"
+                          [raised]="true"
+                          [rounded]="true"
+                          [outlined]="true"
                           routerLink="/lista-citas"
                           class="client-form__button-footer"
                           icon="pi pi-times"
-                          label="Cancelar"></p-button>
+                          label="Cancelar">
+                      </p-button>
 
                       <p-button
+                          [text]="true"
+                          [raised]="true"
+                          [rounded]="true"
+                          [outlined]="true"
                           icon="pi pi-check"
                           label="Añadir"
                           (click)="create()"></p-button>
