@@ -1,14 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { HistoryQuotesRoutingModule } from './history-quotes-routing.module';
+import { HistoryQuotesComponent } from './history-quotes.component';
+import { TableModule } from 'primeng/table';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 
+const components = [
+  HistoryQuotesComponent
+]
 
 @NgModule({
-  declarations: [],
+  declarations: [components],
+  exports: [components],
   imports: [
     CommonModule,
-    HistoryQuotesRoutingModule
+    HistoryQuotesRoutingModule,
+    TableModule,
+    BreadcrumbModule,
+    ButtonModule,
+    CardModule,
   ]
 })
 export class HistoryQuotesModule { }

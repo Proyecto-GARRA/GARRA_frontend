@@ -24,7 +24,6 @@ const components = [
         CardModule,
         ClientRoutingModule,
         CommonModule,
-        // ComponentsModule,
         FormsModule,
         CalendarModule,
         TableModule,
