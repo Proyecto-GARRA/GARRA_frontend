@@ -13,6 +13,8 @@ export class ClientComponent {
     clientes!: Cliente[];
     items: MenuItem[] | undefined;
     home: MenuItem | undefined;
+    visible: boolean = false;
+    selectedClient: any;
 
     constructor(private clientsService: ClientsService) {}
 
@@ -23,6 +25,18 @@ export class ClientComponent {
         this.clientsService.getClientes().subscribe(clientes => {
             this.clientes = clientes;
         });
+    }
+    showDialog(cliente: any) {
+        const clientId = cliente.id;
+        this.clientsService.getId(clientId).subscribe(
+          (response) => {
+            this.selectedClient = response;
+            
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
     }
 
     customButtonConfig = {

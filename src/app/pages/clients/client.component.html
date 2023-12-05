@@ -12,7 +12,7 @@
         <div class="col-5">
           <p-button
                   icon="pi pi-user-plus"
-                  label="Añadir empleado"
+                  label="Añadir cliente"
                   [raised]="true"
                   [outlined]="true"
                   [rounded]="true"
@@ -40,7 +40,7 @@
           <th>NOMBRE DEL CLIENTE</th>
           <th>NUMERO TEL</th>
           <th>CORREO</th>
-          <th>OPCIONES</th>
+          <th>DETALLES</th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-cliente>
@@ -53,10 +53,11 @@
             <p-button icon="pi pi-ellipsis-v"
                       [text]="true"
                       [raised]="true"
-                      severity="secondary">
+                      severity="secondary"
+                      [routerLink]="['detail-cliente', cliente.id]">
             </p-button>
           </td>
       </tr>
-  </ng-template>
+    </ng-template>
+  </p-table>
 
-</p-table>

@@ -2,6 +2,7 @@ import { ClientComponent } from './client.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientFormComponent } from './client-form/client-form.component';
+import { ClientDetailComponent } from './client-detail/client-detail.component';
 
 const routes: Routes = [
     {
@@ -15,6 +16,10 @@ const routes: Routes = [
     {
         path: 'formulario-cliente/:id',
         component: ClientFormComponent,
+    },
+    {
+      path: 'detail-cliente/:id',
+      component: ClientDetailComponent
     }
 ];
 

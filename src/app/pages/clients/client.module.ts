@@ -10,10 +10,14 @@ import { MessagesModule } from 'primeng/messages';
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { DialogModule } from 'primeng/dialog';
+import { MenuModule } from 'primeng/menu';
+import { ClientDetailComponent } from './client-detail/client-detail.component';
 
 const components = [
   ClientComponent,
-  ClientFormComponent
+  ClientFormComponent,
+  ClientDetailComponent
 ];
 
 @NgModule({
@@ -27,7 +31,8 @@ const components = [
         FormsModule,
         CalendarModule,
         TableModule,
-        BreadcrumbModule
+        BreadcrumbModule,
+        DialogModule
     ],
 })
 export class ClientModule {}

@@ -1,0 +1,66 @@
+<p-card>
+  <ul class="list-none p-0 m-0">
+      <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+          <div>
+              <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Nombre</span>
+          </div>
+          <div class="mt-2 md:mt-0 flex align-items-center">
+              <div>
+                <!-- {{ cliente.nombreDelCliente }} {{ cliente.apellido_P}} {{cliente.apellido_M}} -->
+              </div>
+          </div>
+      </li>
+      <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+        <div>
+            <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Fecha de nacimiento</span>
+        </div>
+        <div class="mt-2 md:mt-0 flex align-items-center">
+            <div>
+              <!-- {{ cliente.fecha_naci }} -->
+            </div>
+        </div>
+    </li>
+
+    <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+      <div>
+          <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Domicilio</span>
+      </div>
+      <div class="mt-2 md:mt-0 flex align-items-center">
+          <div>
+            <!-- {{ cliente.domicilio}} -->
+          </div>
+      </div>
+  </li>
+
+  <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+    <div>
+        <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Numero telefono</span>
+    </div>
+    <div class="mt-2 md:mt-0 flex align-items-center">
+        <div>
+          <!-- {{ cliente.telefono}} -->
+        </div>
+    </div>
+</li>
+</ul>
+
+<div class="flex justify-content-end">
+<p-button
+        class="boton__diseño"
+        icon="pi pi-user-plus"
+        label="Editar"
+        [raised]="true"
+        [outlined]="true"
+        [rounded]="true"
+        [routerLink]="['formulario-cliente']">
+</p-button>
+
+<p-button
+        icon="pi pi-user-plus"
+        label="Eliminar"
+        [raised]="true"
+        [outlined]="true"
+        [rounded]="true">
+</p-button>
+</div>
+</p-card>
