@@ -1,3 +1,9 @@
-:host {
-  display: block;
+.detail{
+  &__diseño{
+    width: 70rem;
+  }
+
+  &__space-button{
+    padding-right: 10px;
+  }
 }

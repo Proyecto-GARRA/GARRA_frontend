@@ -69,6 +69,7 @@
                           size="30"
                           [(ngModel)]="cliente.fecha_naci"
                           name="fecha_naci"
+                          min="1900-01-01"
                           class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
                       <small
                           id="apellido_M-help"
@@ -151,6 +152,7 @@
                       <p-button
                             icon="pi pi-user-plus"
                             label="Añadir empleado"
+                            severity="secondary"
                             [raised]="true"
                             [outlined]="true"
                             [rounded]="true"
@@ -162,6 +164,7 @@
                       <p-button
                             icon="pi pi-user-plus"
                             label="Añadir empleado"
+                            severity="success"
                             [raised]="true"
                             [outlined]="true"
                             [rounded]="true"
