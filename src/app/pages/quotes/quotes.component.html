@@ -38,7 +38,8 @@
           <th>Fecha</th>
           <th>Nombre del cliente</th>
           <th>Nombre del empleado</th>
-          <th>Estado</th>
+          <th>Estado actual</th>
+          <th>Editar</th>
           <th>Detalles</th>
       </tr>
   </ng-template>
@@ -50,10 +51,24 @@
           <td>{{ cita.empleado.nombreDelEmpleado}}</td>
           <td>{{ cita.estado}}</td>
           <td>
-            <p-button icon="pi pi-ellipsis-v"
+            <p-button
+              class="detail__space-button"
+              icon="pi pi-user-edit"
+              severity="success"
+              [raised]="true"
+              [outlined]="true"
+              [rounded]="true"
+              [routerLink]="['formulario-cita', cita.id]">
+            </p-button>
+          </td>
+          <td>
+            <p-button icon="pi pi-id-card"
                       [text]="true"
                       [raised]="true"
-                      severity="secondary">
+                      [outlined]="true"
+                      severity="secondary"
+                      [rounded]="true"
+                      >
             </p-button>
           </td>
       </tr>

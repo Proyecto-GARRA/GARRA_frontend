@@ -21,6 +21,6 @@ export class QuotesComponent {
 
     this.quotesService.getCitas().subscribe(
       citas =>{  this.citas = citas; });
-  }
+    }
 
 }

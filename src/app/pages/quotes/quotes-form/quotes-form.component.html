@@ -163,14 +163,13 @@
               <div class="col-12">
                   <div class="flex justify-content-end">
                     <p-button
-                          [text]="true"
                           [raised]="true"
                           [rounded]="true"
                           [outlined]="true"
                           routerLink="/lista-citas"
                           class="client-form__button-footer"
-                          icon="pi pi-times"
-                          label="Cancelar">
+                          icon="pi pi-home"
+                          label="Inicio">
                       </p-button>
 
                       <p-button
@@ -178,6 +177,7 @@
                           [raised]="true"
                           [rounded]="true"
                           [outlined]="true"
+                          severity="success"
                           icon="pi pi-check"
                           label="Añadir"
                           (click)="create()"></p-button>
