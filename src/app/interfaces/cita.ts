@@ -11,4 +11,5 @@ export class Cita {
     empleado!: Empleado[];
     cliente!: Cliente[];
     tipoDeActividad!: TipoActividad[];
+    estado?: string;
 }

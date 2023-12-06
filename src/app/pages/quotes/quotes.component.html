@@ -34,21 +34,21 @@
       </ng-template>
   <ng-template pTemplate="header">
       <tr>
-          <th>ID</th>
-          <th>FECHA</th>
-          <th>DIRECCION</th>
-          <th>DESCRIPCION</th>
-          <th>NOMBRE CLIENTE</th>
-          <th>OPCIONES</th>
+          <th>Id</th>
+          <th>Fecha</th>
+          <th>Nombre del cliente</th>
+          <th>Nombre del empleado</th>
+          <th>Estado</th>
+          <th>Detalles</th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-cita>
       <tr>
           <td>{{ cita.id }}</td>
           <td>{{ cita.fecha_cita }}</td>
-          <td>{{ cita.direccion }}</td>
-          <td>{{ cita.descripcion }}</td>
           <td>{{ cita.cliente.nombreDelCliente}}</td>
+          <td>{{ cita.empleado.nombreDelEmpleado}}</td>
+          <td>{{ cita.estado}}</td>
           <td>
             <p-button icon="pi pi-ellipsis-v"
                       [text]="true"
