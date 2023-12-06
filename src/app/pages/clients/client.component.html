@@ -40,6 +40,7 @@
           <th>Nombre del cliente</th>
           <th>Numero telefono</th>
           <th>Correo</th>
+          <th>Editar</th>
           <th>Detalles</th>
       </tr>
   </ng-template>
@@ -50,26 +51,26 @@
           <td>{{ cliente.telefono.slice(0, 3) }}-{{ cliente.telefono.slice(3, 6) }}-{{ cliente.telefono.slice(6) }}</td>
           <td>{{ cliente.correo}}</td>
           <td>
-            <p-button icon="pi pi-ellipsis-v"
+            <p-button
+              class="detail__space-button"
+              icon="pi pi-user-edit"
+              severity="success"
+              [raised]="true"
+              [outlined]="true"
+              [rounded]="true"
+              [routerLink]="['formulario-cliente', cliente.id]">
+            </p-button>
+          </td>
+          <td>
+            <p-button icon="pi pi-id-card"
                       [text]="true"
                       [raised]="true"
+                      [outlined]="true"
                       severity="secondary"
                       [rounded]="true"
                       [routerLink]="['detail-cliente', cliente.id]">
             </p-button>
           </td>
-          <!-- <td>
-            <p-button
-            class="detail__space-button"
-            icon="pi pi-user-plus"
-            severity="success"
-            label="Editar"
-            [raised]="true"
-            [outlined]="true"
-            [rounded]="true"
-            [routerLink]="['formulario-cliente', cliente.id]">
-    </p-button>
-          </td> -->
       </tr>
     </ng-template>
   </p-table>

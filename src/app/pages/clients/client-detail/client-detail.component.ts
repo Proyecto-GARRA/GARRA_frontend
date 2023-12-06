@@ -40,4 +40,34 @@ export class ClientDetailComponent {
     });
   }
 
+  eliminar(eliminarCliente:Cliente): void{
+    Swal.fire({
+      title: "Eliminar",
+      text: `¿Esta seguro de eliminar el cliente ${this.cliente.nombreDelCliente}?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si eliminar!"
+    }).then((result) => {
+        if (result.value) {
+          this.clientService.delete(eliminarCliente.id).subscribe(
+            response => {
+              this.clientes = this.clientes.filter(cliente => cliente !== cliente);
+              Swal.fire(
+                'Cliente eliminado!',
+                `El cliente ${this.cliente.nombreDelCliente} ah sido eliminado`,
+                'success'
+              );
+// Redirigir a la ruta deseada después de eliminar
+this.router.navigate(['lista-clientes']);
+},
+error => {
+  console.error('Error al eliminar el cliente', error);
+}
+);
+}
+});
+}
+
 }
