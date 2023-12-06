@@ -11,10 +11,15 @@ import { DropdownModule } from 'primeng/dropdown';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TableModule } from 'primeng/table';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { DialogModule } from 'primeng/dialog';
+import { PanelModule } from 'primeng/panel';
+import { DividerModule } from 'primeng/divider';
 
 const components = [
   EmployeesComponent,
-  EmployeesFormComponent
+  EmployeesFormComponent,
+  EmployeeDetailComponent
 ]
 
 @NgModule({
@@ -30,7 +35,10 @@ const components = [
       EmployeesRoutingModule,
       AutoCompleteModule,
       TableModule,
-      BreadcrumbModule
+      BreadcrumbModule,
+      DialogModule,
+      PanelModule,
+      DividerModule
     ],
 })
 export class EmployeesModule {}

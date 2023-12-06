@@ -58,6 +58,17 @@ export class EmployeesService {
     );
   }
 
+  getEmpleado(id: number): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/lista-empleados'])
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error, 'error')
+        return throwError(() => e);
+      })
+    );
+  }
+
   update(empleado: Empleado): Observable<any>{
     return this.http
       .put<any>(`${this.urlEndPoint}/${empleado.id}`, empleado, {headers:this.HttpHeaders})

@@ -59,15 +59,9 @@ export class ClientDetailComponent {
                 `El cliente ${this.cliente.nombreDelCliente} ah sido eliminado`,
                 'success'
               );
-// Redirigir a la ruta deseada después de eliminar
-this.router.navigate(['lista-clientes']);
-},
-error => {
-  console.error('Error al eliminar el cliente', error);
-}
-);
-}
-});
-}
+            });
+          }
+        });
+      }
 
 }
