@@ -1,5 +1,31 @@
 .boton{
 &__diseño{
   margin-right: 15px
+  }
 }
+
+.search {
+  display: flex;
+  align-items: center;
+  background-color: #353535;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.pi-search {
+  margin-right: 5px;
+  color: #495057;
+}
+
+.a {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.a:focus {
+  border: 1px solid #535d68;
+  box-shadow: 0 0 0 0.2rem #535d68;
 }

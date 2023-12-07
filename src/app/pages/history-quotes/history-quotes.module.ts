@@ -6,6 +6,7 @@ import { TableModule } from 'primeng/table';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { TagModule } from 'primeng/tag';
 
 const components = [
   HistoryQuotesComponent
@@ -21,6 +22,7 @@ const components = [
     BreadcrumbModule,
     ButtonModule,
     CardModule,
+    TagModule
   ]
 })
 export class HistoryQuotesModule { }

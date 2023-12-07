@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Table } from 'primeng/table';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClientsService } from 'src/app/services/clients.service';
 
@@ -15,6 +16,7 @@ export class ClientComponent {
     home: MenuItem | undefined;
     visible: boolean = false;
     selectedClient: any;
+    @ViewChild('dt') table: Table;
 
     constructor(private clientsService: ClientsService) {}
 
@@ -31,12 +33,16 @@ export class ClientComponent {
         this.clientsService.getId(clientId).subscribe(
           (response) => {
             this.selectedClient = response;
-            
+
           },
           (error) => {
             console.error(error);
           }
         );
+    }
+
+    filtrarPorNombre(event: any) {
+      this.table.filter(event.target.value, 'nombreDelCliente', 'contains');
     }
 
     customButtonConfig = {
