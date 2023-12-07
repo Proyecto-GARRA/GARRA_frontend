@@ -71,6 +71,20 @@ export class EmployeesFormComponent {
     )
   }
 
+  update():void{
+    this.employeesService.update(this.empleado)
+    .subscribe( jsonResponse => {
+        this.router.navigate(['lista-empleados'])
+        Swal.fire ('Empleado Guardado', `El empleado ${jsonResponse.cliente.nombreDelCliente} ah sido guardado con exito`, 'success' )
+      },
+      err =>{
+        this.errores = err.error.errors as string[];
+        console.error('Error en el codigo backend '+ err.status);
+        console.error(err.error.errors);
+      }
+    );
+  }
+
   cargarEmpleados(): void {
     this.activatedRoute.params.subscribe(
       params =>{
@@ -98,7 +112,9 @@ export class EmployeesFormComponent {
     this.filteredTipoEmpleadoSelect = filtered;
   }
 
-
+  atras(){
+    history.back();
+  }
 
 }
 

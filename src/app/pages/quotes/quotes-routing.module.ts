@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { QuotesComponent } from './quotes.component';
 import { QuotesFormComponent } from './quotes-form/quotes-form.component';
+import { QuotesDetailComponent } from './quotes-detail/quotes-detail.component';
 
 const routes: Routes = [
     {
@@ -15,7 +16,11 @@ const routes: Routes = [
     {
       path: 'formulario-cita/:id',
       component: QuotesFormComponent
-  }
+    },
+    {
+      path: 'detalle-cita/:id',
+      component: QuotesDetailComponent
+    }
 ];
 
 @NgModule({

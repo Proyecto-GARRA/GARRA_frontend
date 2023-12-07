@@ -22,6 +22,10 @@ export class QuotesService {
     return this.http.get<Cita[]>(this.urlEndPoint)
   }
 
+  getInactivas(): Observable<Cita[]>{
+    return this.http.get<Cita[]>(`${this.urlEndPoint}/inactivas`)
+  }
+
   getTipoActividad(): Observable<Cita[]>{
     return this.http.get<Cita[]>(this.urlEndPoint+'/tipoActividades')
   }
@@ -53,11 +57,13 @@ export class QuotesService {
       );
   }
 
-  getId(id:Cita): Observable<Cita>{
+  getCita(id: number): Observable<any> {
     return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
       catchError(e => {
-        this.router.navigate(['/clientes']);
-        return throwError(()=>e)
+        this.router.navigate(['lista-citas'])
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error, 'error')
+        return throwError(() => e);
       })
     );
   }
@@ -96,4 +102,25 @@ delete(id: number): Observable<any>{
   );
 }
 
+changeState(id: number, state: string): Observable<any>{
+  const body = {
+    "id": id,
+    "estado": state
+  };
+
+  return this.http
+    .post<any>(`${this.urlEndPoint}/cambiar`, body, {headers: this.HttpHeaders})
+    .pipe(
+      tap(() => {
+        Swal.fire(
+          'Sucess!',
+          'Estado de cita cambiado exitosamente!',
+          'success'
+        )
+      }),
+      catchError((error: any) => {
+        throw Swal.fire('Error!', 'Error.', 'error')
+      })
+    )
+}
 }

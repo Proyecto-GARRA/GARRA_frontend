@@ -69,6 +69,7 @@
                           size="30"
                           [(ngModel)]="cliente.fecha_naci"
                           name="fecha_naci"
+                          min="1900-01-01"
                           class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
                       <small
                           id="apellido_M-help"
@@ -149,25 +150,38 @@
                 <div class="col-12">
                     <div class="flex justify-content-end">
                       <p-button
-                            icon="pi pi-user-plus"
-                            label="Añadir empleado"
+                            severity="info"
                             [raised]="true"
                             [outlined]="true"
                             [rounded]="true"
-                            routerLink="/lista-clientes"
+                            routerLink="lista-clientes"
                             class="client-form__button-footer"
-                            icon="pi pi-times"
-                            label="Cancelar"></p-button>
+                            icon="pi pi-home"
+                            label="Inicio">
+                      </p-button>
 
                       <p-button
                             icon="pi pi-user-plus"
-                            label="Añadir empleado"
+                            severity="success"
                             [raised]="true"
                             [outlined]="true"
                             [rounded]="true"
-                            icon="pi pi-check"
+                            icon="pi pi-user-plus"
                             label="Añadir"
+                            *ngIf="!cliente.id else elseBlock"
                             (click)="create()"></p-button>
+                      <ng-template #elseBlock>
+                      <p-button
+                            icon="pi pi-user-plus"
+                            label="Añadir empleado"
+                            severity="success"
+                            [raised]="true"
+                            [outlined]="true"
+                            [rounded]="true"
+                            icon="pi pi-save"
+                            label="Guardar"
+                            (click)="update()"></p-button>
+                      </ng-template>
                     </div>
                 </div>
             </div>

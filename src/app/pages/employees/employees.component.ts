@@ -10,7 +10,6 @@ import { EmployeesService } from 'src/app/services/employees.service';
 })
 export class EmployeesComponent {
     public errores: string[] = [];
-    cols: any;
     empleados!: Empleado[];
     items: MenuItem[] | undefined;
     home: MenuItem | undefined;

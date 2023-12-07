@@ -34,26 +34,39 @@
       </ng-template>
   <ng-template pTemplate="header">
       <tr>
-          <th>ID</th>
-          <th>NOMBRE DEL EMPLEADO</th>
-          <th>CORREO</th>
-          <th>TELEFONO</th>
-          <th>TIPO DE EMPLEADO</th>
-          <th>OPCIONES</th>
+          <th>Id</th>
+          <th>Nombre del empleado</th>
+          <th>Correo</th>
+          <th>Tipo de empleado</th>
+          <th>Editar</th>
+          <th>Detalles</th>
       </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-empleados>
+  <ng-template pTemplate="body" let-empleado>
       <tr>
-          <td>{{ empleados.id }}</td>
-          <td>{{ empleados.nombreDelEmpleado }} {{ empleados.apellido_P }} {{ empleados.apellido_M }} </td>
-          <td>{{ empleados.correo }}</td>
-          <td>{{ empleados.telefono }}</td>
-          <td>{{ empleados.tipoDeEmpleado.tipoEmpleado}}</td>
+          <td>{{ empleado.id }}</td>
+          <td>{{ empleado.nombreDelEmpleado }} {{ empleado.apellido_P }} {{ empleado.apellido_M }} </td>
+          <td>{{ empleado.correo }}</td>
+          <td>{{ empleado.tipoDeEmpleado.tipoEmpleado}}</td>
           <td>
-            <p-button icon="pi pi-ellipsis-v"
+            <p-button
+              class="detail__space-button"
+              icon="pi pi-user-edit"
+              severity="success"
+              [raised]="true"
+              [outlined]="true"
+              [rounded]="true"
+              [routerLink]="['formulario-empleado', empleado.id]">
+            </p-button>
+          </td>
+          <td>
+            <p-button icon="pi pi-id-card"
                       [text]="true"
                       [raised]="true"
-                      severity="secondary">
+                      [outlined]="true"
+                      severity="secondary"
+                      [rounded]="true"
+                      [routerLink]="['detalle-empleado', empleado.id]">
             </p-button>
           </td>
       </tr>

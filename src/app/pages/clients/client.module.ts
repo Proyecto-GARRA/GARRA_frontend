@@ -12,6 +12,8 @@ import { TableModule } from 'primeng/table';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { DialogModule } from 'primeng/dialog';
 import { MenuModule } from 'primeng/menu';
+import { PanelModule } from 'primeng/panel';
+import { DividerModule } from 'primeng/divider';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 
 const components = [
@@ -32,7 +34,9 @@ const components = [
         CalendarModule,
         TableModule,
         BreadcrumbModule,
-        DialogModule
+        DialogModule,
+        PanelModule,
+        DividerModule
     ],
 })
 export class ClientModule {}

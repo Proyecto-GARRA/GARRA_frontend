@@ -1,5 +1,5 @@
 <br>
-<p-table [value]="reportes"
+<p-table [value]="citas"
           styleClass="p-datatable-striped"
           [paginator]="true"
           [rows]="8"
@@ -9,7 +9,6 @@
           <div class="flex col-12">
 
             <div class="col-5">
-
             </div>
 
             <div class="col-3">
@@ -28,12 +27,41 @@
   <ng-template pTemplate="header">
       <tr>
           <th>Id</th>
+          <th>Nombre del cliente</th>
+          <th>Nombre del empleado</th>
+          <th>Estado actual</th>
+          <th>Editar</th>
+          <th>Detalles</th>
       </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-reporte>
+  <ng-template pTemplate="body" let-cita>
       <tr>
-          <td>{{ reporte.id }}</td>
-
+          <td>{{ cita.id }}</td>
+          <td>{{ cita.fecha_cita }}</td>
+          <td>{{ cita.cliente.nombreDelCliente}}</td>
+          <td>{{ cita.empleado.nombreDelEmpleado}}</td>
+          <td>{{ cita.estado}}</td>
+          <td>
+            <p-button
+              class="detail__space-button"
+              icon="pi pi-user-edit"
+              severity="success"
+              [raised]="true"
+              [outlined]="true"
+              [rounded]="true"
+              [routerLink]="['formulario-cita', cita.id]">
+            </p-button>
+          </td>
+          <td>
+            <p-button icon="pi pi-id-card"
+                      [text]="true"
+                      [raised]="true"
+                      [outlined]="true"
+                      severity="secondary"
+                      [rounded]="true"
+                      >
+            </p-button>
+          </td>
       </tr>
   </ng-template>
 

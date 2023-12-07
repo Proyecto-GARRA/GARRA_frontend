@@ -167,24 +167,38 @@
                   <div class="flex justify-content-end">
                     <p-button
                           icon="pi pi-user-plus"
-                          label="Añadir empleado"
                           [raised]="true"
                           [outlined]="true"
                           [rounded]="true"
-                          routerLink="/lista-empleados"
+                          severity="info"
                           class="client-form__button-footer"
-                          icon="pi pi-times"
-                          label="Cancelar"></p-button>
+                          icon="pi pi-home"
+                          label="Inicio"
+                          (click)="atras()"></p-button>
 
                     <p-button
                           icon="pi pi-user-plus"
                           label="Añadir empleado"
+                          severity="success"
                           [raised]="true"
                           [outlined]="true"
                           [rounded]="true"
-                          icon="pi pi-check"
+                          icon="pi pi-user-plus"
                           label="Añadir"
+                          *ngIf="!empleado.id else elseBlock"
                           (click)="create()"></p-button>
+
+                    <ng-template #elseBlock>
+                    <p-button
+                          icon="pi pi-user-plus"
+                          severity="success"
+                          [raised]="true"
+                          [outlined]="true"
+                          [rounded]="true"
+                          icon="pi pi-save"
+                          label="Editar"
+                          (click)="update()"></p-button>
+                    </ng-template>
                   </div>
               </div>
           </div>

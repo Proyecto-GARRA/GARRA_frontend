@@ -6,14 +6,14 @@
     </div>
     <br>
     <p-card header="Detalle:" >
-      <ul  class="list-none p-0 m-0">
-          <li *ngIf="cliente" class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+      <ul class="list-none p-0 m-0" *ngIf="empleado">
+          <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
               <div>
                   <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Nombre:</span>
               </div>
               <div class="mt-2 md:mt-0 flex align-items-center">
                   <div>
-                    {{cliente.id}}.- {{ cliente.nombreDelCliente }} {{ cliente.apellido_P}} {{cliente.apellido_M}}
+                    {{empleado.id}}.- {{ empleado.nombreDelEmpleado }} {{ empleado.apellido_P}} {{empleado.apellido_M}}
                   </div>
               </div>
           </li>
@@ -25,7 +25,7 @@
             </div>
             <div class="mt-2 md:mt-0 flex align-items-center">
                 <div>
-                  {{ cliente.fecha_naci | date:"dd/MM/yyyy" }}
+                  {{ empleado.fecha_naci | date:"dd/MM/yyyy" }}
                 </div>
             </div>
           </li>
@@ -37,7 +37,7 @@
           </div>
           <div class="mt-2 md:mt-0 flex align-items-center">
               <div>
-                {{ cliente.domicilio}}
+                {{ empleado.domicilio}}
               </div>
           </div>
       </li>
@@ -49,36 +49,47 @@
         </div>
         <div class="mt-2 md:mt-0 flex align-items-center">
             <div>
-              {{ cliente.telefono.slice(0, 3) }}-{{ cliente.telefono.slice(3, 6) }}-{{ cliente.telefono.slice(6) }}
+              {{ empleado.telefono.slice(0, 3) }}-{{ empleado.telefono.slice(3, 6) }}-{{ empleado.telefono.slice(6) }}
             </div>
         </div>
     </li>
     </ul>
     <p-divider></p-divider>
 
-  <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-    <div>
-        <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Correo:</span>
-    </div>
-    <div class="mt-2 md:mt-0 flex align-items-center">
-        <div>
-          {{ cliente.correo }}
-        </div>
-    </div>
-  </li>
-<p-divider></p-divider>
+    <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+      <div>
+          <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Correo:</span>
+      </div>
+      <div class="mt-2 md:mt-0 flex align-items-center">
+          <div>
+            {{ empleado.correo }}
+          </div>
+      </div>
+    </li>
+    <p-divider></p-divider>
 
+    <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+      <div>
+          <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Tipo de empleado:</span>
+      </div>
+      <div class="mt-2 md:mt-0 flex align-items-center">
+        <div>
+          {{ empleado.tipoDeEmpleado }}
+        </div>
+      </div>
+    </li>
+    <p-divider></p-divider>
 
     <div class="flex justify-content-end">
       <p-button
             class="detail__space-button"
-            icon= "pi pi-home"
+            icon="pi pi-home"
             severity="info"
-            label="Inicio"
             [raised]="true"
             [outlined]="true"
             [rounded]="true"
-            [routerLink]="['formulario-clientes']">
+            label="Inicio"
+            (click)="atras()">
     </p-button>
 
     <p-button
@@ -88,7 +99,7 @@
             [raised]="true"
             [outlined]="true"
             [rounded]="true"
-            (click)="eliminar(cliente)">
+            (click)="eliminar(empleado)">
     </p-button>
     </div>
     </p-card>

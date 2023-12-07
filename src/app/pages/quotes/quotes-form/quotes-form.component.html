@@ -163,14 +163,14 @@
               <div class="col-12">
                   <div class="flex justify-content-end">
                     <p-button
-                          [text]="true"
                           [raised]="true"
                           [rounded]="true"
                           [outlined]="true"
-                          routerLink="/lista-citas"
+                          severity="info"
                           class="client-form__button-footer"
-                          icon="pi pi-times"
-                          label="Cancelar">
+                          icon="pi pi-home"
+                          label="Inicio"
+                          (click)="atras()">
                       </p-button>
 
                       <p-button
@@ -178,9 +178,21 @@
                           [raised]="true"
                           [rounded]="true"
                           [outlined]="true"
-                          icon="pi pi-check"
+                          severity="success"
+                          icon="pi pi-user-plus"
                           label="Añadir"
+                          *ngIf="!cita.id else elseBlock"
                           (click)="create()"></p-button>
+                      <ng-template #elseBlock>
+                      <p-button
+                          severity="success"
+                          [raised]="true"
+                          [outlined]="true"
+                          [rounded]="true"
+                          icon="pi pi-save"
+                          label="Guardar"
+                          (click)="update()"></p-button>
+                      </ng-template>
                   </div>
               </div>
           </div>
