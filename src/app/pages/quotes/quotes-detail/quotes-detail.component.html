@@ -111,10 +111,11 @@
             class="detail__space-button"
             icon= "pi pi-home"
             label="Inicio"
+            severity="info"
             [raised]="true"
             [outlined]="true"
             [rounded]="true"
-            [routerLink]="['lista-citas']">
+            (click)="atras()">
     </p-button>
 
     <p-button

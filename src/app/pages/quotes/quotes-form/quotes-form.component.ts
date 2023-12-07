@@ -116,6 +116,21 @@ filtrarTipoAct(event: AutoCompleteCompleteEvent) {
     );
   }
 
+  update():void{
+    this.quotesService.update(this.cita)
+    .subscribe( jsonResponse => {
+        this.router.navigate(['lista-citas'])
+        Swal.fire ('Cita Guardado', `La cita ${jsonResponse.cliente.nombreDelCliente} ah sido guardado con exito`, 'success' )
+      },
+      err =>{
+        this.errores = err.error.errors as string[];
+        console.error('Error en el codigo backend '+ err.status);
+        console.error(err.error.errors);
+      }
+    );
+  }
+
+
   cargarCita(): void{
     this.activatedRoute.params.subscribe(
       params =>{
@@ -128,6 +143,10 @@ filtrarTipoAct(event: AutoCompleteCompleteEvent) {
         }
       }
     )
+  }
+
+  atras(){
+    history.back();
   }
 
 }

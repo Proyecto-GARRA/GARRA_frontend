@@ -117,5 +117,7 @@ export class QuotesDetailComponent {
         });
       }
 
-
- }
+  atras(){
+    history.back();
+  }
+}

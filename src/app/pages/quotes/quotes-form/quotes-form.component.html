@@ -166,10 +166,11 @@
                           [raised]="true"
                           [rounded]="true"
                           [outlined]="true"
-                          routerLink="/lista-citas"
+                          severity="info"
                           class="client-form__button-footer"
                           icon="pi pi-home"
-                          label="Inicio">
+                          label="Inicio"
+                          (click)="atras()">
                       </p-button>
 
                       <p-button
@@ -178,9 +179,20 @@
                           [rounded]="true"
                           [outlined]="true"
                           severity="success"
-                          icon="pi pi-check"
+                          icon="pi pi-user-plus"
                           label="Añadir"
+                          *ngIf="!cita.id else elseBlock"
                           (click)="create()"></p-button>
+                      <ng-template #elseBlock>
+                      <p-button
+                          severity="success"
+                          [raised]="true"
+                          [outlined]="true"
+                          [rounded]="true"
+                          icon="pi pi-save"
+                          label="Guardar"
+                          (click)="update()"></p-button>
+                      </ng-template>
                   </div>
               </div>
           </div>
