@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class EmployeeDetailComponent {
   empleados!: Empleado[];
-  empleado!: Empleado;
+  empleado: Empleado;
   items: MenuItem[] | undefined;
   home: MenuItem | undefined;
 
@@ -22,21 +22,30 @@ export class EmployeeDetailComponent {
                 private router: Router){}
 
   ngOnInit(){
-    this.cargarEmpleado();
     this.items = [ { label: 'Lista de empelados'}, {label: 'Detalle de empleado' } ];
     this.home = { icon: 'pi pi-home', routerLink: 'lista-empleados' };
-  }
 
-  cargarEmpleado(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      const id = +params['id'];
+    this.activatedRoute.paramMap.subscribe(params => {
+      let id: number = +params.get('id');
       if (id) {
-        this.employeesService.getEmpleado(id).subscribe((empleado) => {
+        this.employeesService.getEmpleado(id).subscribe(empleado => {
           this.empleado = empleado;
         });
       }
     });
+
   }
+
+  // cargarEmpleado(): void {
+  //   this.activatedRoute.params.subscribe((params) => {
+  //     const id = +params['id'];
+  //     if (id) {
+  //       this.employeesService.getEmpleado(id).subscribe((empleado) => {
+  //         this.empleado = empleado;
+  //       });
+  //     }
+  //   });
+  // }
 
   eliminar(eliminarEmpleado: Empleado): void{
     Swal.fire({
@@ -62,4 +71,7 @@ export class EmployeeDetailComponent {
         });
       }
 
+      atras(){
+        history.back();
+      }
 }

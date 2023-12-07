@@ -50,7 +50,7 @@ export class ClientFormComponent {
 
         this.clienteService.create(this.cliente).subscribe(
             jsonResponse => {
-                this.router.navigate(['/clientes']);
+                this.router.navigate(['/lista-clientes']);
                 Swal.fire(
                     'Cliente agregado',
                     `El cliente ${jsonResponse.cliente.nombreDelCliente} ${jsonResponse.cliente.apellido_P} ${jsonResponse.mensaje}`,
@@ -65,6 +65,19 @@ export class ClientFormComponent {
         );
     }
 
+    update():void{
+      this.clienteService.update(this.cliente)
+      .subscribe( jsonResponse => {
+          this.router.navigate(['lista-clientes'])
+          Swal.fire ('Cliente Guardado', `El cliente ${jsonResponse.cliente.nombreDelCliente} ah sido guardado con exito`, 'success' )
+        },
+        err =>{
+          this.errores = err.error.errors as string[];
+          console.error('Error en el codigo backend '+ err.status);
+          console.error(err.error.errors);
+        }
+      );
+    }
     cargarCliente(): void{
       this.activatedRoute.params.subscribe(
         paramas =>{

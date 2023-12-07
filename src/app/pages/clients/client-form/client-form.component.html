@@ -150,14 +150,12 @@
                 <div class="col-12">
                     <div class="flex justify-content-end">
                       <p-button
-                            icon="pi pi-user-plus"
-                            severity="secondary"
-                            [raised]="true"
+                            severity="info"                            [raised]="true"
                             [outlined]="true"
                             [rounded]="true"
-                            routerLink="/lista-clientes"
+                            routerLink="lista-clientes"
                             class="client-form__button-footer"
-                            icon="pi pi-times"
+                            icon="pi pi-home"
                             label="Inicio">
                       </p-button>
 
@@ -168,9 +166,22 @@
                             [raised]="true"
                             [outlined]="true"
                             [rounded]="true"
-                            icon="pi pi-check"
+                            icon="pi pi-user-plus"
                             label="Añadir"
+                            *ngIf="!cliente.id else elseBlock"
                             (click)="create()"></p-button>
+                      <ng-template #elseBlock>
+                      <p-button
+                            icon="pi pi-user-plus"
+                            label="Añadir empleado"
+                            severity="success"
+                            [raised]="true"
+                            [outlined]="true"
+                            [rounded]="true"
+                            icon="pi pi-save"
+                            label="Guardar"
+                            (click)="update()"></p-button>
+                      </ng-template>
                     </div>
                 </div>
             </div>
