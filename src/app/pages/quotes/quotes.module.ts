@@ -10,10 +10,13 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { QuotesDetailComponent } from './quotes-detail/quotes-detail.component';
+import { DividerModule } from 'primeng/divider';
 
 const components = [
   QuotesComponent,
-  QuotesFormComponent
+  QuotesFormComponent,
+  QuotesDetailComponent
 ]
 @NgModule({
     declarations: [components],
@@ -28,7 +31,8 @@ const components = [
       CardModule,
       CalendarModule,
       DropdownModule,
-      BreadcrumbModule
+      BreadcrumbModule,
+        DividerModule
     ],
 })
 export class QuotesModule {}

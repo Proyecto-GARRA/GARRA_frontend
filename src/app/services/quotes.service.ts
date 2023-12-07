@@ -66,6 +66,17 @@ export class QuotesService {
     );
   }
 
+  getCita(id: number): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/lista-clientes'])
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error, 'error')
+        return throwError(() => e);
+      })
+    );
+  }
+
   update(cita: Cita): Observable<any>{
     return this.http
       .put<any>(`${this.urlEndPoint}/${cita.id}`, cita, {headers:this.HttpHeaders})
