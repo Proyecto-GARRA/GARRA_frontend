@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { Cita } from 'src/app/interfaces/cita';
+import { Cliente } from 'src/app/interfaces/cliente';
+import { Empleado } from 'src/app/interfaces/empleado';
 import { QuotesService } from 'src/app/services/quotes.service';
 import Swal from 'sweetalert2';
 
@@ -11,8 +13,10 @@ import Swal from 'sweetalert2';
   styleUrls: [ './quotes-detail.component.scss' ],
 })
 export class QuotesDetailComponent {
-  citas!: Cita[];
-  cita!: Cita;
+  citas: Cita[] = [];
+  cita: Cita;
+  cliente: Cliente;
+  empleado: Empleado;
   items: MenuItem[] | undefined;
   home: MenuItem | undefined;
 
@@ -21,21 +25,19 @@ export class QuotesDetailComponent {
                 private router: Router){}
 
   ngOnInit(){
-    this.cargarCita();
     this.items = [ { label: 'Lista de citas'}, {label: 'Detalle de cita' } ];
     this.home = { icon: 'pi pi-home', routerLink: 'lista-citas' };
-  }
 
-  cargarCita(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      const id = +params['id'];
+    this.activatedRoute.paramMap.subscribe(params => {
+      let id: number = +params.get('id');
       if (id) {
-        this.quotesService.getCita(id).subscribe((cita) => {
+        this.quotesService.getCita(id).subscribe(cita => {
           this.cita = cita;
         });
       }
     });
   }
+
 
   exportPdf() {
     import('jspdf').then((jsPDF) => {
@@ -50,20 +52,21 @@ export class QuotesDetailComponent {
         doc.line(20, 30, 190, 30);
 
         // Contenido del detalle que quieres exportar
+
         const detalle = `
             Id de la cita: ${this.cita?.id || ''}
 
-            Nombre del cliente: ${this.cita.cliente}
+            Nombre del cliente:
 
-            Nombre del empleado:
+            Nombre del empleado: ${this.empleado?.nombreDelEmpleado || ''}
 
-            Tipo de servicio
+            Tipo de servicio:
 
-            Fecha de la cita:
+            Fecha de la cita: ${this.cita?.fecha_cita || ''}
 
-            Hora de la cita:
-            
-            Dirección: Calle Segunda
+            Hora de la cita: ${this.cita?.hora_cita || ''}
+
+            Dirección: ${this.cita?.direccion || ''}
         `;
 
         // Agregar el contenido al documento PDF

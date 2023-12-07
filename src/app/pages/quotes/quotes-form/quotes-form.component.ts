@@ -121,7 +121,7 @@ filtrarTipoAct(event: AutoCompleteCompleteEvent) {
       params =>{
         let id = params ['id']
         if(id){
-          this.quotesService.getId(id)
+          this.quotesService.getCita(id)
               .subscribe((cita)=>{
                 this.cita = cita
               });

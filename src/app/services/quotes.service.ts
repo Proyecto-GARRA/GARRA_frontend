@@ -57,19 +57,10 @@ export class QuotesService {
       );
   }
 
-  getId(id:Cita): Observable<Cita>{
-    return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
-      catchError(e => {
-        this.router.navigate(['/clientes']);
-        return throwError(()=>e)
-      })
-    );
-  }
-
   getCita(id: number): Observable<any> {
     return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
       catchError(e => {
-        this.router.navigate(['/lista-clientes'])
+        this.router.navigate(['lista-citas'])
         console.error(e.error.mensaje);
         Swal.fire(e.error.mensaje, e.error.error, 'error')
         return throwError(() => e);
