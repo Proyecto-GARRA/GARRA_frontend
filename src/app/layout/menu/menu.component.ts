@@ -25,14 +25,14 @@ export class MenuComponent {
                 label: 'Citas',
                 routerLink: 'lista-citas',
                 icon: 'pi pi-calendar',
-                items:[
-                  {
-                    label: 'Historal',
-                    routerLink: 'lista-historia',
-                    icon: 'pi pi-folder',
-                  }
-                ]
-            }
+                items: [
+                    {
+                        label: 'Historal',
+                        routerLink: 'lista-historia',
+                        icon: 'pi pi-folder',
+                    },
+                ],
+            },
         ];
     }
 }

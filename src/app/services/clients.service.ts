@@ -15,8 +15,10 @@ export class ClientsService {
         'Content-Type': 'application/json',
     });
 
-    constructor(private http: HttpClient,
-                private router: Router) {}
+    constructor(
+        private http: HttpClient,
+        private router: Router
+    ) {}
 
     //OBTENER TODOS LOS CLIENTES
     getClientes(): Observable<Cliente[]> {
@@ -40,58 +42,62 @@ export class ClientsService {
             );
     }
 
-    getId(id:Cliente): Observable<Cliente>{
-      return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
-        catchError(e => {
-          this.router.navigate(['/clientes']);
-          return throwError(()=>e)
-        })
-      );
+    getId(id: Cliente): Observable<Cliente> {
+        return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
+            catchError(e => {
+                this.router.navigate(['/clientes']);
+                return throwError(() => e);
+            })
+        );
     }
 
     getCliente(id: number): Observable<any> {
-      return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
-        catchError(e => {
-          this.router.navigate(['/lista-clientes'])
-          console.error(e.error.mensaje);
-          Swal.fire(e.error.mensaje, e.error.error, 'error')
-          return throwError(() => e);
-        })
-      );
+        return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
+            catchError(e => {
+                this.router.navigate(['/lista-clientes']);
+                console.error(e.error.mensaje);
+                Swal.fire(e.error.mensaje, e.error.error, 'error');
+                return throwError(() => e);
+            })
+        );
     }
-    
-    update(cliente: Cliente): Observable<any>{
-      return this.http
-        .put<any>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers:this.HttpHeaders})
-        .pipe(
-          tap(() => {
-            Swal.fire(
-                'Success!',
-                'Cliente se actualizo exitosamente.',
-                'success'
+
+    update(cliente: Cliente): Observable<any> {
+        return this.http
+            .put<any>(`${this.urlEndPoint}/${cliente.id}`, cliente, {
+                headers: this.HttpHeaders,
+            })
+            .pipe(
+                tap(() => {
+                    Swal.fire(
+                        'Success!',
+                        'Cliente se actualizo exitosamente.',
+                        'success'
+                    );
+                }),
+                catchError((error: any) => {
+                    throw Swal.fire('Error!', `Error.`, 'error');
+                })
             );
-        }),
-        catchError((error: any) => {
-            throw Swal.fire('Error!', `Error.`, 'error');
-        })
-    );
-}
+    }
 
     //DELETE PARA ELIMINAR
-    delete(id: number): Observable<any>{
-      return this.http
-        .delete<any>(`${this.urlEndPoint}/${id}`, {headers: this.HttpHeaders})
-        .pipe(
-          tap(() => {
-            Swal.fire(
-                'Success!',
-                'Cliente eliminado exitosamente.',
-                'success'
+    delete(id: number): Observable<any> {
+        return this.http
+            .delete<any>(`${this.urlEndPoint}/${id}`, {
+                headers: this.HttpHeaders,
+            })
+            .pipe(
+                tap(() => {
+                    Swal.fire(
+                        'Success!',
+                        'Cliente eliminado exitosamente.',
+                        'success'
+                    );
+                }),
+                catchError((error: any) => {
+                    throw Swal.fire('Error!', `Error.`, 'error');
+                })
             );
-        }),
-        catchError((error: any) => {
-            throw Swal.fire('Error!', `Error.`, 'error');
-        })
-    );
-}
+    }
 }

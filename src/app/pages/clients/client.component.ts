@@ -19,8 +19,8 @@ export class ClientComponent {
     constructor(private clientsService: ClientsService) {}
 
     ngOnInit() {
-      this.items = [ { label: 'Lista de clientes' }];
-      this.home = { icon: 'pi pi-home', routerLink: '/' };
+        this.items = [{ label: 'Lista de clientes' }];
+        this.home = { icon: 'pi pi-home', routerLink: '/' };
 
         this.clientsService.getClientes().subscribe(clientes => {
             this.clientes = clientes;
@@ -29,19 +29,18 @@ export class ClientComponent {
     showDialog(cliente: any) {
         const clientId = cliente.id;
         this.clientsService.getId(clientId).subscribe(
-          (response) => {
-            this.selectedClient = response;
-            
-          },
-          (error) => {
-            console.error(error);
-          }
+            response => {
+                this.selectedClient = response;
+            },
+            error => {
+                console.error(error);
+            }
         );
     }
 
     customButtonConfig = {
-      icon: 'pi pi-user-plus',
-      label: 'Agregar',
-      routerLink: 'formulario-cliente',
+        icon: 'pi pi-user-plus',
+        label: 'Agregar',
+        routerLink: 'formulario-cliente',
     };
 }

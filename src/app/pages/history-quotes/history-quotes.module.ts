@@ -7,20 +7,18 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 
-const components = [
-  HistoryQuotesComponent
-]
+const components = [HistoryQuotesComponent];
 
 @NgModule({
-  declarations: [components],
-  exports: [components],
-  imports: [
-    CommonModule,
-    HistoryQuotesRoutingModule,
-    TableModule,
-    BreadcrumbModule,
-    ButtonModule,
-    CardModule,
-  ]
+    declarations: [components],
+    exports: [components],
+    imports: [
+        CommonModule,
+        HistoryQuotesRoutingModule,
+        TableModule,
+        BreadcrumbModule,
+        ButtonModule,
+        CardModule,
+    ],
 })
-export class HistoryQuotesModule { }
+export class HistoryQuotesModule {}

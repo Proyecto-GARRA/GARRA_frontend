@@ -14,21 +14,20 @@ export class EmployeesComponent {
     items: MenuItem[] | undefined;
     home: MenuItem | undefined;
 
-    constructor(private employeesService:EmployeesService){}
+    constructor(private employeesService: EmployeesService) {}
 
     ngOnInit() {
-      this.items = [ { label: 'Lista de empleados' } ];
-      this.home = { icon: 'pi pi-home', routerLink: 'lista-empleados' };
+        this.items = [{ label: 'Lista de empleados' }];
+        this.home = { icon: 'pi pi-home', routerLink: 'lista-empleados' };
 
-      this.employeesService.getEmpleados().subscribe(empleados => {
-          this.empleados = empleados;
-      });
-  }
+        this.employeesService.getEmpleados().subscribe(empleados => {
+            this.empleados = empleados;
+        });
+    }
 
-      customButtonConfig = {
+    customButtonConfig = {
         icon: 'pi pi-user-plus',
         label: 'Agregar',
         routerLink: 'formulario-empleado',
-      };
-
+    };
 }

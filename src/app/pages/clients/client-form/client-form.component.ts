@@ -27,9 +27,12 @@ export class ClientFormComponent {
     ) {}
 
     ngOnInit() {
-      this.cargarCliente();
-      this.items = [ { label: 'Lista de clientes'}, {label: 'Formulario de clientes' }];
-      this.home = { icon: 'pi pi-home', routerLink: '/' };
+        this.cargarCliente();
+        this.items = [
+            { label: 'Lista de clientes' },
+            { label: 'Formulario de clientes' },
+        ];
+        this.home = { icon: 'pi pi-home', routerLink: '/' };
     }
 
     create(): void {
@@ -65,30 +68,31 @@ export class ClientFormComponent {
         );
     }
 
-    update():void{
-      this.clienteService.update(this.cliente)
-      .subscribe( jsonResponse => {
-          this.router.navigate(['lista-clientes'])
-          Swal.fire ('Cliente Guardado', `El cliente ${jsonResponse.cliente.nombreDelCliente} ah sido guardado con exito`, 'success' )
-        },
-        err =>{
-          this.errores = err.error.errors as string[];
-          console.error('Error en el codigo backend '+ err.status);
-          console.error(err.error.errors);
-        }
-      );
+    update(): void {
+        this.clienteService.update(this.cliente).subscribe(
+            jsonResponse => {
+                this.router.navigate(['lista-clientes']);
+                Swal.fire(
+                    'Cliente Guardado',
+                    `El cliente ${jsonResponse.cliente.nombreDelCliente} ah sido guardado con exito`,
+                    'success'
+                );
+            },
+            err => {
+                this.errores = err.error.errors as string[];
+                console.error('Error en el codigo backend ' + err.status);
+                console.error(err.error.errors);
+            }
+        );
     }
-    cargarCliente(): void{
-      this.activatedRoute.params.subscribe(
-        paramas =>{
-          let id = paramas ['id']
-          if(id){
-            this.clienteService.getId(id)
-                .subscribe((cliente) =>{
-                  this.cliente = cliente
+    cargarCliente(): void {
+        this.activatedRoute.params.subscribe(paramas => {
+            let id = paramas['id'];
+            if (id) {
+                this.clienteService.getId(id).subscribe(cliente => {
+                    this.cliente = cliente;
                 });
-          }
-        }
-      )
+            }
+        });
     }
 }

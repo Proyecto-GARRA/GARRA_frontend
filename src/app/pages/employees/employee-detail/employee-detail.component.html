@@ -1,107 +1,132 @@
-<br>
+<br />
 <div class="flex justify-content-center">
-  <div [style]="{width:'30rem'}">
-    <div class="justify-content-end">
-      <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
-    </div>
-    <br>
-    <p-card header="Detalle:" >
-      <ul class="list-none p-0 m-0" *ngIf="empleado">
-          <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-              <div>
-                  <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Nombre:</span>
-              </div>
-              <div class="mt-2 md:mt-0 flex align-items-center">
-                  <div>
-                    {{empleado.id}}.- {{ empleado.nombreDelEmpleado }} {{ empleado.apellido_P}} {{empleado.apellido_M}}
-                  </div>
-              </div>
-          </li>
-          <p-divider></p-divider>
+    <div [style]="{ width: '30rem' }">
+        <div class="justify-content-end">
+            <p-breadcrumb
+                class="max-w-full"
+                [model]="items"
+                [home]="home"></p-breadcrumb>
+        </div>
+        <br />
+        <p-card header="Detalle:">
+            <ul class="list-none p-0 m-0" *ngIf="empleado">
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Nombre:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ empleado.id }}.-
+                            {{ empleado.nombreDelEmpleado }}
+                            {{ empleado.apellido_P }} {{ empleado.apellido_M }}
+                        </div>
+                    </div>
+                </li>
+                <p-divider></p-divider>
 
-          <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-            <div>
-                <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Fecha de nacimiento:</span>
-            </div>
-            <div class="mt-2 md:mt-0 flex align-items-center">
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Fecha de nacimiento:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ empleado.fecha_naci | date: 'dd/MM/yyyy' }}
+                        </div>
+                    </div>
+                </li>
+                <p-divider></p-divider>
+
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Domicilio:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ empleado.domicilio }}
+                        </div>
+                    </div>
+                </li>
+                <p-divider></p-divider>
+
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Numero telefono:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ empleado.telefono.slice(0, 3) }}-{{
+                                empleado.telefono.slice(3, 6)
+                            }}-{{ empleado.telefono.slice(6) }}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <p-divider></p-divider>
+
+            <li
+                class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
                 <div>
-                  {{ empleado.fecha_naci | date:"dd/MM/yyyy" }}
+                    <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                        >Correo:</span
+                    >
                 </div>
+                <div class="mt-2 md:mt-0 flex align-items-center">
+                    <div>
+                        {{ empleado.correo }}
+                    </div>
+                </div>
+            </li>
+            <p-divider></p-divider>
+
+            <li
+                class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                <div>
+                    <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                        >Tipo de empleado:</span
+                    >
+                </div>
+                <div class="mt-2 md:mt-0 flex align-items-center">
+                    <div>
+                        {{ empleado.tipoDeEmpleado }}
+                    </div>
+                </div>
+            </li>
+            <p-divider></p-divider>
+
+            <div class="flex justify-content-end">
+                <p-button
+                    class="detail__space-button"
+                    icon="pi pi-home"
+                    severity="info"
+                    [raised]="true"
+                    [outlined]="true"
+                    [rounded]="true"
+                    label="Inicio"
+                    (click)="atras()">
+                </p-button>
+
+                <p-button
+                    icon="pi pi-user-plus"
+                    severity="secondary"
+                    label="Eliminar"
+                    [raised]="true"
+                    [outlined]="true"
+                    [rounded]="true"
+                    (click)="eliminar(empleado)">
+                </p-button>
             </div>
-          </li>
-        <p-divider></p-divider>
-
-        <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-          <div>
-              <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Domicilio:</span>
-          </div>
-          <div class="mt-2 md:mt-0 flex align-items-center">
-              <div>
-                {{ empleado.domicilio}}
-              </div>
-          </div>
-      </li>
-      <p-divider></p-divider>
-
-      <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-        <div>
-            <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Numero telefono:</span>
-        </div>
-        <div class="mt-2 md:mt-0 flex align-items-center">
-            <div>
-              {{ empleado.telefono.slice(0, 3) }}-{{ empleado.telefono.slice(3, 6) }}-{{ empleado.telefono.slice(6) }}
-            </div>
-        </div>
-    </li>
-    </ul>
-    <p-divider></p-divider>
-
-    <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-      <div>
-          <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Correo:</span>
-      </div>
-      <div class="mt-2 md:mt-0 flex align-items-center">
-          <div>
-            {{ empleado.correo }}
-          </div>
-      </div>
-    </li>
-    <p-divider></p-divider>
-
-    <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-      <div>
-          <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Tipo de empleado:</span>
-      </div>
-      <div class="mt-2 md:mt-0 flex align-items-center">
-        <div>
-          {{ empleado.tipoDeEmpleado }}
-        </div>
-      </div>
-    </li>
-    <p-divider></p-divider>
-
-    <div class="flex justify-content-end">
-      <p-button
-            class="detail__space-button"
-            icon="pi pi-home"
-            severity="info"
-            [raised]="true"
-            [outlined]="true"
-            [rounded]="true"
-            label="Inicio"
-            (click)="atras()">
-    </p-button>
-
-    <p-button
-            icon="pi pi-user-plus"
-            severity="secondary"
-            label="Eliminar"
-            [raised]="true"
-            [outlined]="true"
-            [rounded]="true"
-            (click)="eliminar(empleado)">
-    </p-button>
+        </p-card>
     </div>
-    </p-card>
-  </div>
 </div>

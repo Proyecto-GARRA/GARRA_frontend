@@ -1,15 +1,18 @@
-<br>
+<br />
 <div class="justify-content-end">
-  <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+    <p-breadcrumb
+        class="max-w-full"
+        [model]="items"
+        [home]="home"></p-breadcrumb>
 </div>
-<br>
+<br />
 <div class="flex justify-content-center">
     <p-card [style]="{ width: '100%' }">
         <div class="card flex justify-content-center app-design__content">
             <ng-template pTemplate="header">
                 <span class="text-xl font-bold">Formulario de clientes</span>
-              </ng-template>
-              <div
+            </ng-template>
+            <div
                 pFocusTrap
                 class="card flex align-items-center justify-content-center flex-wrap gap-3">
                 <form #clienteForm ngForm class="flex grid">
@@ -63,21 +66,21 @@
                     </div>
 
                     <div class="col-6 field">
-                      <label for="firstname1">Fecha de naciemiento</label>
-                      <input
-                          type="date"
-                          size="30"
-                          [(ngModel)]="cliente.fecha_naci"
-                          name="fecha_naci"
-                          min="1900-01-01"
-                          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
-                      <small
-                          id="apellido_M-help"
-                          class="p-error"
-                          *ngIf="formError && !cliente.fecha_naci"
-                          >El apellido materno es obligatorio.</small
-                      >
-                  </div>
+                        <label for="firstname1">Fecha de naciemiento</label>
+                        <input
+                            type="date"
+                            size="30"
+                            [(ngModel)]="cliente.fecha_naci"
+                            name="fecha_naci"
+                            min="1900-01-01"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                        <small
+                            id="apellido_M-help"
+                            class="p-error"
+                            *ngIf="formError && !cliente.fecha_naci"
+                            >El apellido materno es obligatorio.</small
+                        >
+                    </div>
 
                     <!-- <div class="col-12 field">
                         <label class="col-2">Fecha de nacimiento </label>
@@ -149,7 +152,7 @@
                 </form>
                 <div class="col-12">
                     <div class="flex justify-content-end">
-                      <p-button
+                        <p-button
                             severity="info"
                             [raised]="true"
                             [outlined]="true"
@@ -158,9 +161,9 @@
                             class="client-form__button-footer"
                             icon="pi pi-home"
                             label="Inicio">
-                      </p-button>
+                        </p-button>
 
-                      <p-button
+                        <p-button
                             icon="pi pi-user-plus"
                             severity="success"
                             [raised]="true"
@@ -168,20 +171,20 @@
                             [rounded]="true"
                             icon="pi pi-user-plus"
                             label="Añadir"
-                            *ngIf="!cliente.id else elseBlock"
+                            *ngIf="!cliente.id; else elseBlock"
                             (click)="create()"></p-button>
-                      <ng-template #elseBlock>
-                      <p-button
-                            icon="pi pi-user-plus"
-                            label="Añadir empleado"
-                            severity="success"
-                            [raised]="true"
-                            [outlined]="true"
-                            [rounded]="true"
-                            icon="pi pi-save"
-                            label="Guardar"
-                            (click)="update()"></p-button>
-                      </ng-template>
+                        <ng-template #elseBlock>
+                            <p-button
+                                icon="pi pi-user-plus"
+                                label="Añadir empleado"
+                                severity="success"
+                                [raised]="true"
+                                [outlined]="true"
+                                [rounded]="true"
+                                icon="pi pi-save"
+                                label="Guardar"
+                                (click)="update()"></p-button>
+                        </ng-template>
                     </div>
                 </div>
             </div>

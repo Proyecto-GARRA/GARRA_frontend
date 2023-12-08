@@ -1,143 +1,174 @@
-<br>
+<br />
 <div class="flex justify-content-center">
-  <div [style]="{width:'30rem'}">
-    <div class="justify-content-end">
-      <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+    <div [style]="{ width: '30rem' }">
+        <div class="justify-content-end">
+            <p-breadcrumb
+                class="max-w-full"
+                [model]="items"
+                [home]="home"></p-breadcrumb>
+        </div>
+        <br />
+        <p-card header="Detalle:">
+            <ul class="list-none p-0 m-0" *ngIf="cita">
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Id de la cita:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ cita.id }}
+                        </div>
+                    </div>
+                </li>
+                <p-divider></p-divider>
+
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Nombre del cliente:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ cita.cliente.nombreDelCliente }}
+                            {{ cita.cliente.apellido_P }}
+                            {{ cita.cliente.apellido_M }}
+                        </div>
+                    </div>
+                </li>
+                <p-divider></p-divider>
+
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Fecha de la cita:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ cita.fecha_cita | date: 'dd/MM/yyyy' }}
+                        </div>
+                    </div>
+                </li>
+                <p-divider></p-divider>
+
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Hora de la cita:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ cita.hora_cita }}
+                        </div>
+                    </div>
+                </li>
+                <p-divider></p-divider>
+
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Direccion:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ cita.direccion }}
+                        </div>
+                    </div>
+                </li>
+                <p-divider></p-divider>
+
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Numero de telefono del cliente:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ cita.cliente.telefono.slice(0, 3) }}-{{
+                                cita.cliente.telefono.slice(3, 6)
+                            }}-{{ cita.cliente.telefono.slice(6) }}
+                        </div>
+                    </div>
+                </li>
+                <p-divider></p-divider>
+
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Correo del cliente:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ cita.cliente.correo }}
+                        </div>
+                    </div>
+                </li>
+                <p-divider></p-divider>
+
+                <li
+                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                    <div>
+                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                            >Nombre del empleado:</span
+                        >
+                    </div>
+                    <div class="mt-2 md:mt-0 flex align-items-center">
+                        <div>
+                            {{ cita.empleado.nombreDelEmpleado }}
+                            {{ cita.empleado.apellido_P }}
+                            {{ cita.empleado.apellido_M }}
+                        </div>
+                    </div>
+                </li>
+                <p-divider></p-divider>
+            </ul>
+
+            <div class="flex justify-content-end">
+                <p-button
+                    class="detail__space-button"
+                    icon="pi pi-home"
+                    label="Inicio"
+                    severity="info"
+                    [raised]="true"
+                    [outlined]="true"
+                    [rounded]="true"
+                    (click)="atras()">
+                </p-button>
+
+                <p-button
+                    class="detail__space-button"
+                    icon="pi pi-home"
+                    label="PDF"
+                    [raised]="true"
+                    [outlined]="true"
+                    [rounded]="true"
+                    (click)="exportPdf()">
+                </p-button>
+
+                <p-button
+                    icon="pi pi-user-plus"
+                    severity="secondary"
+                    label="Eliminar"
+                    [raised]="true"
+                    [outlined]="true"
+                    [rounded]="true"
+                    (click)="eliminar(cita)">
+                </p-button>
+            </div>
+        </p-card>
     </div>
-    <br>
-    <p-card header="Detalle:">
-      <ul class="list-none p-0 m-0" *ngIf="cita">
-          <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-            <div>
-                <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Id de la cita:</span>
-            </div>
-            <div class="mt-2 md:mt-0 flex align-items-center">
-              <div>
-                {{cita.id}}
-              </div>
-            </div>
-          </li>
-        <p-divider></p-divider>
-
-          <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-              <div>
-                    <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Nombre del cliente:</span>
-                </div>
-              <div class="mt-2 md:mt-0 flex align-items-center">
-                <div>
-                  {{cita.cliente.nombreDelCliente}} {{ cita.cliente.apellido_P }} {{ cita.cliente.apellido_M }}
-                </div>
-              </div>
-          </li>
-          <p-divider></p-divider>
-
-          <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-            <div>
-                <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Fecha de la cita:</span>
-            </div>
-            <div class="mt-2 md:mt-0 flex align-items-center">
-                <div>
-                  {{ cita.fecha_cita | date:"dd/MM/yyyy" }}
-                </div>
-            </div>
-          </li>
-        <p-divider></p-divider>
-
-      <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-        <div>
-            <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Hora de la cita:</span>
-        </div>
-        <div class="mt-2 md:mt-0 flex align-items-center">
-            <div>
-              {{ cita.hora_cita }}
-            </div>
-        </div>
-      </li>
-    <p-divider></p-divider>
-
-      <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-        <div>
-            <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Direccion:</span>
-        </div>
-        <div class="mt-2 md:mt-0 flex align-items-center">
-            <div>
-              {{ cita.direccion }}
-            </div>
-        </div>
-      </li>
-    <p-divider></p-divider>
-
-      <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-        <div>
-            <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Numero de telefono del cliente:</span>
-        </div>
-        <div class="mt-2 md:mt-0 flex align-items-center">
-            <div>
-              {{ cita.cliente.telefono.slice(0, 3) }}-{{ cita.cliente.telefono.slice(3, 6) }}-{{ cita.cliente.telefono.slice(6) }}
-            </div>
-        </div>
-    </li>
-    <p-divider></p-divider>
-
-    <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-      <div>
-        <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Correo del cliente:</span>
-      </div>
-      <div class="mt-2 md:mt-0 flex align-items-center">
-        <div>
-          {{ cita.cliente.correo }}
-        </div>
-      </div>
-    </li>
-    <p-divider></p-divider>
-
-    <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
-      <div>
-        <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Nombre del empleado:</span>
-      </div>
-      <div class="mt-2 md:mt-0 flex align-items-center">
-        <div>
-          {{ cita.empleado.nombreDelEmpleado }} {{ cita.empleado.apellido_P }} {{ cita.empleado.apellido_M }}
-        </div>
-      </div>
-    </li>
-    <p-divider></p-divider>
-
-  </ul>
-
-
-    <div class="flex justify-content-end">
-      <p-button
-            class="detail__space-button"
-            icon= "pi pi-home"
-            label="Inicio"
-            severity="info"
-            [raised]="true"
-            [outlined]="true"
-            [rounded]="true"
-            (click)="atras()">
-    </p-button>
-
-    <p-button
-            class="detail__space-button"
-            icon= "pi pi-home"
-            label="PDF"
-            [raised]="true"
-            [outlined]="true"
-            [rounded]="true"
-            (click)="exportPdf()">
-    </p-button>
-
-    <p-button
-            icon="pi pi-user-plus"
-            severity="secondary"
-            label="Eliminar"
-            [raised]="true"
-            [outlined]="true"
-            [rounded]="true"
-            (click)="eliminar(cita)">
-    </p-button>
-    </div>
-    </p-card>
-  </div>
 </div>

@@ -1,3 +1,1 @@
-export class Estado{
-  
-}
+export class Estado {}
