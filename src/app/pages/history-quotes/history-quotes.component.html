@@ -37,10 +37,9 @@
   <ng-template pTemplate="body" let-cita>
       <tr>
           <td>{{ cita.id }}</td>
-          <td>{{ cita.fecha_cita }}</td>
-          <td>{{ cita.cliente.nombreDelCliente}}</td>
+          <td>{{ cita.cliente.nombreDelCliente }} {{ cita.cliente.apellido_P }} {{ cita.cliente.apellido_M }} </td>
           <td>{{ cita.empleado.nombreDelEmpleado}}</td>
-          <td>{{citas.estado}}"</td>
+          <td>{{ cita.estado}}</td>
           <td>
             <p-button
               class="detail__space-button"
@@ -59,7 +58,7 @@
                       [outlined]="true"
                       severity="secondary"
                       [rounded]="true"
-                      >
+                      (click)="finalizar(cita.id)">
             </p-button>
           </td>
       </tr>

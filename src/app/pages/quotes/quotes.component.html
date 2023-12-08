@@ -42,24 +42,22 @@
           <th>Id</th>
           <th>Fecha</th>
           <th>Nombre del cliente</th>
-          <th>Nombre del empleado</th>
           <th>Estado actual</th>
           <th>Editar</th>
           <th>Detalles</th>
+          <th>Acción</th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-cita>
       <tr>
           <td>{{ cita.id }}</td>
           <td>{{ cita.fecha_cita }}</td>
-          <td>{{ cita.cliente.nombreDelCliente}}</td>
-          <td>{{ cita.empleado.nombreDelEmpleado}}</td>
+          <td>{{ cita.cliente.nombreDelCliente}} {{ cita.cliente.apellido_P }} {{ cita.cliente.apellido_M }} </td>
           <td>{{ cita.estado}}</td>
           <td>
             <p-button
               class="detail__space-button"
               icon="pi pi-user-edit"
-              severity="success"
               [raised]="true"
               [outlined]="true"
               [rounded]="true"
@@ -74,6 +72,16 @@
                       severity="secondary"
                       [rounded]="true"
                       [routerLink]="['detalle-cita', cita.id]">
+            </p-button>
+          </td>
+          <td>
+            <p-button icon="pi pi-id-card"
+                      label="Finzalizar cita"
+                      [text]="true"
+                      [raised]="true"
+                      [outlined]="true"
+                      severity="success"
+                      [rounded]="true">
             </p-button>
           </td>
       </tr>

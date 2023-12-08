@@ -22,8 +22,9 @@ export class HistoryQuotesComponent {
 
     this.quotesService.getInactivas().subscribe(
       citas =>{  this.citas = citas; });
+  }
 
-
-
+  finzalizar(id){
+    
   }
 }
