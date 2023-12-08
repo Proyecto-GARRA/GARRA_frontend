@@ -1,7 +1,7 @@
 <br>
 <p-table [value]="clientes"
           #dt
-          [globalFilterFields]="['nombreDelCliente']"
+          [globalFilterFields]="['correo']"
           styleClass="p-datatable-striped"
           [paginator]="true"
           [rows]="8"
@@ -11,7 +11,7 @@
       pTemplate="caption">
       <div class="flex col-12">
 
-        <div class="col-5 p-input-icon-left">
+        <div class="col-4 p-input-icon-left">
           <p-button
                   icon="pi pi-user-plus"
                   label="Añadir cliente"
@@ -22,13 +22,13 @@
           </p-button>
         </div>
 
-        <div class="col-3 ">
+        <div class="col-4">
           <div class="search searchTerm">
             <i class="pi pi-search"></i>
             <input  class="a"
                     type="text"
                     (input)="filtrarPorNombre($event)"
-                    placeholder="Buscar por nombre" />
+                    placeholder="Buscar correo electronico" />
           </div>
         </div>
 

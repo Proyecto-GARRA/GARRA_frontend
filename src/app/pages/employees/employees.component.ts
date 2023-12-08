@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Table } from 'primeng/table';
 import { Empleado } from 'src/app/interfaces/empleado';
 import { EmployeesService } from 'src/app/services/employees.service';
 
@@ -13,6 +14,7 @@ export class EmployeesComponent {
     empleados!: Empleado[];
     items: MenuItem[] | undefined;
     home: MenuItem | undefined;
+    @ViewChild('dt') table: Table;
 
     constructor(private employeesService:EmployeesService){}
 
@@ -23,6 +25,10 @@ export class EmployeesComponent {
       this.employeesService.getEmpleados().subscribe(empleados => {
           this.empleados = empleados;
       });
+  }
+
+  filtrarPorNombre(event: any) {
+    this.table.filter(event.target.value, 'correo', 'contains');
   }
 
       customButtonConfig = {

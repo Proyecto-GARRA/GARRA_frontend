@@ -42,7 +42,7 @@ export class ClientComponent {
     }
 
     filtrarPorNombre(event: any) {
-      this.table.filter(event.target.value, 'nombreDelCliente', 'contains');
+      this.table.filter(event.target.value, 'correo', 'contains');
     }
 
     customButtonConfig = {

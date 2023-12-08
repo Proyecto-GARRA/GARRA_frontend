@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Table } from 'primeng/table';
 import { Cita } from 'src/app/interfaces/cita';
 import { QuotesService } from 'src/app/services/quotes.service';
 
@@ -12,6 +13,8 @@ export class QuotesComponent {
   public citas!: Cita[];
   items: MenuItem[] | undefined;
   home: MenuItem | undefined;
+  @ViewChild('dt') table: Table;
+
 
   constructor(private quotesService:QuotesService) {}
 
@@ -23,4 +26,7 @@ export class QuotesComponent {
       citas =>{  this.citas = citas; });
     }
 
+    filtrarPorNombre(event: any) {
+      this.table.filter(event.target.value, 'cliente.correo', 'contains');
+    }
 }
