@@ -62,22 +62,29 @@ export class UsersService {
     private handleError(error: HttpErrorResponse) {
         if (error.status === 0) {
             console.error('Error: ' + error.error);
-            throw Swal.fire('Error!', error.message, 'error');
+            throw Swal.fire('¡Error!', error.message, 'error');
         } else {
-            console.error('Error del servidor: ' + error);
+            console.error('Error del servidor: ' + error.status);
+            if (error.status == 403) {
+                throw Swal.fire(
+                    '¡Error!',
+                    'Usuario o contraseña incorrecta',
+                    'error'
+                );
+            }
         }
         return throwError(() => new Error());
     }
 
-    getUserData(): Observable<String> {
+    get UserData(): Observable<String> {
         return this.currentUserData.asObservable();
     }
 
-    getUserLoginOn(): Observable<boolean> {
+    get UserLoginOn(): Observable<boolean> {
         return this.currentUserLoginOn.asObservable();
     }
 
-    getUserToken(): String {
+    get UserToken(): String {
         return this.currentUserData.value;
     }
 }

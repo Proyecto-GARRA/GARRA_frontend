@@ -39,11 +39,12 @@
                         name="username"
                         id="username"
                         type="text"
-                        placeholder="Username"
+                        placeholder="Usuario"
                         pInputText
                         class="w-full md:w-30rem mb-5"
                         style="padding: 1rem"
-                        autofocus />
+                        autofocus
+                        required="true" />
 
                     <label
                         for="password"
@@ -53,11 +54,12 @@
                     <p-password
                         [(ngModel)]="cred.password"
                         id="password"
-                        placeholder="Password"
+                        placeholder="contraseña"
                         [toggleMask]="true"
                         [feedback]="false"
                         styleClass="mb-5"
-                        inputStyleClass="w-full p-3 md:w-30rem"></p-password>
+                        inputStyleClass="w-full p-3 md:w-30rem"
+                        required="true"></p-password>
 
                     <div class="flex justify-content-center">
                         <p-button

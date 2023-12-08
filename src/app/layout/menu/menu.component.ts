@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { UsersService } from './../../services/users.service';
 
 @Component({
     selector: 'app-menu',
@@ -8,6 +9,11 @@ import { MenuItem } from 'primeng/api';
 })
 export class MenuComponent {
     items: MenuItem[] = [];
+    quit: () => void;
+
+    constructor(usersServices: UsersService) {
+        this.quit = usersServices.logout;
+    }
 
     ngOnInit() {
         this.items = [
@@ -32,6 +38,14 @@ export class MenuComponent {
                         icon: 'pi pi-folder',
                     },
                 ],
+            },
+            {
+                label: 'Salir',
+                command: () => {
+                    this.quit();
+                },
+                routerLink: 'auth',
+                icon: 'pi pi-power-off',
             },
         ];
     }
