@@ -152,7 +152,7 @@ export class QuotesFormComponent {
                 this.router.navigate(['lista-citas']);
                 Swal.fire(
                     'Cita Guardado',
-                    `La cita ${jsonResponse.cliente.nombreDelCliente} ah sido guardado con exito`,
+                    `La cita ${jsonResponse.cliente.nombreDelCliente} ha sido guardado con exito`,
                     'success'
                 );
             },

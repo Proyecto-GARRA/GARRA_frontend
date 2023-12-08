@@ -74,7 +74,7 @@ export class ClientFormComponent {
                 this.router.navigate(['lista-clientes']);
                 Swal.fire(
                     'Cliente Guardado',
-                    `El cliente ${jsonResponse.cliente.nombreDelCliente} ah sido guardado con exito`,
+                    `El cliente ${jsonResponse.cliente.nombreDelCliente} ha sido guardado con exito`,
                     'success'
                 );
             },

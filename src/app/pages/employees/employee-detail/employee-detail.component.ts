@@ -70,7 +70,7 @@ export class EmployeeDetailComponent {
                         );
                         Swal.fire(
                             'Empleado eliminado!',
-                            `El empleado ${this.empleado.nombreDelEmpleado} ah sido eliminado`,
+                            `El empleado ${this.empleado.nombreDelEmpleado} ha sido eliminado`,
                             'success'
                         );
                     });

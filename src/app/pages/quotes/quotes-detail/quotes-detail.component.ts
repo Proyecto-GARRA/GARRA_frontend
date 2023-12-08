@@ -114,7 +114,7 @@ export class QuotesDetailComponent {
                         this.citas = this.citas.filter(cita => cita !== cita);
                         Swal.fire(
                             'Cita eliminada!',
-                            `La cita ${this.cita.id} ah sido eliminado`,
+                            `La cita ${this.cita.id} ha sido eliminado`,
                             'success'
                         );
                     });

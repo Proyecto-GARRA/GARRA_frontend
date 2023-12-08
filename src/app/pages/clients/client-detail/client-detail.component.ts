@@ -68,7 +68,7 @@ export class ClientDetailComponent {
                         );
                         Swal.fire(
                             'Cliente eliminado!',
-                            `El cliente ${this.cliente.nombreDelCliente} ah sido eliminado`,
+                            `El cliente ${this.cliente.nombreDelCliente} ha sido eliminado`,
                             'success'
                         );
                     });
