@@ -10,20 +10,21 @@ import { QuotesService } from 'src/app/services/quotes.service';
     styleUrls: ['./quotes.component.scss'],
 })
 export class QuotesComponent {
-  public citas!: Cita[];
+    public citas!: Cita[];
   listaDeCitasFinalizadas: Cita[] = [];
-  items: MenuItem[] | undefined;
-  home: MenuItem | undefined;
+    items: MenuItem[] | undefined;
+    home: MenuItem | undefined;
   @ViewChild('dt') table: Table;
 
-  constructor(private quotesService:QuotesService) {}
+    constructor(private quotesService: QuotesService) {}
 
-  ngOnInit() {
-    this.items = [ { label: 'Lista de citas' }];
-    this.home = { icon: 'pi pi-home', routerLink: 'lista-citas' };
+    ngOnInit() {
+        this.items = [{ label: 'Lista de citas' }];
+        this.home = { icon: 'pi pi-home', routerLink: 'lista-citas' };
 
-    this.quotesService.getCitas().subscribe(
-      citas =>{  this.citas = citas; });
+        this.quotesService.getCitas().subscribe(citas => {
+            this.citas = citas;
+        });
     }
 
     finalizar(id: number) {

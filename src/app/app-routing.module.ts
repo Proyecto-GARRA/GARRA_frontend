@@ -4,8 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/lista-clientes',
+        redirectTo: 'auth',
         pathMatch: 'full',
+    },
+    {
+        path: 'auth',
+        loadChildren: () =>
+            import('./auth/auth.module').then(m => m.AuthModule),
     },
     {
         path: 'lista-clientes',
@@ -15,7 +20,9 @@ const routes: Routes = [
     {
         path: 'lista-empleados',
         loadChildren: () =>
-            import('./pages/employees/employees.module').then(m => m.EmployeesModule),
+            import('./pages/employees/employees.module').then(
+                m => m.EmployeesModule
+            ),
     },
     {
         path: 'lista-citas',
@@ -25,7 +32,9 @@ const routes: Routes = [
     {
         path: 'lista-historia',
         loadChildren: () =>
-            import('./pages/history-quotes/history-quotes.module').then(m => m.HistoryQuotesModule),
+            import('./pages/history-quotes/history-quotes.module').then(
+                m => m.HistoryQuotesModule
+            ),
     },
     {
         path: '**',

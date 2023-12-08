@@ -10,20 +10,20 @@ const routes: Routes = [
         component: EmployeesComponent,
     },
     {
-      path: 'lista-empleados',
-      component: EmployeesComponent,
+        path: 'lista-empleados',
+        component: EmployeesComponent,
     },
     {
-      path:'formulario-empleado',
-      component: EmployeesFormComponent
+        path: 'formulario-empleado',
+        component: EmployeesFormComponent,
     },
     {
-      path:'formulario-empleado/:id',
-      component: EmployeesFormComponent
+        path: 'formulario-empleado/:id',
+        component: EmployeesFormComponent,
     },
     {
-      path:'detalle-empleado/:id',
-      component: EmployeeDetailComponent
+        path: 'detalle-empleado/:id',
+        component: EmployeeDetailComponent,
     },
 ];
 

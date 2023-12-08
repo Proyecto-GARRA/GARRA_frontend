@@ -8,9 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 
-const components = [
-  HistoryQuotesComponent
-]
+const components = [HistoryQuotesComponent];
 
 @NgModule({
   declarations: [components],
@@ -25,4 +23,4 @@ const components = [
     TagModule
   ]
 })
-export class HistoryQuotesModule { }
+export class HistoryQuotesModule {}

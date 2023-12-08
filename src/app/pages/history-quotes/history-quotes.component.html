@@ -1,25 +1,29 @@
-<br>
-<p-table [value]="citas"
-          styleClass="p-datatable-striped"
-          [paginator]="true"
-          [rows]="8"
-          [tableStyle]="{ 'min-width': '40rem' }">
-  <ng-template
-  pTemplate="caption">
-          <div class="flex col-12">
-
-            <div class="col-5">
-            </div>
+<br />
+<p-table
+    [value]="citas"
+    styleClass="p-datatable-striped"
+    [paginator]="true"
+    [rows]="8"
+    [tableStyle]="{ 'min-width': '40rem' }">
+    <ng-template pTemplate="caption">
+        <div class="flex col-12">
+            <div class="col-5"></div>
 
             <div class="col-3">
-              <div class="p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input pInputText type="text" placeholder="Buscar por nombre" />
-              </div>
+                <div class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input
+                        pInputText
+                        type="text"
+                        placeholder="Buscar por nombre" />
+                </div>
             </div>
 
             <div class="col-4 flex justify-content-end">
-              <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+                <p-breadcrumb
+                    class="max-w-full"
+                    [model]="items"
+                    [home]="home"></p-breadcrumb>
             </div>
 
             </div>

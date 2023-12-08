@@ -17,9 +17,9 @@ import { DividerModule } from 'primeng/divider';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 
 const components = [
-  ClientComponent,
-  ClientFormComponent,
-  ClientDetailComponent
+    ClientComponent,
+    ClientFormComponent,
+    ClientDetailComponent,
 ];
 
 @NgModule({
@@ -36,7 +36,7 @@ const components = [
         BreadcrumbModule,
         DialogModule,
         PanelModule,
-        DividerModule
+        DividerModule,
     ],
 })
 export class ClientModule {}

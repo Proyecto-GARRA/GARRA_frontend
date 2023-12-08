@@ -1,65 +1,68 @@
-<br>
+<br />
 <div class="justify-content-end">
-  <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+    <p-breadcrumb
+        class="max-w-full"
+        [model]="items"
+        [home]="home"></p-breadcrumb>
 </div>
-<br>
+<br />
 <div class="flex justify-content-center">
-  <p-card class="table__list" [style]="{ width: '100%' }">
-      <div class="card flex justify-content-center app-design__content">
-          <div
-              pFocusTrap
-              class="card flex align-items-center justify-content-center flex-wrap gap-3">
-              <form #empleadoForm ngForm class="flex grid">
-                  <div class="col-12 field">
-                      <label for="nombreDelEmpleado">Nombre(s)</label>
-                      <input
-                          type="text"
-                          size="30"
-                          [(ngModel)]="empleado.nombreDelEmpleado"
-                          name="nombreDelEmpleado"
-                          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                          required />
-                      <small
-                          id="nombre-help"
-                          class="p-error"
-                          *ngIf="formError && !empleado.nombreDelEmpleado"
-                          >El nombre es obligatorio.</small
-                      >
-                  </div>
+    <p-card class="table__list" [style]="{ width: '100%' }">
+        <div class="card flex justify-content-center app-design__content">
+            <div
+                pFocusTrap
+                class="card flex align-items-center justify-content-center flex-wrap gap-3">
+                <form #empleadoForm ngForm class="flex grid">
+                    <div class="col-12 field">
+                        <label for="nombreDelEmpleado">Nombre(s)</label>
+                        <input
+                            type="text"
+                            size="30"
+                            [(ngModel)]="empleado.nombreDelEmpleado"
+                            name="nombreDelEmpleado"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                            required />
+                        <small
+                            id="nombre-help"
+                            class="p-error"
+                            *ngIf="formError && !empleado.nombreDelEmpleado"
+                            >El nombre es obligatorio.</small
+                        >
+                    </div>
 
-                  <div class="col-6 field">
-                      <label for="apellido_P">Apellido paterno</label>
-                      <input
-                          type="text"
-                          size="30"
-                          [(ngModel)]="empleado.apellido_P"
-                          name="apellido_P"
-                          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
-                      <small
-                          id="apellido_P-help"
-                          class="p-error"
-                          *ngIf="formError && !empleado.apellido_P"
-                          >El apellido paterno es obligatorio.</small
-                      >
-                  </div>
+                    <div class="col-6 field">
+                        <label for="apellido_P">Apellido paterno</label>
+                        <input
+                            type="text"
+                            size="30"
+                            [(ngModel)]="empleado.apellido_P"
+                            name="apellido_P"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                        <small
+                            id="apellido_P-help"
+                            class="p-error"
+                            *ngIf="formError && !empleado.apellido_P"
+                            >El apellido paterno es obligatorio.</small
+                        >
+                    </div>
 
-                  <div class="col-6 field">
-                      <label for="firstname1">Apellido Materno</label>
-                      <input
-                          type="text"
-                          size="30"
-                          [(ngModel)]="empleado.apellido_M"
-                          name="apellido_M"
-                          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
-                      <small
-                          id="apellido_M-help"
-                          class="p-error"
-                          *ngIf="formError && !empleado.apellido_M"
-                          >El apellido materno es obligatorio.</small
-                      >
-                  </div>
+                    <div class="col-6 field">
+                        <label for="firstname1">Apellido Materno</label>
+                        <input
+                            type="text"
+                            size="30"
+                            [(ngModel)]="empleado.apellido_M"
+                            name="apellido_M"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                        <small
+                            id="apellido_M-help"
+                            class="p-error"
+                            *ngIf="formError && !empleado.apellido_M"
+                            >El apellido materno es obligatorio.</small
+                        >
+                    </div>
 
-                  <!-- <div class="col-12 field">
+                    <!-- <div class="col-12 field">
                       <label class="col-2">Fecha de nacimiento </label>
                       <p-calendar
                           class="col-3"
@@ -79,129 +82,130 @@
                       >
                   </div> -->
 
-                  <div class="col-6 field">
-                    <label for="firstname1">Fecha de nacimiento</label>
-                    <input
-                        type="date"
-                        size="30"
-                        [(ngModel)]="empleado.fecha_naci"
-                        name="apellido_M"
-                        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
-                    <small
-                        id="apellido_M-help"
-                        class="p-error"
-                        *ngIf="formError && !empleado.fecha_naci"
-                        >La fecha de nacimiento es obligatorio.</small
-                    >
-                </div>
-
-
-                  <div class="col-6 field">
-                      <label for="firstname1">Domicilio</label>
-                      <input
-                          type="text"
-                          size="30"
-                          [(ngModel)]="empleado.domicilio"
-                          name="domicilio"
-                          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
-                      <small
-                          id="domicilio-help"
-                          class="p-error"
-                          *ngIf="formError && !empleado.domicilio"
-                          >El domicilio es obligatorio.</small
-                      >
-                  </div>
-
-                  <div class="col-6 field">
-                      <label for="firstname1">Correo</label>
-                      <input
-                          type="text"
-                          size="30"
-                          [(ngModel)]="empleado.correo"
-                          name="correo"
-                          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
-                      <small
-                          id="correo-help"
-                          class="p-error"
-                          *ngIf="formError && !empleado.correo"
-                          >El correo es obligatorio.</small
-                      >
-                  </div>
-
-                  <div class="col-6 field">
-                      <label for="firstname1">Numero telefono</label>
-                      <input
-                          type="text"
-                          size="30"
-                          [(ngModel)]="empleado.telefono"
-                          name="telefono"
-                          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
-                      <small
-                          id="telefono-help"
-                          class="p-error"
-                          *ngIf="formError && !empleado.telefono"
-                          >El número de teléfono es obligatorio.</small
-                      >
-                  </div>
-
-                  <div class="col-12 field">
-                    <label for="tipoEmpl" class="col-2">Tipo de empleado</label>
-                      <p-autoComplete
-                        [(ngModel)]="empleado.tipoDeEmpleado"
-                        [dropdown]="true"
-                        [suggestions]="filteredTipoEmpleadoSelect"
-                        (completeMethod)="filtrarTipoEmpl($event)"
-                        field="tipoEmpleado"
-                        [ngModelOptions]="{standalone: true}"
+                    <div class="col-6 field">
+                        <label for="firstname1">Fecha de nacimiento</label>
+                        <input
+                            type="date"
+                            size="30"
+                            [(ngModel)]="empleado.fecha_naci"
+                            name="apellido_M"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                        <small
+                            id="apellido_M-help"
+                            class="p-error"
+                            *ngIf="formError && !empleado.fecha_naci"
+                            >La fecha de nacimiento es obligatorio.</small
                         >
-                      </p-autoComplete>
-                      <small
-                        id="nombre-help"
-                        class="p-error ml-2"
-                        size="30"
-                        *ngIf="formError && !empleado.tipoDeEmpleado"
-                        >El rol del empleado es obligatorio.</small>
-                  </div>
-              </form>
-              <div class="col-12">
-                  <div class="flex justify-content-end">
-                    <p-button
-                          icon="pi pi-user-plus"
-                          [raised]="true"
-                          [outlined]="true"
-                          [rounded]="true"
-                          severity="info"
-                          class="client-form__button-footer"
-                          icon="pi pi-home"
-                          label="Inicio"
-                          (click)="atras()"></p-button>
+                    </div>
 
-                    <p-button
-                          icon="pi pi-user-plus"
-                          label="Añadir empleado"
-                          severity="success"
-                          [raised]="true"
-                          [outlined]="true"
-                          [rounded]="true"
-                          icon="pi pi-user-plus"
-                          label="Añadir"
-                          *ngIf="!empleado.id else elseBlock"
-                          (click)="create()"></p-button>
+                    <div class="col-6 field">
+                        <label for="firstname1">Domicilio</label>
+                        <input
+                            type="text"
+                            size="30"
+                            [(ngModel)]="empleado.domicilio"
+                            name="domicilio"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                        <small
+                            id="domicilio-help"
+                            class="p-error"
+                            *ngIf="formError && !empleado.domicilio"
+                            >El domicilio es obligatorio.</small
+                        >
+                    </div>
 
-                    <ng-template #elseBlock>
-                    <p-button
-                          icon="pi pi-user-plus"
-                          severity="success"
-                          [raised]="true"
-                          [outlined]="true"
-                          [rounded]="true"
-                          icon="pi pi-save"
-                          label="Editar"
-                          (click)="update()"></p-button>
-                    </ng-template>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </p-card>
+                    <div class="col-6 field">
+                        <label for="firstname1">Correo</label>
+                        <input
+                            type="text"
+                            size="30"
+                            [(ngModel)]="empleado.correo"
+                            name="correo"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                        <small
+                            id="correo-help"
+                            class="p-error"
+                            *ngIf="formError && !empleado.correo"
+                            >El correo es obligatorio.</small
+                        >
+                    </div>
+
+                    <div class="col-6 field">
+                        <label for="firstname1">Numero telefono</label>
+                        <input
+                            type="text"
+                            size="30"
+                            [(ngModel)]="empleado.telefono"
+                            name="telefono"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                        <small
+                            id="telefono-help"
+                            class="p-error"
+                            *ngIf="formError && !empleado.telefono"
+                            >El número de teléfono es obligatorio.</small
+                        >
+                    </div>
+
+                    <div class="col-12 field">
+                        <label for="tipoEmpl" class="col-2"
+                            >Tipo de empleado</label
+                        >
+                        <p-autoComplete
+                            [(ngModel)]="empleado.tipoDeEmpleado"
+                            [dropdown]="true"
+                            [suggestions]="filteredTipoEmpleadoSelect"
+                            (completeMethod)="filtrarTipoEmpl($event)"
+                            field="tipoEmpleado"
+                            [ngModelOptions]="{ standalone: true }">
+                        </p-autoComplete>
+                        <small
+                            id="nombre-help"
+                            class="p-error ml-2"
+                            size="30"
+                            *ngIf="formError && !empleado.tipoDeEmpleado"
+                            >El rol del empleado es obligatorio.</small
+                        >
+                    </div>
+                </form>
+                <div class="col-12">
+                    <div class="flex justify-content-end">
+                        <p-button
+                            icon="pi pi-user-plus"
+                            [raised]="true"
+                            [outlined]="true"
+                            [rounded]="true"
+                            severity="info"
+                            class="client-form__button-footer"
+                            icon="pi pi-home"
+                            label="Inicio"
+                            (click)="atras()"></p-button>
+
+                        <p-button
+                            icon="pi pi-user-plus"
+                            label="Añadir empleado"
+                            severity="success"
+                            [raised]="true"
+                            [outlined]="true"
+                            [rounded]="true"
+                            icon="pi pi-user-plus"
+                            label="Añadir"
+                            *ngIf="!empleado.id; else elseBlock"
+                            (click)="create()"></p-button>
+
+                        <ng-template #elseBlock>
+                            <p-button
+                                icon="pi pi-user-plus"
+                                severity="success"
+                                [raised]="true"
+                                [outlined]="true"
+                                [rounded]="true"
+                                icon="pi pi-save"
+                                label="Editar"
+                                (click)="update()"></p-button>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-card>
 </div>

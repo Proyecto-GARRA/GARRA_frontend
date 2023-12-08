@@ -21,8 +21,8 @@ export class ClientComponent {
     constructor(private clientsService: ClientsService) {}
 
     ngOnInit() {
-      this.items = [ { label: 'Lista de clientes' }];
-      this.home = { icon: 'pi pi-home', routerLink: '/' };
+        this.items = [{ label: 'Lista de clientes' }];
+        this.home = { icon: 'pi pi-home', routerLink: '/' };
 
         this.clientsService.getClientes().subscribe(clientes => {
             this.clientes = clientes;
@@ -46,8 +46,8 @@ export class ClientComponent {
     }
 
     customButtonConfig = {
-      icon: 'pi pi-user-plus',
-      label: 'Agregar',
-      routerLink: 'formulario-cliente',
+        icon: 'pi pi-user-plus',
+        label: 'Agregar',
+        routerLink: 'formulario-cliente',
     };
 }

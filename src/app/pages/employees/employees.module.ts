@@ -17,28 +17,28 @@ import { PanelModule } from 'primeng/panel';
 import { DividerModule } from 'primeng/divider';
 
 const components = [
-  EmployeesComponent,
-  EmployeesFormComponent,
-  EmployeeDetailComponent
-]
+    EmployeesComponent,
+    EmployeesFormComponent,
+    EmployeeDetailComponent,
+];
 
 @NgModule({
     declarations: [components],
-    exports:[components],
-    imports:[
-      CommonModule,
-      // ComponentsModule,
-      FormsModule,
-      CalendarModule,
-      CardModule,
-      DropdownModule,
-      EmployeesRoutingModule,
-      AutoCompleteModule,
-      TableModule,
-      BreadcrumbModule,
-      DialogModule,
-      PanelModule,
-      DividerModule
+    exports: [components],
+    imports: [
+        CommonModule,
+        // ComponentsModule,
+        FormsModule,
+        CalendarModule,
+        CardModule,
+        DropdownModule,
+        EmployeesRoutingModule,
+        AutoCompleteModule,
+        TableModule,
+        BreadcrumbModule,
+        DialogModule,
+        PanelModule,
+        DividerModule,
     ],
 })
 export class EmployeesModule {}

@@ -13,109 +13,119 @@ import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
     styleUrls: ['./employees-form.component.scss'],
 })
 export class EmployeesFormComponent {
-  public empleado: Empleado = new Empleado();
+    public empleado: Empleado = new Empleado();
 
-  public tipoEmpleadoSelect!: TipoEmpl[];
-  public filteredTipoEmpleadoSelect!: any[]
-  public errores: string[] = [];
-  public formError = false;
-  date: Date[] | undefined;
-  items: MenuItem[] | undefined;
-  home: MenuItem | undefined;
+    public tipoEmpleadoSelect!: TipoEmpl[];
+    public filteredTipoEmpleadoSelect!: any[];
+    public errores: string[] = [];
+    public formError = false;
+    date: Date[] | undefined;
+    items: MenuItem[] | undefined;
+    home: MenuItem | undefined;
 
-  constructor(
-    private employeesService:EmployeesService,
-    private router:Router,
-    private activatedRoute: ActivatedRoute
-    ){}
+    constructor(
+        private employeesService: EmployeesService,
+        private router: Router,
+        private activatedRoute: ActivatedRoute
+    ) {}
 
     ngOnInit() {
-      this.items = [ { label: 'Lista de clientes' }, { label: 'Formulario de empleado'}];
-      this.home = { icon: 'pi pi-home', routerLink: 'lista-empleados' };
-      this.cargarEmpleados();
-      this.employeesService.getTipoDeEmpleado().subscribe(tipoEmpleado => this.tipoEmpleadoSelect = tipoEmpleado);
+        this.items = [
+            { label: 'Lista de clientes' },
+            { label: 'Formulario de empleado' },
+        ];
+        this.home = { icon: 'pi pi-home', routerLink: 'lista-empleados' };
+        this.cargarEmpleados();
+        this.employeesService
+            .getTipoDeEmpleado()
+            .subscribe(
+                tipoEmpleado => (this.tipoEmpleadoSelect = tipoEmpleado)
+            );
     }
 
-  create():void{
-    this.formError = false;
+    create(): void {
+        this.formError = false;
 
-    if(
-      !this.empleado.nombreDelEmpleado ||
-      !this.empleado.apellido_P ||
-      !this.empleado.apellido_M ||
-      !this.empleado.correo ||
-      !this.empleado.domicilio ||
-      !this.empleado.fecha_naci ||
-      !this.empleado.telefono ||
-      !this.empleado.tipoDeEmpleado
-      ){
-      this.formError = true;
-      return
-    }
-    console.log(this.empleado);
-
-    this.employeesService.create(this.empleado).subscribe(
-      jsonResponse =>{
-        this.router.navigate(['/lista-empleados']);
-        Swal.fire(
-          'Empleado agregado',
-          `El empleado ${jsonResponse.empleado.nombreDelEmpleado} ${jsonResponse.empleado.apellido_P} ${jsonResponse.empleado.apellido_M}`,
-          'success'
-        );
-      },
-      err => {
-        this.errores = err.error.errors as string[];
-        console.error('Error en el codigo backend ' + err.status);
-        console.error(err.error.errors);
-    }
-    )
-  }
-
-  update():void{
-    this.employeesService.update(this.empleado)
-    .subscribe( jsonResponse => {
-        this.router.navigate(['lista-empleados'])
-        Swal.fire ('Empleado Guardado', `El empleado ${jsonResponse.cliente.nombreDelCliente} ah sido guardado con exito`, 'success' )
-      },
-      err =>{
-        this.errores = err.error.errors as string[];
-        console.error('Error en el codigo backend '+ err.status);
-        console.error(err.error.errors);
-      }
-    );
-  }
-
-  cargarEmpleados(): void {
-    this.activatedRoute.params.subscribe(
-      params =>{
-        let id = params ['id']
-        if(id){
-          this.employeesService.getId(id)
-              .subscribe((empleado) =>{
-                this.empleado = empleado
-              });
+        if (
+            !this.empleado.nombreDelEmpleado ||
+            !this.empleado.apellido_P ||
+            !this.empleado.apellido_M ||
+            !this.empleado.correo ||
+            !this.empleado.domicilio ||
+            !this.empleado.fecha_naci ||
+            !this.empleado.telefono ||
+            !this.empleado.tipoDeEmpleado
+        ) {
+            this.formError = true;
+            return;
         }
-      }
-    )
-  }
+        console.log(this.empleado);
 
+        this.employeesService.create(this.empleado).subscribe(
+            jsonResponse => {
+                this.router.navigate(['/lista-empleados']);
+                Swal.fire(
+                    'Empleado agregado',
+                    `El empleado ${jsonResponse.empleado.nombreDelEmpleado} ${jsonResponse.empleado.apellido_P} ${jsonResponse.empleado.apellido_M}`,
+                    'success'
+                );
+            },
+            err => {
+                this.errores = err.error.errors as string[];
+                console.error('Error en el codigo backend ' + err.status);
+                console.error(err.error.errors);
+            }
+        );
+    }
 
-  filtrarTipoEmpl(event: AutoCompleteCompleteEvent) {
-    let filtered: any[] = [];
-    let query = event.query;
-    for (let i = 0; i < (this.tipoEmpleadoSelect as any[]).length; i++) {
-      let tipoEmpl = (this.tipoEmpleadoSelect as any[])[i];
-      if (tipoEmpl && tipoEmpl.tipoEmpleado && tipoEmpl.tipoEmpleado.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-          filtered.push(tipoEmpl);
-      }
-  }
-    this.filteredTipoEmpleadoSelect = filtered;
-  }
+    update(): void {
+        this.employeesService.update(this.empleado).subscribe(
+            jsonResponse => {
+                this.router.navigate(['lista-empleados']);
+                Swal.fire(
+                    'Empleado Guardado',
+                    `El empleado ${jsonResponse.cliente.nombreDelCliente} ha sido guardado con exito`,
+                    'success'
+                );
+            },
+            err => {
+                this.errores = err.error.errors as string[];
+                console.error('Error en el codigo backend ' + err.status);
+                console.error(err.error.errors);
+            }
+        );
+    }
 
-  atras(){
-    history.back();
-  }
+    cargarEmpleados(): void {
+        this.activatedRoute.params.subscribe(params => {
+            let id = params['id'];
+            if (id) {
+                this.employeesService.getId(id).subscribe(empleado => {
+                    this.empleado = empleado;
+                });
+            }
+        });
+    }
 
+    filtrarTipoEmpl(event: AutoCompleteCompleteEvent) {
+        let filtered: any[] = [];
+        let query = event.query;
+        for (let i = 0; i < (this.tipoEmpleadoSelect as any[]).length; i++) {
+            let tipoEmpl = (this.tipoEmpleadoSelect as any[])[i];
+            if (
+                tipoEmpl &&
+                tipoEmpl.tipoEmpleado &&
+                tipoEmpl.tipoEmpleado
+                    .toLowerCase()
+                    .indexOf(query.toLowerCase()) == 0
+            ) {
+                filtered.push(tipoEmpl);
+            }
+        }
+        this.filteredTipoEmpleadoSelect = filtered;
+    }
+
+    atras() {
+        history.back();
+    }
 }
-
-
